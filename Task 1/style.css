@@ -2,13 +2,12 @@ body{
     margin: 0;
     display: grid;
 }
-/* Header */
-header{
+/* nav */
+nav{
     background-color: #3399CC;
     z-index: 1;
-    
 }
-header>h1>a{
+.title{
     font-family: 'Quattrocento Sans', sans-serif;
     text-transform: uppercase;
     color:white;
@@ -17,46 +16,43 @@ header>h1>a{
     font-size:3.5rem;
     text-decoration: none;
 }
-/* navBar */
-
-.navBar{
+/* nav-bar */
+.nav-bar{
     background-color: #333;
 }
-.navBar>ul{
-    margin: 0.5rem 0rem;
+.nav-bar>ul{
+    margin: 0.5rem 0;
 }
-.dropDown-Nav{
-    display: none;
+.dropdown-nav{
+    display:none;
 }
-
-.navBar>ul>li{
+.nav-bar>ul>li{
     display: inline-flex;
     list-style: none;
     padding-right:1.7rem;
     
 }
-.navBar>ul>li>a:hover{
-    background-color:white;
-    color:#2c3e50;
-    border-radius: 3px;
-}
-
-.navBar>ul>li>a{
+.list{
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1rem;
-    font-weight: bolder;
+    font-weight: bold;
     padding:6px auto;
 }
-.blog-Icon{
+.list:hover{
+    background-color:white;
+    color:#2c3e50;
+    border-radius: 3px;
+}
+.blog-icon{
     position:relative;
     float: right;
     top:-0.1rem;
 }
-/* dropDown-Nav */
-.checkBtn{
+/* dropdown-nav */
+.check-btn{
     font-size: 30px;
     color: white;
     float: right;
@@ -67,9 +63,8 @@ header>h1>a{
     display: none;
 }
 #check{
-    display: none;
+    display:none;
 }
-
 /* Main */
 main{
     margin:2em 4em;
@@ -80,25 +75,26 @@ main{
     border: 1px solid #CCCCCC;
     width: fit-content;
 }
-.news>h1{
+.heading{
+    font-weight: 500;
+    text-shadow:  0 1px black;
+}
+.news>h2{
     text-transform: uppercase;
     padding:0.5rem 1rem 0.1rem 1rem;
-    margin: 0;
-    font-size:1.4em;
-    font-weight:500;
-    text-shadow: 0 1px black;   
+    margin: 0;  
 }
 .news>ul{
     padding: 0;
     margin-top: 0;
 }
-.news>ul>li{
+.news-list{
     list-style:none;
     font-size: medium;
     padding:0.6rem 1.5rem;
     
 }
-.news>ul>li::before{
+.news-list::before{
     content: '-';
     padding-right: 1rem;
 } 
@@ -108,21 +104,17 @@ main{
     width: 80%;
     margin:1.5rem 0;
 }
-.text>h1{
-    font-size:1.4em;
-    font-weight:500;
-    margin-top: 2rem;
-    text-shadow: 0 1px black;   
+.text>h2{
+    margin-top: 2rem; 
     margin-bottom: -0.3rem;
-    
 }
-.text>p{
+.para-text{
     font-size: medium;
     word-spacing:0.3rem;
     padding-bottom: 0.3rem;
 }
-/* dropDown-Nav menu */
-.dropDown-Nav{
+/* dropdown-nav menu */
+.dropdown-nav{
     background:#2c3e50;
     width:fit-content;
     padding: 0;
@@ -135,23 +127,23 @@ main{
     margin-top:-1.2rem;
     width:10em;
 }
-.dropDown-Nav>li{
+.dropdown-nav>li{
     list-style: none;
     padding:1rem;
     transition: width 3s;
 }
-.dropDown-Nav>li>a{
+.dropdown-list{
     font-family: Arial, Helvetica, sans-serif;
     color:white;
     text-decoration: none;
     padding:5px;
 }
-.dropDown-Nav>li:hover{
+.dropdown-nav>li:hover{
     background-color:black;
     color:#2c3e50;
     border-radius: 3px;
 }
-.dropDown-Nav>.blog-Icon{
+.dropdown-nav>.blog-icon{
     float:none;
 }
 /* Responsive */
@@ -160,25 +152,25 @@ main{
         padding:0;
         margin:1.5rem;
     }
-    .navBar{
+    .nav-bar{
         display: none;
     }
-    header{
+    nav{
         border-bottom: 2px solid;
     }
-    header h1 a{
+    .title{
         font-size: 2rem;
         padding-left:1rem;
     }
-    .checkBtn{
+    .check-btn{
         display:block;
     }
-    #check:checked ~ .dropDown-Nav{
+    #check:checked ~ .dropdown-nav{
         display: block;
     }
 }
 @media screen and (min-width:577px) and (max-width:758px){
-    header h1 {
+    .title{
         text-align: center;
     }
 }
