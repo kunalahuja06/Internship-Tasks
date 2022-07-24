@@ -1,0 +1,57 @@
+.content{
+    overflow: hidden;
+    margin-bottom:-0.5rem;
+}
+/* Banner */
+.banner{
+    background-color:rgba(14, 0, 0, 0.4); 
+}
+.banner-text{
+    border:transparent;
+    font-weight:400;
+    font-size:2.3em;
+    letter-spacing:0.5rem;
+    word-spacing: 0rem;
+    padding:1.3rem 1.8rem 0.7rem 1.7rem;
+    text-shadow: 1px 1px black;
+}
+/* Main */
+.tile-image{
+    height:6.5rem;
+    margin-bottom: 0.7rem;
+}
+.container{
+    border:1px solid rgba(86, 94, 105, 1);
+    border-image: linear-gradient(to top, rgba(86, 94, 105, 1) 30%, rgba(86, 94, 105, 0.1) 80%)1;
+    width: fit-content;
+    padding:0.7rem 0.9rem 0 0.9rem;
+}
+.main-content{
+    flex-direction: column;
+    padding:0 0.7rem !important;
+}
+.lighter{
+    filter: brightness(200%);
+}
+.main-text{
+    font-family:'Trebuchet MS';
+    width: 95%;
+    font-size: 0.85rem;
+    font-weight: bold;
+    word-spacing: 0.2rem;
+    line-height: 2.2vh;
+    margin-bottom: 0.5rem;
+}
+.main-para-link{
+    color:#ADDEFE;
+}
+/* Utils */
+.top-links{
+    margin-bottom: 1rem;
+}
+.logo{
+    top:0.4rem;
+}
+.footer{
+    padding:0.1em !important;
+}
