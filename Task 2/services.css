@@ -41,7 +41,7 @@
     background-color: #355372; 
     border-radius:3px; 
     color: white !important;
-    padding:0rem 1rem 0.1rem 1rem !important;
+    padding:0.2rem 1rem !important;
 }
 .bottom-content{
     background-color:#14253a;
@@ -68,8 +68,11 @@
     width:0.5rem;
 }
 /* utils */
+.nav-tabs{
+    margin-top:0.25rem !important;
+}
 .logo{
-    top:0.4rem;
+    top:0.8rem;
 }
 .top-links{
     margin-bottom: 1.3rem;
