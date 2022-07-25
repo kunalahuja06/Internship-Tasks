@@ -1,8 +1,7 @@
 body{
     background-image: url('images/bg.jpg');
-    background-position-x:left;
     background-size: cover;
-    margin:0 17rem !important;
+    margin:0 18rem !important;
     font-family: 'Trebuchet MS';
 }
 a:hover{
@@ -11,10 +10,11 @@ a:hover{
 /* Navbar */
 .nav-bar{
     background-color:rgba(2, 20, 43, 0.889);
+    opacity: 0.9;
 }
 .nav-tab-container{
     border:1px solid #364B60;
-    background: transparent;
+    opacity: 1;
 }
 .list-item{
     background:transparent !important;
@@ -31,23 +31,21 @@ a:hover{
 }
 .nav-lists>a{
     text-transform: uppercase;
-    font-size: medium;
-    font-family: 'Manrope', sans-serif;
+    font-size:1em;
     text-decoration: none;
     word-spacing:0.3rem;
-    font-weight:normal;
-    text-shadow: 0.01rem 0 #a3d7f1;
     color:#a3d7f1;
     padding: 0.5rem 1rem;
 }
 .separator{
-    border-right:0.1rem solid white;
-    height:0.9rem;
+    border-right:1px solid white;
+    height:0.8rem;
     margin-top:0.8rem;
 }
 .top-sep{
-    height:0.7rem;
-    margin-top: 0.2rem;
+    border-right:1px solid white;
+    height:0.5rem;
+    margin-top: 0.25rem;
     padding-left: 0.5rem;
     margin-right:0.5rem;
 }
@@ -62,10 +60,13 @@ footer{
     color:#D5DBF3;
 }
 .footer>*{
-    font-size: small;
-    font-weight:500;
+    font-size:0.75rem;
     margin-bottom: 0;
-    word-spacing: 0.3rem;
+    word-spacing: 0.2rem;
+    font-size: 0.7rem;
+}
+.footer>p{
+    margin-top: 2px;
 }
 .footer-ul>li{
     list-style: none;
@@ -75,8 +76,7 @@ footer{
     padding:0 0.4rem;
 }
 .footer-links{
-    font-family: 'Manrope', sans-serif;
-    font-weight:500;
+    font-size: small;
 }
 /* Top links */
 .top-links{
@@ -85,18 +85,17 @@ footer{
 }
 .top-ul{
     background-color: rgba(20, 19, 19, 0.4);
-     border-radius: 0 !important;
+    padding:0.1rem 0.4rem !important;
+    border-radius: 0 !important;
 }
 .top-ul>li{
     list-style: none;
-    padding:-0.2em 0.2rem 0 0.2rem !important;
+    padding:0 0.1rem 0 0.1rem !important;
     margin-top:-0.4rem;
 }
 .top-ul-links{
-    font-family: 'Manrope', sans-serif;
-    font-size:x-small;
+    font-size:0.6rem;
     font-weight:500;
     text-decoration: none;
-    word-spacing: 0.1rem;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }

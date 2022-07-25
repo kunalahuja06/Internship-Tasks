@@ -17,16 +17,17 @@
     color:#b8d1e4;
 }
 .our-services-content{
-    word-spacing: 0.1rem;
-    padding:0 1.5rem 0 0.8rem !important;
+    word-spacing: 0.15rem;
+    padding:0 2rem 0 0.8rem !important;
     word-wrap: break-word;
-    font-size:0.95rem;
+    font-size:0.8rem;
     margin:0.3rem 0rem 0 0;
-    line-height: 3vh;
+    line-height: 2.5vh;
+    font-weight: 600;
 }
 .content-header{
     margin-left:-0.2rem !important;
-    font-size:1.6rem;
+    font-size:1.4rem;
     color:#bed8eb;
 }
 .our-services-para{
@@ -35,6 +36,12 @@
 .content-ul{
     padding-right: 1.5rem;
     margin-left: 0.7rem;
+}
+.active{
+    background-color: #355372; 
+    border-radius:3px; 
+    color: white !important;
+    padding:0rem 1rem 0.1rem 1rem !important;
 }
 .bottom-content{
     background-color:#14253a;
@@ -50,15 +57,24 @@
      border:1px solid rgba(37, 84, 107, 0.592); 
      border-radius: 6px;
     width: fit-content;
-    padding:0 0.6rem; 
+    padding:0.1rem  0.6rem 0 0.6rem; 
 }
 .req-btn>a{
     text-decoration: none;
+    color:#d1e0eb !important;
+}
+.req-btn>a>img{
+    height:0.7rem;
+    width:0.5rem;
+}
+/* utils */
+.logo{
+    top:0.4rem;
 }
 .top-links{
     margin-bottom: 1.3rem;
 }
 footer{
     margin-top: 0.6rem;
-    padding:0.1rem 0;
+    padding:0.2rem 0;
 }

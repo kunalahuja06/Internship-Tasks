@@ -3,31 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Manrope:wght@200;400;500&family=Quattrocento+Sans&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="services.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="d-flex justify-content-end mx-5 top-links">
-        <ul class="list-group list-group-horizontal top-ul m-0 py-1 px-2">
+    <div class="top-links d-flex justify-content-end mx-5">
+        <ul class="list-group list-group-horizontal top-ul px-1">
             <li><a href="#" class="top-ul-links list-item text-white">Request a Quote</a></li><span class="separator top-sep"></span>
             <li><a href="#" class="top-ul-links list-item text-white">Client Login</a></li><span class="separator top-sep"></span>
             <li><a href="#" class="top-ul-links list-item text-white">Vehicle Export Portal</a></li>
         </ul>
     </div>
     <section class="content mx-5">
-        <nav class="nav-bar px-1 py-1 ">
-            <img src="Images/logo.png" alt="logo" class="logo position-absolute mx-3 my-0">
-            <div class="nav-tab-container">
-                <ul class="nav-tabs list-group list-group-horizontal  d-flex justify-content-end px-3">
-                    <li class="list-item nav-lists d-inline-flex list-group-item p-0"><a href="index.html">Home</a></li><span class="separator"></span>
-                    <li class="list-item nav-lists d-inline-flex list-group-item p-0"><a href="#">About ftwzs</a></li><span class="separator"></span>
-                    <li class="list-item nav-lists d-inline-flex list-group-item p-0"><a href="services.html" style="background-color: #355372; border-radius:5px; color: white;" class="py-1 my-auto" >our services</a></li><span class="separator"></span>
-                    <li class="list-item nav-lists d-inline-flex list-group-item p-0"><a href="#">our clients</a></li><span class="separator"></span>
-                    <li class="list-item nav-lists d-inline-flex list-group-item p-0"><a href="#">contact us</a></li>
+        <nav class="nav-bar px-1 py-1">
+            <img src="Images/logo.png" alt="logo" class="logo   position-absolute mx-3 my-0">
+            <div class="nav-tab-container py-1">
+                <ul class="nav-tabs list-group list-group-horizontal d-flex justify-content-end px-3">
+                    <li class="nav-lists list-item d-inline-flex list-group-item p-0"><a href="index.html">Home</a></li><span class="separator"></span>
+                    <li class="nav-lists list-item d-inline-flex list-group-item p-0"><a href="#">About ftwzs</a></li><span class="separator"></span>
+                    <li class="nav-lists list-item d-inline-flex list-group-item p-0"><a href="services.html" class="active py-1 my-auto" >our services</a></li><span class="separator"></span>
+                    <li class="nav-lists list-item d-inline-flex list-group-item p-0"><a href="#">our clients</a></li><span class="separator"></span>
+                    <li class="nav-lists list-item d-inline-flex list-group-item p-0"><a href="#">contact us</a></li>
                 </ul>
             </div>
         </nav>
@@ -35,11 +34,11 @@
             <div class="row services-container">
                 <div class="img-content col-lg-4 pt-2">
                     <img src="images/casestudies_industries-column1.jpg" alt="services" class="image px-2 py-2">
-                    <img src="images/casestudies_industries-column2.jpg" alt="services" class="image px-2 py-2">
+                    <img src="images/casestudies_industries-column2.jpg" alt="services" class="image   px-2 py-2">
                     <ul class="services-ul m-2">
-                        <li class="pb-1 text-capitalize"><a href="#" class="services-list">technolgy services</a></li>
-                        <li class="pb-1 text-capitalize"><a href="#" class="services-list">public warehousing</a></li>
-                        <li class="pb-1 text-capitalize"><a href="#" class="services-list">yard storage</a></li>
+                        <li class="text-capitalize"><a href="#" class="services-list">technolgy services</a></li>
+                        <li class="text-capitalize"><a href="#" class="services-list">public warehousing</a></li>
+                        <li class="text-capitalize"><a href="#" class="services-list">yard storage</a></li>
                     </ul>
                 </div>
                 <div class="our-services-content col-lg-8 text-white">
@@ -54,7 +53,7 @@
                     </ul>
                     <div class="bottom-content mb-3">
                         <p class="pt-2">Want to see how FTZ World Services can help you?</p>
-                        <p class="req-btn "><a href="#" class="d-inline-block text-white mb-1">Request Someone to Contact You <img src="right-chevron.png" alt="" style="filter: invert();"></a></p>
+                        <p class="req-btn"><a href="#" class="d-inline-block text-white mb-1">Request Someone to Contact You <img src="./Images/icon.png"  alt="icon"></a></p>
                     </div>
                 </div>
             </div>
@@ -64,8 +63,8 @@
         <div class="footer d-flex justify-content-center mb-0">
             <p class="footer-text">Copyright © 2010 FTZ World Services. All rights reserved.</p>
         <ul class="footer-ul d-flex px-2">
-            <li><a href="#" class="footer-links text-white">Contact us</a></li>
-            <li><a href="#" class="footer-links text-white">Request a Quote</a></li>
+            <li><a href="#" class="footer-links   text-white">Contact us</a></li>
+            <li><a href="#" class="footer-links   text-white">Request a Quote</a></li>
         </ul>
         </div>
     </footer>

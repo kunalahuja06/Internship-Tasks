@@ -30,17 +30,18 @@
     flex-direction: column;
     padding:0 0.7rem !important;
 }
-.lighter{
+.brighter{
     filter: brightness(200%);
 }
 .main-text{
     font-family:'Trebuchet MS';
     width: 95%;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: bold;
     word-spacing: 0.2rem;
-    line-height: 2.2vh;
-    margin-bottom: 0.5rem;
+    line-height: 2.33vh;
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.34px;
 }
 .main-para-link{
     color:#ADDEFE;
@@ -50,8 +51,9 @@
     margin-bottom: 1rem;
 }
 .logo{
-    top:0.4rem;
+    top:0.2rem;
 }
 .footer{
+    position:sticky;
     padding:0.1em !important;
 }
