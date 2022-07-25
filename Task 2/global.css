@@ -27,7 +27,11 @@ a:hover{
 }
 .nav-tabs{
     border-bottom: none;
-    margin:auto;
+    margin-top:0.23rem !important;
+    
+}
+.nav-lists{
+    padding:0.4rem 0 !important;
 }
 .nav-lists>a{
     text-transform: uppercase;
@@ -35,12 +39,22 @@ a:hover{
     text-decoration: none;
     word-spacing:0.3rem;
     color:#a3d7f1;
-    padding: 0.5rem 1rem;
+    padding:0.2rem 1rem;
+}
+.active{
+    background-color: #355372 !important; 
+    border-radius:3px; 
+    color: white !important;
+}
+.nav-lists>a:hover{
+    background-color: #355372 !important; 
+    border-radius:3px; 
+    color: white !important;
 }
 .separator{
     border-right:1px solid white;
     height:0.8rem;
-    margin-top:0.8rem;
+    margin-top:1em;
 }
 .top-sep{
     border-right:1px solid white;
@@ -98,4 +112,85 @@ footer{
     font-weight:500;
     text-decoration: none;
     letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media screen and (max-width:1000px){
+    body{
+        margin:0 !important;
+    }
+}
+@media screen and (max-width:576px){
+    .top-links{
+        margin-bottom: 10rem !important;
+    }
+    .nav-tabs{
+        display:block;
+        font-size: small;
+        padding:0 !important;
+    }
+    .nav-lists>a{
+        padding:0.5rem 0.3rem !important;
+    }
+    .logo{
+        position: relative;
+        left:8em;
+        top: 3em !important;
+    }
+    .footer{
+        display: flex;
+        flex-direction:column;
+    }
+    .footer>p{
+        text-align: center;
+    }
+    .footer>*{
+        justify-content: center;
+    }
+}
+@media screen and (min-width:577px) and (max-width:750px){
+    .top-links{
+        margin-bottom: 10rem !important;
+    }
+    .nav-tabs{
+        display:block;
+        font-size: 1.1em;
+        margin:0 !important;
+    }
+    .nav-lists>a{
+        padding:0.3rem 0.3rem !important;
+        margin:0.1rem;
+        
+    }
+    .logo{
+        position: relative;
+        left:15em;
+        top: 3em !important;
+    }
+    .footer{
+        display: flex;
+        flex-direction:column;
+    }
+    .footer>p{
+        text-align: center;
+    }
+    .footer>*{
+        justify-content: center;
+    }
+}
+@media screen and (min-width:751px) and (max-width:990px){
+    .logo{
+        top:-0.2rem;
+    }
+    .nav-tabs{
+        font-size: 0.8em;
+        margin:0 !important;
+    }
+    .nav-lists>a{
+        padding:0.3rem 0.4rem !important;
+    }
+    .nav-tabs>.separator{
+        height: 0.6rem;
+        margin-top: 1.2em;
+    }
 }

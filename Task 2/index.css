@@ -39,8 +39,8 @@
     font-size: 0.8rem;
     font-weight: bold;
     word-spacing: 0.2rem;
-    line-height: 2.33vh;
-    margin-bottom: 0.7rem;
+    line-height: 2.3vh;
+    margin-bottom: 0.6rem;
     letter-spacing: 0.34px;
 }
 .main-para-link{
@@ -60,3 +60,56 @@
 
 /* Responsive */
 
+@media screen and (max-width:576px){
+    .tile-image{
+        height:100%;
+    }
+    .main-text{
+        font-size:1em;
+        line-height:4vh;
+        padding:0.2rem 0;
+        word-spacing: normal;
+        letter-spacing: normal;
+    }
+    
+}
+@media screen and (min-width:577px) and (max-width:750px){
+    .container{
+        max-width:max-content;
+    }
+   .main-content{
+    margin-bottom: 1rem;
+    width:100%;
+    border-bottom: 1px solid rgb(36, 76, 84);
+   }
+   .tile-image{
+        height:100%;
+    }
+   .main-text{
+     font-size:1em;
+        line-height:4vh;
+        padding:0.2rem 0;
+        word-spacing: normal;
+        letter-spacing: normal;
+   }
+}
+@media screen and (min-width:751px) and (max-width:990px){
+    .container{
+        max-width:max-content;
+    }
+    .main-content{
+    margin-bottom: 1rem;
+    width:100%;
+    border-bottom: 1px solid rgb(36, 76, 84);
+   }
+   .tile-image{
+        height:100%;
+    }
+   .main-text{
+     font-size:1em;
+        line-height:4vh;
+        padding:0.2rem 0;
+        word-spacing: normal;
+        letter-spacing: normal;
+   }
+}
