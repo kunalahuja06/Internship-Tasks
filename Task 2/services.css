@@ -75,6 +75,15 @@ footer{
 }
 
 /*  Responsive */
+@media screen and (max-width:420px){
+    .nav-tabs{
+        display: block !important;
+    }
+    .our-services-content{
+        width:100%;
+        line-height: 14vh !important;
+    }
+}
 @media screen and (max-width:576px){
     .nav-tabs{
         justify-content:center !important;
