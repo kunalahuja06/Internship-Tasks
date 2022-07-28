@@ -9,7 +9,7 @@ a:hover{
 }
 /* Navbar */
 .nav-bar{
-    background-color:rgba(2, 20, 43, 0.7);
+    background-color:rgba(2, 20, 43, 0.83);
 }
 .nav-tab-container{
     border:1px solid #364B60;
@@ -112,11 +112,23 @@ footer{
 }
 
 /* Responsive */
-@media screen and (max-width:1500px){
+@media screen and (min-width:1px) and (max-width:576px){
     body{
-        margin:auto !important;
+        margin:0 auto  !important
     }
 }
+@media screen and (min-width:577px) and (max-width:1000px){
+    body{
+        margin:0 1rem !important;
+    }
+
+}
+@media screen and (min-width:1001px) and (max-width:1500px){
+    body{
+        margin:0 5rem !important;
+    }
+}
+
 @media screen and (max-width:420px){
     .logo{
         height:2.5rem;
