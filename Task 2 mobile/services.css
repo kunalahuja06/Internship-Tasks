@@ -1,3 +1,6 @@
+.content{
+    margin-bottom: 0.6rem;
+}
 .services-container{
     border:1px solid rgba(86, 94, 105, 1);
     border-image: linear-gradient(to top, rgba(86, 94, 105, 1) 30%, rgba(86, 94, 105, 0.1) 80%)1;
@@ -10,7 +13,7 @@
 .image{
     width:100%;
 }
-.services-ul>li{
+.services-ul-lists{
     list-style-type: none;
 }
 .services-list{
@@ -54,93 +57,13 @@
     width: fit-content;
     padding:0.1rem  0.6rem 0 0.6rem; 
 }
-.req-btn>a{
+.req-btn-link{
     text-decoration: none;
     color:#d1e0eb !important;
 }
-.req-btn>a>img{
+.req-img{
     height:0.7rem;
     width:0.5rem;
 }
-/* utils */
-.logo{
-    top:0.8rem;
-}
-.top-links{
-    margin-bottom: 1.3rem;
-}
-footer{
-    margin-top: 0.6rem;
-    padding:0.2rem 0;
-}
 
-/*  Responsive */
-@media screen and (max-width:420px){
-     .logo{
-        position: relative;
-        left:0em !important;
-    }
-    .nav-tabs{
-        display: block !important;
-    }
-    .our-services-content{
-        width:100%;
-        line-height:auto !important;
-    }
-}
-@media screen and (max-width:576px){
-    .nav-tabs{
-        justify-content:center !important;
-}
-    .nav-lists>a{
-        padding:0.2rem 0.45rem !important;
-    }
-    .services-ul>li{
-        text-align: center;
-        padding:0.5rem 0 !important;
-    }
-    .our-services-content{
-       margin:0 0.6rem !important;
-       font-size: 1em;
-       word-wrap: normal;
-       letter-spacing: normal;
-       line-height: 3.5vh;
-    }
-}
 
-@media screen and (min-width:577px) and (max-width:750px){
-    .nav-tabs{
-        justify-content: center;
-    }
-    .nav-lists>a{
-        padding:0 0.4rem !important;
-    }
-    .nav-tabs>.separator{
-        height: 0.9rem;
-        margin-top: 0.8em;
-    }
-    .services-ul>li{
-        text-align: center;
-        padding:0.5rem 0 !important;
-    }
-    .our-services-content{
-       margin:0 0.6rem !important;
-       font-size: 1em;
-       word-wrap: normal;
-       letter-spacing: normal;
-       line-height: 3.5vh;
-    }
-}
-@media screen and (min-width:751px) and (max-width:990px){
-    .services-ul>li{
-        text-align: center;
-        padding:0.5rem 0 !important;
-    }
-    .our-services-content{
-       margin:0 0.6rem !important;
-       font-size: 1em;
-       word-wrap: normal;
-       letter-spacing: normal;
-       line-height: 3.5vh;
-    }
-}

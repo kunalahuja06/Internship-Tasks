@@ -1,6 +1,5 @@
 .content{
-    overflow: hidden;
-    margin-bottom:-0.5rem;
+    margin-bottom: 0.45rem;
 }
 /* Banner */
 .banner{
@@ -12,7 +11,7 @@
     font-size:2.3em;
     letter-spacing:0.5rem;
     word-spacing: 0rem;
-    padding:1.3rem 1.8rem 0.7rem 1.7rem;
+    padding:1.3rem 1.8rem 0.9rem 1.7rem;
     text-shadow: 1px 1px black;
 }
 /* Main */
@@ -20,110 +19,27 @@
     height:6.5rem;
     margin-bottom: 0.7rem;
 }
-.container{
+.content-container{
     border:1px solid rgba(86, 94, 105, 1);
     border-image: linear-gradient(to top, rgba(86, 94, 105, 1) 30%, rgba(86, 94, 105, 0.1) 80%)1;
     width: fit-content;
     padding:0.7rem 0.9rem 0 0.9rem;
 }
 .main-content{
-    flex-direction: column;
     padding:0 0.7rem !important;
 }
 .brighter{
     filter: brightness(200%);
 }
 .main-text{
-    font-family:'Trebuchet MS';
-    width: 95%;
     font-size: 0.8rem;
     font-weight: bold;
     word-spacing: 0.2rem;
-    line-height:2.3vh;
-    margin-bottom: 0.6rem;
+    line-height:2.34vh;
+    margin-bottom: 0.5rem;
     letter-spacing: 0.34px;
 }
 .main-para-link{
     color:#ADDEFE;
 }
-/* Utils */
-.top-links{
-    margin-bottom: 1rem;
-}
-.logo{
-    top:0.2rem;
-}
-.footer{
-    position:sticky;
-    padding:0.1em !important;
-}
 
-/* Responsive */
-@media screen and (min-width:1px){
-    .container{
-        max-width: max-content;
-    }
-}
-@media screen and (max-width:420px){
-    .banner-text{
-        padding-left:0;
-    }
-    .logo{
-        position: relative;
-        left:0em !important;
-    }
-    .container{
-        width:100%;
-        margin:auto;
-    }
-    .main-text{
-        line-height:auto !important;
-    }
-}
-@media screen and (max-width:576px){
-    .tile-image{
-        height:100%;
-    }
-    .main-text{
-        font-size:1em;
-        line-height:4vh;
-        padding:0.2rem 0;
-        word-spacing: normal;
-        letter-spacing: normal;
-    }
-    
-}
-@media screen and (min-width:577px) and (max-width:750px){
-   .main-content{
-    margin-bottom: 1rem;
-    width:100%;
-    border-bottom: 1px solid rgb(36, 76, 84);
-   }
-   .tile-image{
-        height:100%;
-    }
-   .main-text{
-        font-size:1em;
-        line-height:4vh;
-        padding:0.2rem 0;
-        word-spacing: normal;
-        letter-spacing: normal;
-   }
-}
-@media screen and (min-width:751px) and (max-width:990px){
-    .main-content{
-    margin-bottom: 1rem;
-    width:100%;
-    border-bottom: 1px solid rgb(36, 76, 84);
-   }
-   .tile-image{
-        height:100%;
-    }
-   .main-text{
-     font-size:1em;
-        line-height:4vh;
-        padding:0.2rem 0;
-        word-spacing: normal;
-        letter-spacing: normal;
-   }
-}
