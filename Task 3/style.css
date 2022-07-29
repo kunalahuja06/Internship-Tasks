@@ -1,0 +1,113 @@
+body{
+    background-image:url('./Images/background12.png');
+    background-size:63rem;
+    margin:0 18rem !important;
+}
+/* Top nav */
+.nav{
+        /* border:1px solid red; */
+}
+.top-lists{
+    border:none;
+}
+.top-links{
+    color:#72757C;
+    text-decoration: none;
+    font-size: x-small;
+}
+.logo-cart{
+    height: 0.8rem;
+    
+}
+.top-sep{
+    border-right:0.01rem solid #72757c;
+    opacity: 0.2;
+    height:0.8rem;
+}
+/* nav-bar */
+.nav-2{
+    margin:0 -18rem !important;
+    padding:1px 0;
+    background-color: #DAD8D9;
+}
+.nav-bar{
+    margin:0 18rem;
+    /* border:1px solid red; */
+}
+.nav-lists{
+    margin:0 !important;
+    padding:0.2rem 0.9rem 0.45rem 0.9rem !important;
+    border: none;
+    border-radius: 0 !important;
+    background-color: transparent;
+}
+.nav-links{
+    font-size:0.7rem;
+}
+.nav-sep{
+    border:0.01rem solid white;
+    opacity: 0.4;
+}
+/* Search field */
+.search-input{
+    width:9rem;
+    height:1.2rem;
+    border:none;
+    box-shadow:-0.1rem -0.11rem #72757c;
+}
+.search-input::placeholder{
+    font-size: x-small;
+}
+.search-submit{
+    /* padding:0.2rem 0.4rem; */
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: x-small;
+    background-color: white;
+}
+/* Nav 3 */
+.nav-3{
+    /* border:1px solid orange;
+     */
+     /* border:1px solid red; */
+}
+.nav-3-ul{
+    
+}
+.nav-3-lists{
+    border:none;
+}
+.nav-3-links{
+    
+    color:#72757c;
+    font-size: small;
+}
+/* border */
+.aside-content{
+    background-color: black;
+}
+.aside-div{
+    background-color: white;
+}
+.border{
+    margin:0rem -20rem;
+    border-bottom: 1px solid #73757c !important;
+}
+/* main */
+.content{
+    /* border:1px solid red; */
+}
+.image{
+    width: 100%;
+}
+.aside-para{
+    font-size: x-small;
+}
+
+/* utils */
+.padding-0{
+    padding-left:0 !important;
+}
+.li-logo{
+    padding-bottom:0.35rem;
+}
