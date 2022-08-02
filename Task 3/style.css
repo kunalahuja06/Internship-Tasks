@@ -1,9 +1,9 @@
 body{
     background-image:url('./Images/background12.png');
-    background-size:63rem;
+    background-size: 70rem;
     background-position: top;
     margin:0 18rem !important;
-    font-family:'Lucida Grande''Lucida Sans';
+    word-wrap:break-word;
 }
 p{
     margin-bottom: 0 !important;
@@ -36,7 +36,6 @@ p{
     margin:0 18rem;
 }
 .nav-lists{
-    padding:0rem 0.9rem 0.3rem 0.9rem !important;
     border-radius: 0 !important;
 }
 .nav-links{
@@ -48,7 +47,7 @@ p{
 }
 /* Search field */
 .search-input{
-    width:10rem;
+    width:13rem;
     height:1.1rem;
     box-shadow:-0.1rem -0.11rem #72757c;
 }
@@ -59,19 +58,18 @@ p{
     border: 1px solid #72757c;
     border-radius: 5px;
     font-size: x-small;
+    margin-top: -0.05rem;
     background-color: white;
 }
 /* Nav 2 end */
 
 /* Nav 3 */
 .nav-3-lists{
-    /* padding:0.2rem 0; */
     list-style-type:circle;
     color:rgba(1,1,1,0.5);
-    padding:0.3rem 0;
 }
 .nav-3-ul>li:nth-child(1){
-    margin-top:-2px !important;
+    margin-top:-1.5px !important;
 }
 .nav-3-links{
     color:rgb(80, 96, 158);
@@ -95,19 +93,14 @@ p{
 .aside-content{
     width: 27%;
     background-color:rgba(42, 40, 40, 0.929);
-    /* rgba(57,54,53,1); */
     border:0.5rem solid white;
     border-left: 0;
-    height: fit-content;
 }
 .aside-header{
     padding-left:0.15rem;
 }
 .aside-div{
     border:1px solid rgba(255,255,255,0.2);
-}
-.aside-ul{
-    border-radius: 0 !important;
 }
 .aside-lists{
     border:none;
@@ -120,7 +113,6 @@ p{
 .aside-para{
     color:rgba(255,255,255,0.5);
     font-size:0.8rem !important; 
-    margin:0.2rem 1.7rem;
 }
 .aside-para-link{
     font-size: x-small;
@@ -130,15 +122,16 @@ p{
 
 /* Bottom section */
 .bottom-section{
-    border: 0.5rem solid rgba(46,44,46,255);
+    border: 0.5rem solid rgba(46,44,46,1);
     background-color: #fefeff;
 }
 .bottom-para{
     font-size:0.95rem !important;
-    margin-bottom: 0;
+    color: rgba(1,1,1,0.7);
 }
 .para-small{
     font-size: 0.7rem;
+    color:rgba(1,1,1,0.5);
 }
 .bottom-para-link{
     font-size: small;
@@ -146,35 +139,29 @@ p{
 }
 .bottom-content-div:nth-child(3)>p{
     width:fit-content;
-    margin-right:10rem;
+    margin-right:9rem;
 }
-.para-small-link{
-    padding-bottom: 1rem;
-}
-.bottom-content-div:nth-child(1){
-    background-image: url('./Images/promo_glass.png');
+.bottom-img{
     background-repeat: no-repeat;
     background-size: contain;
     background-clip: content-box;
+}
+.bottom-content-div:nth-child(1){
+    background-image: url('./Images/promo_glass.png');
     background-position:left;
 }
 .bottom-content-div:nth-child(2){
     background-image: url('./Images/promo_plates.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-clip: content-box;
     background-position: bottom;
 }
 .bottom-content-div:nth-child(3){
     background-image: url('./Images/promo_album.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-clip: content-box;
     background-position: right;
 }
 /* Bottom section end */
 
 /* footer */
+
 .footer-links{
     color:rgba(255,255,255,0.5);
     font-size: x-small;
@@ -189,7 +176,6 @@ p{
     font-size: x-small;
     letter-spacing:1px;
     font-weight: lighter;
-    width: fit-content;
 }
 .search-input-bottom{
     width:11rem;
@@ -199,9 +185,7 @@ p{
 .search-submit-bottom{
     border: 1px solid #72757C;
     border-radius: 5px;
-    font-size:0.7rem;
-    padding-top:3px;
-    padding:0.04rem 0.35rem;
+    font-size:small;
 }
 /* footer end */
 
@@ -209,16 +193,53 @@ p{
 .white-border{
     border:2px solid white;
 }
+.br{
+    border-right:1px solid rgba(1,1,1,.1);
+    border-image: linear-gradient(to bottom,rgba(1,1,1,0.1), rgba(122,1,1,0.1) 95%,rgba(255,255,255,1)50%)1;
+    /* border-right: 1px solid rgba(1,1,1,0.1); */
+}
 .padding-0{
     padding-left:0.1rem !important;
 }
 .li-icon{
-    padding-bottom:0.35rem;
-}
-.br{
-    border:1px solid red;
+    padding-bottom:0.30rem;
 }
 hr{
     margin:0 -18rem;
 }
 /* Util end */
+
+@media screen and (min-width:1px) and (max-width:576px){
+    body{
+        margin:0 !important
+    }
+    hr{
+        margin:0 !important;
+    }
+    .nav-2{
+        margin:0 !important;
+    }
+    .nav-bar{
+        margin:auto !important;
+    }
+}
+@media screen and (min-width:577px) and (max-width:1000px){
+    body{
+        margin:0 !important;
+    }
+    hr{
+        margin:0 !important;
+    }
+    .nav-2{
+        margin:0 !important;
+    }
+    .nav-bar{
+        margin:0 !important;
+    }
+
+}
+@media screen and (min-width:1001px) and (max-width:1500px){
+    body{
+        margin:0 5rem !important;
+    }
+}
