@@ -17,8 +17,8 @@ p{
     height: 0.8rem;
 }
 .checkout{
-    color:rgb(80, 96, 158);
-
+    color:rgba(41, 54, 102,0.6);
+    text-shadow:0.02rem 0.01rem  rgba(41, 54, 102,0.5) ;
 }
 .top-sep{
     border-right:0.01rem solid #72757c;
@@ -39,7 +39,8 @@ p{
     border-radius: 0 !important;
 }
 .nav-links{
-    color:rgba(1,1,1,0.8);
+    color:rgba(1,1,1,0.3);
+    text-shadow: -0.025rem 0 rgba(1,1,1,0.6);
     font-size:0.7rem;
 }
 .nav-sep{
@@ -47,19 +48,22 @@ p{
 }
 /* Search field */
 .search-input{
-    width:13rem;
-    height:1.1rem;
-    box-shadow:-0.1rem -0.11rem #72757c;
+    height:1rem;
+    box-shadow:-0.11rem -0.11rem #72757c;
+    font-size:small;
+    margin-top: 6px !important;
 }
 ::-webkit-input-placeholder{
-    font-size: small;
+    padding-left: 0.3rem;
+    font-size: x-small;
+    color:rgba(1,1,1,0.7);
 }
 .search-submit{
     border: 1px solid #72757c;
     border-radius: 5px;
     font-size: x-small;
-    margin-top: -0.05rem;
     background-color: white;
+    top:-2px;
 }
 /* Nav 2 end */
 
@@ -69,14 +73,12 @@ p{
     color:rgba(1,1,1,0.5);
 }
 .nav-3-ul>li:nth-child(1){
-    margin-top:-1.5px !important;
+    margin-top:2px !important;
+    margin-right: 1px !important;
 }
 .nav-3-links{
-    color:rgb(80, 96, 158);
+    color:rgba(80, 96, 158,0.9);
     font-size: small;
-}
-.bridal-img{
-    height:2rem;
 }
 /* Nav 3 end */
 
@@ -90,33 +92,36 @@ p{
 /* Main end */
 
 /* aside */
-.aside-content{
+.dining-content{
     width: 27%;
-    background-color:rgba(42, 40, 40, 0.929);
+    background:linear-gradient(to bottom,rgba(42, 40, 40,1),rgba(42, 40, 40,0.95),rgba(54, 53, 53, 0.9),rgba(42, 40, 40, 1));
     border:0.5rem solid white;
     border-left: 0;
 }
-.aside-header{
+.dining-header{
     padding-left:0.15rem;
 }
-.aside-div{
+.dining-div{
     border:1px solid rgba(255,255,255,0.2);
 }
-.aside-lists{
+.dining-lists{
     border:none;
     border-bottom:0.05rem solid rgba(255,255,255,0.1);
     padding:0.2rem 0rem !important;
 }
-.aside-links{
+.dining-links{
     font-size:0.8rem;
 }
-.aside-para{
-    color:rgba(255,255,255,0.5);
+.dining-para{
+    color:#a8abb5;
     font-size:0.8rem !important; 
+    text-shadow:0.03rem 0 #8b8d93;
+    padding-left: 0.15rem;
 }
-.aside-para-link{
+.dining-para-link{
     font-size: x-small;
-    color:rgba(255,255,255,0.6);
+    color:#a8abb5;
+    text-shadow:0.03rem 0 #8b8d93;
 }
 /* aside end */
 
@@ -136,10 +141,6 @@ p{
 .bottom-para-link{
     font-size: small;
     color:rgba(80, 96, 158,0.9);
-}
-.bottom-content-div:nth-child(3)>p{
-    width:fit-content;
-    margin-right:9rem;
 }
 .bottom-img{
     background-repeat: no-repeat;
@@ -161,31 +162,32 @@ p{
 /* Bottom section end */
 
 /* footer */
-
 .footer-links{
-    color:rgba(255,255,255,0.5);
-    font-size: x-small;
+    color:#8b8d93;
+    font-size: 0.63rem;
 }
 .footer-sep{
     border-right: 1px solid rgba(255,255,255,0.3);
-    height:0.7rem;
-    margin-top: 0.6rem;
+    height:0.5rem;
+    margin-top: 0.75rem;
 }
 .footer-para{
-    color:rgba(255,255,255,0.5);
-    font-size: x-small;
+    color:#767779;
+    font-size: 0.65rem;
+    font-weight:300 !important;
     letter-spacing:1px;
-    font-weight: lighter;
+    text-shadow: 0 0.023rem rgba(255,255,255,0.5);
 }
 .search-input-bottom{
     width:11rem;
-    height: 1.2rem;
+    height: 1.1rem;
     border: 1px solid #72757C;
+    font-size: x-small;
 }
 .search-submit-bottom{
     border: 1px solid #72757C;
     border-radius: 5px;
-    font-size:small;
+    font-size:0.6rem;
 }
 /* footer end */
 
@@ -196,7 +198,6 @@ p{
 .br{
     border-right:1px solid rgba(1,1,1,.1);
     border-image: linear-gradient(to bottom,rgba(1,1,1,0.1), rgba(122,1,1,0.1) 95%,rgba(255,255,255,1)50%)1;
-    /* border-right: 1px solid rgba(1,1,1,0.1); */
 }
 .padding-0{
     padding-left:0.1rem !important;
@@ -208,7 +209,6 @@ hr{
     margin:0 -18rem;
 }
 /* Util end */
-
 @media screen and (min-width:1px) and (max-width:576px){
     body{
         margin:0 !important
@@ -221,11 +221,11 @@ hr{
     }
     .nav-bar{
         margin:auto !important;
-    }
+    } 
 }
 @media screen and (min-width:577px) and (max-width:1000px){
     body{
-        margin:0 !important;
+        margin:0 3rem !important;
     }
     hr{
         margin:0 !important;
