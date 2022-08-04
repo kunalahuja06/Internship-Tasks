@@ -26,7 +26,7 @@ p{
 }
 
 /* nav-bar */
-.nav-2{
+.main-nav{
     margin:0 -18rem !important;
     background-color: #DAD8D9;
 }
@@ -66,15 +66,15 @@ p{
 }
 
 /* Nav 3 */
-.nav-3-lists{
+.service-nav-lists{
     list-style-type:circle;
     color:rgba(1,1,1,0.5);
 }
-.nav-3-li-1{
+.service-nav-li-1{
     margin-top:2px !important;
     margin-right: 1px !important;
 }
-.nav-3-links{
+.service-nav-links{
     color:rgba(80, 96, 158,0.9);
     font-size:0.75rem;
 }
@@ -89,7 +89,6 @@ p{
     background-size:cover;
     border:0.5rem solid white;
 }
-
 /* aside */
 .dining-content{
     width: 27%;
@@ -122,7 +121,6 @@ p{
     color:#a8abb5;
     text-shadow:0.03rem 0 #8b8d93;
 }
-/* aside end */
 
 /* Bottom section */
 .bottom-section{
@@ -178,10 +176,10 @@ p{
     text-shadow: 0 0.023rem rgba(255,255,255,0.5);
 }
 .footer-para-right{
-    letter-spacing: 0.6px !important;
+    letter-spacing: 0.5px !important;
 }
 .search-input-bottom{
-    width:10.4rem;
+    width:10.8rem;
     height: 1.1rem;
     border: 1px solid #72757C;
     font-size: x-small;
@@ -190,6 +188,7 @@ p{
     border: 1px solid #72757C;
     border-radius: 5px;
     font-size:0.6rem;
+
 }
 /* footer end */
 
@@ -207,8 +206,9 @@ p{
 .li-icon{
     padding-bottom:0.30rem;
 }
-hr{
+.divider{
     margin:0 -18rem;
+    border-bottom: 1px solid rgba(1,1,1,.2);
 }
 .bor{
     border:1px solid red;
@@ -218,10 +218,10 @@ hr{
     body{
         margin:0 !important
     }
-    hr{
+    .divider{
         margin:0 !important;
     }
-    .nav-2{
+    .main-nav{
         margin:0 !important;
     }
     .nav-bar{
@@ -232,10 +232,10 @@ hr{
     body{
         margin:0 3rem !important;
     }
-    hr{
+    .divider{
         margin:0 !important;
     }
-    .nav-2{
+    .main-nav{
         margin:0 !important;
     }
     .nav-bar{
