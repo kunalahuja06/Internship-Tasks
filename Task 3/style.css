@@ -198,7 +198,7 @@ p{
 }
 .br{
     border-right:1px solid rgba(1,1,1,.1);
-    border-image: linear-gradient(to bottom,rgba(1,1,1,0.1), rgba(122,1,1,0.1) 95%,rgba(255,255,255,1)50%)1;
+    border-image: linear-gradient(to bottom,rgba(255,255,255,1)5%,rgba(1,1,1,.1) 15%, rgba(1,1,1,.1) 95%,rgba(255,255,255,1)50%) 1;
 }
 .padding-0{
     padding-left:0.1rem !important;
