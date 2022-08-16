@@ -1,3 +1,105 @@
+/* nav bar */
+.logo{
+    height:min-content !important;
+    width:min-content !important;
+}
 .navbar{
-    border-bottom: 1px solid;
+    border-bottom: 1px solid rgba(1,1,1,0.1);
+}
+.header-para{
+    color:rgba(1,1,1,0.6);
+}
+
+.user-text{
+    color:rgba(1,1,1,0.6);
+}
+.user-logo{
+    height:50px;
+    width:50px;
+    border:1px solid;
+}
+
+/* Filters */
+.filter-li{
+    list-style: none;
+    color:rgba(1,1,1,0.6);
+    text-transform: capitalize;
+    font-size:0.9rem;
+}
+
+/* Search */
+.search-alphabets-li{
+    border-radius: 0 !important;
+    text-transform: uppercase;
+    color: white !important;
+    font-size: 1.1rem;
+    padding:0.2rem 0.9rem !important;
+    background-color: rgba(0,176,253,255) !important;
+}
+.search-para{
+    margin:0 !important;
+}
+.search-input{
+    background: url('./Address\ Book/search-icon.svg');
+    background-size:1rem;
+    background-position:0.4rem 0.5rem;
+    background-repeat: no-repeat;
+    padding-left:2rem;
+    border:1px solid rgba(1,1,1,0.3);
+    height:2.1rem;
+}
+::-webkit-input-placeholder{
+    color: rgba(1,1,1,0.6);
+}
+.submit-button{
+    background-color:rgba(105,186,0,255);
+}
+.filter-options{
+    border: 1px solid rgba(1,1,1,0.3);
+    text-transform: capitalize;
+    color:rgba(1,1,1,0.6);
+}
+.add-employee{
+    background-color: rgba(0,176,253,255);
+}
+/* employee section */
+.employees{
+    border: 1px solid rgba(1,1,1,0.1);
+}
+.employee{
+    width:270px;
+    background-color:rgba(1,1,1,0.1) !important;
+}
+.picture{
+    height:80px !important;
+    width:80px !important;
+}
+.employee-name{
+    font-size:0.8rem;
+    font-weight:500;
+    word-spacing: 1px;
+}
+.job-title{
+    font-size:0.7rem;
+    color: rgba(1,1,1,0.6);
+    word-spacing: 1px;
+}
+.department{
+    font-size:0.7rem;
+    color: rgba(1,1,1,0.6);
+    word-spacing: 1px;
+}
+.contact-icon{
+    color:rgba(1,1,1,0.3);
+    font-size: 0.8rem;
+}
+.note{
+    font-size: 0.7rem !important;
+}
+/* util */
+.row>*{
+    padding:0 !important;
+}
+.br{
+    border:1px solid red;
 }
