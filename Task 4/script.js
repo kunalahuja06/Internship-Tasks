@@ -12,8 +12,13 @@ function addData(data,parent,element,Class){
   for(let i=0;i<data.length;i++){
     const createElement=document.createElement(element);
     createElement.className=Class;
-    createElement.innerText=data[i];
     parent.appendChild(createElement);
+    const a =document.createElement("a");
+    a.className=`${Class}-a text-decoration-none`;
+    a.href="#";
+    a.innerText=data[i];
+    createElement.appendChild(a);
+    // createElement.innerText = data[i];
   }
 }
 addData(Departments,DepartmentUL,"li","filter-li");
@@ -37,7 +42,7 @@ class Employee {
     this.picture=picture;
   }
 }
-const employees = [
+let employees = [
   new Employee("Anthony","Moris","SharePoint Practice Head","IT","Seattle","12345","https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
   new Employee("Helen","Zimmermane","Operations Manager","IT","Seattle","33333","https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
   new Employee("Jonathon","Smith","Product Manager","IT","Seattle","77686","https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
@@ -47,10 +52,13 @@ const employees = [
   new Employee("Robert","Mitchell","Software Engineer","IT","India","65487","https://images.unsplash.com/photo-1496360166961-10a51d5f367a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
   new Employee("Olivia", "Watson", "UI Designer", "UX", "Seattle", "64216","https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=396&q=80")
 ];
-const generatedHtml = Object.keys(employees).reduce(
-  (accum, currKey) =>
-    accum +
-    `<div class="employee d-flex mb-3 me-3" id="employee">
+DisplayEmployee(employees);
+
+function DisplayEmployee(employees){
+  const generatedHtml = Object.keys(employees).reduce(
+    (accum, currKey) =>
+      accum +
+      `<div class="employee d-flex mb-3" id="employee">
       <div>
       <img src="${employees[currKey].picture}" class="picture p-2">
       </div>
@@ -67,6 +75,27 @@ const generatedHtml = Object.keys(employees).reduce(
       </span>
       </div>
     </div>`,
-  ""
-);
-document.querySelector(".employees").innerHTML = generatedHtml;
+    ""
+  );
+  document.querySelector(".employees").innerHTML = generatedHtml;
+}
+
+const form=document.querySelector("#addEmployee");
+form.onsubmit = (e) => {
+  e.preventDefault();
+  AddEmployee()
+};
+function AddEmployee(){
+    const NewEmployee = new Employee(
+      $("input[id=FirstName]").val(),
+      $("input[id=LastName]").val(),
+      $("input[id=AddJobTitle]").val(),
+      $("select[id=AddDepartment]").val(),
+      $("select[id=AddDepartment]").val(),
+      $("input[id=AddNumber]").val(),
+      "https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=396&q=80"
+    );
+    employees.push(NewEmployee);
+    DisplayEmployee(employees);
+}
+

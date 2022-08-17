@@ -1,24 +1,22 @@
 /* nav bar */
-.logo{
-    height:min-content !important;
-    width:min-content !important;
-}
 .navbar{
     border-bottom: 1px solid rgba(1,1,1,0.1);
 }
 .header-para{
     color:rgba(1,1,1,0.6);
 }
-
+.welcome{
+    text-shadow: none !important;
+}
 .user-text{
     color:rgba(1,1,1,0.6);
+    text-shadow:0px 1px rgba(1,1,1,0.6);
 }
 .user-logo{
     height:50px;
     width:50px;
     border:1px solid;
 }
-
 /* Filters */
 .filter-li{
     list-style: none;
@@ -26,18 +24,25 @@
     text-transform: capitalize;
     font-size:0.9rem;
 }
-
+.filter-li-a{
+    color:rgba(1,1,1,0.6);
+}
 /* Search */
 .search-alphabets-li{
     border-radius: 0 !important;
     text-transform: uppercase;
+    background-color: rgba(0,176,253,255) !important;
     color: white !important;
+}
+.search-alphabets-li-a{
     font-size: 1.1rem;
     padding:0.2rem 0.9rem !important;
-    background-color: rgba(0,176,253,255) !important;
 }
-.search-para{
-    margin:0 !important;
+.search-bar>select{
+    -webkit-appearance:none; /* Safari and Chrome */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position:9rem 0.2rem;
 }
 .search-input{
     background: url('./Address\ Book/search-icon.svg');
@@ -64,11 +69,13 @@
 }
 /* employee section */
 .employees{
-    border: 1px solid rgba(1,1,1,0.1);
+    border: 1px solid rgba(1,1,1,0.2);
 }
 .employee{
-    width:270px;
+    position:sticky;
+    width:280px;
     background-color:rgba(1,1,1,0.1) !important;
+    height: fit-content;
 }
 .picture{
     height:80px !important;
@@ -94,7 +101,7 @@
     font-size: 0.8rem;
 }
 .note{
-    font-size: 0.7rem !important;
+    font-size: 0.8rem !important;
 }
 /* util */
 .row>*{
