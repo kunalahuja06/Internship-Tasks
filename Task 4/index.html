@@ -43,24 +43,24 @@
         <div class="search-filters col-10">
             <div class="search-alphabets row m-0">
                 <ul class="search-alphabets-ul list-group list-group-horizontal d-flex justify-content-between">
-                    <li class="search-alphabets-li list-group-item"><i class="fa-solid fa-user"></i></li>
+                    <li class="search-alphabets-li list-group-item"><a href="#" class="search-alphabets-li-a text-white" onclick="ShowAllEmployees()"><i class="fa-solid fa-user"></i></a></li>
                 </ul>
             </div>
             <div class="search-bar d-flex my-auto py-3">
                 <p class="search-para text-capitalize fw-normal my-auto">search</p>
                 <input type="text" id="myInput"class="search-input mx-3 my-auto pe-lg-5" placeholder="Enter any keyword">
-                <a href="#" type="submit" class="submit-button text-capitalize text-decoration-none my-auto px-3 py-1 text-white ms-3 me-5">clear</a>
+                <a href="#" type="submit" class="clear-button text-capitalize text-decoration-none my-auto px-3 py-1 text-white ms-3 me-5" onclick="Clear()">clear</a>
                 <p class="filter-para my-auto mx-2">Filter by</p>
                 <select name="filter" id="filter" class="filter-options ps-2 pe-5 pb-1">
-                    <option value="pref-name" class="text-capitalize">preferred name</option>
-                    <option value="first-name" class="text-capitalize">first name</option>
-                    <option value="last-name" class="text-capitalize">last name</option>
+                    <option value="preferredname" class="text-capitalize">preferred name</option>
+                    <option value="firstname" class="text-capitalize">first name</option>
+                    <option value="lastname" class="text-capitalize">last name</option>
                     <option value="email" class="text-capitalize">email</option>
-                    <option value="job-title" class="text-capitalize">job-title</option>
+                    <option value="jobtitle" class="text-capitalize">job title</option>
                     <option value="office" class="text-capitalize">office</option>
                     <option value="department" class="text-capitalize">department</option>
-                    <option value="phone" class="text-capitalize">phone number</option>
-                    <option value="skype" class="text-capitalize">skype id</option>
+                    <option value="phonenumber" class="text-capitalize">phone number</option>
+                    <option value="skypeid" class="text-capitalize">skype id</option>
                 </select>
                 <a href="#" class="add-employee text-capitalize ms-auto text-decoration-none text-white my-auto px-2 py-1 fw-bold" data-bs-toggle="modal" data-bs-target="#addEmployee">add employee</a>
                 <div class="modal fade" id="addEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -71,14 +71,14 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form id="addEmployee" class="p-3">
+                                <form id="addEmployee" name="addEmployee" class="p-3">
                                     <div class="row">
                                         <div class="form-floating col me-3">
-                                            <input type="text" class="form-control" id="FirstName" placeholder="First Name" required>
+                                            <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="First Name" required>
                                             <label for="floatingFirstName">First Name</label>
                                         </div>
                                         <div class="form-floating col mb-3">
-                                            <input type="text" class="form-control" id="LastName" placeholder="Last Name" required>
+                                            <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last Name" required>
                                             <label for="floatingLastName">Last Name</label>
                                         </div>
                                     </div>
@@ -90,13 +90,13 @@
                                     </div>
                                     <div class="row mb-3">
                                         <div class="form-floating">
-                                            <input type="tel" class="form-control" id="AddNumber" placeholder="1234567890" required>
+                                            <input type="tel" class="form-control" id="AddNumber" name="Number" placeholder="1234567890" required>
                                             <label for="floatingNumber">Phone Number</label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-floating col me-3">
-                                            <input type="text" class="form-control" id="AddJobTitle" placeholder="Job Title" required>
+                                            <input type="text" class="form-control" id="AddJobTitle" name="JobTitle" placeholder="Job Title" required>
                                             <label for="floatingJobTitle">Job Title</label>
                                         </div>
                                         <div class="form-floating col mb-3">
@@ -118,7 +118,13 @@
                                             <label for="AddOffice">Office</label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="submitButton btn btn-primary">Add Employee</button>
+                                    <div class="row mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="AddImage" name="Image" placeholder="Image URL here" required>
+                                             <label for="AddImage">Profile Picture (Image URL)</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="submitButton btn btn-primary row">Add Employee</button>
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -130,29 +136,12 @@
             </div>
             <p class="note"><b>Note:</b> Please use the advanced filter options to refine your results.</p>
             <div class="employees d-flex flex-wrap justify-content-between pt-3 px-3">
-                
             </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
         </div>
     </main>
+    <script src="./employee.js"></script>
     <script src="./script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 </body>
 </html>
