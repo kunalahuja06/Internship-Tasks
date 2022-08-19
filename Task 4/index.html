@@ -48,7 +48,7 @@
             </div>
             <div class="search-bar d-flex my-auto py-3">
                 <p class="search-para text-capitalize fw-normal my-auto">search</p>
-                <input type="text" id="myInput"class="search-input mx-3 my-auto pe-lg-5" placeholder="Enter any keyword">
+                <input type="text" id="myInput" name="myInput" class="search-input mx-3 my-auto pe-lg-5" placeholder="Enter any keyword" onkeyup="Search()">
                 <a href="#" type="submit" class="clear-button text-capitalize text-decoration-none my-auto px-3 py-1 text-white ms-3 me-5" onclick="Clear()">clear</a>
                 <p class="filter-para my-auto mx-2">Filter by</p>
                 <select name="filter" id="filter" class="filter-options ps-2 pe-5 pb-1">
@@ -63,8 +63,8 @@
                     <option value="skypeid" class="text-capitalize">skype id</option>
                 </select>
                 <a href="#" class="add-employee text-capitalize ms-auto text-decoration-none text-white my-auto px-2 py-1 fw-bold" data-bs-toggle="modal" data-bs-target="#addEmployee">add employee</a>
-                <div class="modal fade" id="addEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
+                <div class="modal fade hide" id="addEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" >
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="addEmployeeTitle">Add Employee</h5>
@@ -124,7 +124,7 @@
                                              <label for="AddImage">Profile Picture (Image URL)</label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="submitButton btn btn-primary row">Add Employee</button>
+                                    <button type="submit" id="AddEmployeeBtn" class="submitButton btn btn-primary row">Add Employee</button>
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -137,6 +137,128 @@
             <p class="note"><b>Note:</b> Please use the advanced filter options to refine your results.</p>
             <div class="employees d-flex flex-wrap justify-content-between pt-3 px-3">
             </div>
+            <div class="modal fade" id="showEmployee" tabindex="-1" aria-labelledby="showEmployeeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content show-employee-modal">
+                        <div class="modal-body mx-auto">
+                            <img src="" alt="user" class="show-employee-modal-picture d-flex mx-auto">
+                            <div class="employee-details row pt-1 pb-3 px-5">
+                                <p class="show-employee-modal-preferredname text-white fw-bold mb-0"></p>
+                            </div>
+                            <div class="employee-details row py-1 br">
+                                <div class="col">
+                                    <label for="firstname" class="show-employee-modal-label" >First Name</label>
+                                    <p class="show-employee-modal-first-name fw-bold text-white mb-0"></p>
+                                </div>
+                                <div class="col">
+                                    <label for="lastname" class="show-employee-modal-label" >Last Name</label>
+                                    <p class="show-employee-modal-last-name fw-bold text-white mb-0"></p>
+                                </div>
+                            </div>
+                            <div class="employee-details row py-1 br">
+                                <label for="email" class="show-employee-modal-label ">Email</label>
+                                <p class="show-employee-modal-email fw-bold text-white mb-0"></p>
+                            </div>
+                            <div class="employee-details row py-1 br">
+                               <div class="col">
+                                 <label for="number" class="show-employee-modal-label">Phone-Number</label>
+                                    <p class="show-employee-modal-phone-number col text-white fw-bold mb-0"></p>
+                               </div>
+                                <div class="col">
+                                    <label for="skypeid" class="show-employee-modal-label ">Skype ID</label>
+                                    <p class="show-employee-modal-skypeid col fw-bold text-white mb-0"></p>
+                                </div>
+                            </div>
+                            <div class="employee-details row py-1 br">
+                                <div class="col">
+                                    <label for="jobtitle" class="show-employee-modal-label ">Job Title</label>
+                                    <p class="show-employee-modal-jobtitle fw-bold text-white mb-0"></p>
+                                </div>
+                                <div class="col">
+                                    <label for="department" class="show-employee-modal-label ">Department</label>
+                                    <p class="show-employee-modal-department fw-bold text-white mb-0"></p>
+                                </div>
+                            </div>
+                            <div class="employee-details row py-1">
+                                <label for="office" class="show-employee-modal-label ">Office</label>
+                                <p class="show-employee-modal-office fw-bold text-white mb-0"></p>
+                            </div>
+                        </div>
+                        <button type="button" class="edit-btn btn btn-danger fw-bold m-2" data-bs-toggle="modal" data-bs-target="#editEmployee" onclick="EditEmployee()">Edit</button>
+                        <button type="button" class="btn btn-success fw-bold m-2" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="editEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="EmployeeTitle">Edit Employee</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="editEmployee" name="addEmployee" class="p-3">
+                                    <div class="row">
+                                        <div class="form-floating col me-3">
+                                            <input type="text" class="form-control" id="firstName" name="FirstName" placeholder="First Name" required>
+                                            <label for="floatingFirstName">First Name</label>
+                                        </div>
+                                        <div class="form-floating col mb-3">
+                                            <input type="text" class="form-control" id="lastName" name="LastName" placeholder="Last Name" required>
+                                            <label for="floatingLastName">Last Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                            <label for="floatingEmail">Email address</label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="form-floating">
+                                            <input type="tel" class="form-control" id="number" name="Number" placeholder="1234567890" required>
+                                            <label for="floatingNumber">Phone Number</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-floating col me-3">
+                                            <input type="text" class="form-control" id="jobTitle" name="JobTitle" placeholder="Job Title" required>
+                                            <label for="floatingJobTitle">Job Title</label>
+                                        </div>
+                                        <div class="form-floating col mb-3">
+                                            <select name="AddDepartment" id="department" class="add-department-options form-select text-capitalize" required>
+                                                <option value="IT" class="text-capitalize">IT</option>
+                                                <option value="Human Resources" class="text-capitalize">human resources</option>
+                                                <option value="MD" class="text-capitalize">MD</option>
+                                                <option value="Sales" class="text-capitalize">sales</option>
+                                            </select>
+                                            <label for="AddDepartment">Department</label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="form-floating">
+                                            <select name="AddOffice" id="office" class="add-office-options form-select text-capitalize" required>
+                                                <option value="seattle" class="text-capitalize">seattle</option>
+                                                <option value="india" class="text-capitalize">india</option>
+                                            </select>
+                                            <label for="AddOffice">Office</label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="image" name="Image" placeholder="Image URL here" required>
+                                             <label for="AddImage">Profile Picture (Image URL)</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="submitButton btn btn-primary row text-capitalize">save changes</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#showEmployee">return</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </main>
     <script src="./employee.js"></script>

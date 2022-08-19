@@ -32,7 +32,7 @@ function addSearchAlphabets(data,parent)
        a.href = "#";
        a.innerText = data[i];
        createElement.appendChild(a);
-       a.addEventListener("click",SearchEmployees);
+       a.addEventListener("click",SearchEmployeesbyAlphabets);
      }
 }
 addFilters(Departments,DepartmentUL,"li","filter-li");
@@ -62,6 +62,7 @@ form.onsubmit = (e) => {
 function ShowAllEmployees(){
   DisplayEmployees(JSON.parse(window.localStorage.getItem("employees")))
 }
+
 function Filters(e){
   const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
   const filteredEmployees=getEmployees.filter(emp=>{
@@ -74,7 +75,7 @@ function Filters(e){
   DisplayEmployees(filteredEmployees)
 }
 
-function SearchEmployees(e){
+function SearchEmployeesbyAlphabets(e){
   const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
   const filteredEmployees=getEmployees.filter(emp=>{
       return emp.preferredname.startsWith(e.target.innerText)
@@ -83,4 +84,32 @@ function SearchEmployees(e){
 }
 function Clear(){
   document.querySelector(".search-input").value="";
+  DisplayEmployees(JSON.parse(window.localStorage.getItem("employees")));
+}
+function ShowAlert(check) {
+  if (check) {
+     $("#addEmployee").modal("hide");
+    alert("Employee added successfully!");
+    DisplayEmployees(JSON.parse(window.localStorage.getItem("employees")));
+  }
+}
+
+let e = document.getElementById("filter");
+let value;
+function onChange() {
+  value = e.value;
+}
+e.onchange = onChange;
+onChange();
+
+function Search(){
+  let input=document.getElementById("myInput").value;
+  const re = new RegExp(input);
+  const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
+  const filteredEmployees = getEmployees.filter((emp) => {
+    return (
+      emp[value].match(re) || emp[value].toLowerCase().match(re) || emp[value].toUpperCase().match(re)
+    );
+  });
+  DisplayEmployees(filteredEmployees);
 }
