@@ -16,9 +16,12 @@ function addFilters(data,parent,element,Class){
     const a = document.createElement("a");
     a.className = `${Class}-a text-decoration-none`;
     a.href = "#";
-    a.innerText = data[i];
+    a.innerText=data[i];
     createElement.appendChild(a);
     a.addEventListener("click", Filters);
+    const count = document.createElement("span");
+    count.innerText = `(${getCount(data[i])})`;
+    createElement.appendChild(count);
   }
 }
 function addSearchAlphabets(data,parent)
@@ -66,9 +69,10 @@ function ShowAllEmployees(){
 function Filters(e){
   const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
   const filteredEmployees=getEmployees.filter(emp=>{
+    console.log(emp.jobtitle.toLowerCase()==e.target.innerText.toLowerCase())
     return (
       emp.department == e.target.innerText ||
-      emp.jobtitle == e.target.innerText ||
+      emp.jobtitle.toLowerCase() == e.target.innerText.toLowerCase() ||
       emp.office == e.target.innerText
     );
   })
@@ -112,4 +116,15 @@ function Search(){
     );
   });
   DisplayEmployees(filteredEmployees);
+}
+
+function getCount(filter){
+  const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
+  let res=0;
+  getEmployees.forEach(emp=>{
+    if(emp.department==filter || emp.office.toLowerCase()==filter || emp.jobtitle.toLowerCase()==filter){
+      res++;
+    }
+  })
+  return res;
 }
