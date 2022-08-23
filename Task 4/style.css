@@ -104,16 +104,13 @@
     font-size: 0.8rem !important;
 }
 /* Show Employeee Modal */
-.show-employee-modal{
-    background-color: rgba(31, 66, 99,1) !important;
-}
 .show-employee-modal-picture{
     height:10rem;
     width:10rem;
     border-radius: 10px;
 }
 .show-employee-modal-label{
-    color:wheat;
+    color:black;
     font-size: small;
 }
 /* util */

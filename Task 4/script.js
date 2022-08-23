@@ -1,25 +1,26 @@
-const Departments=["IT", "HR","MD","Sales"];
-const Offices=["seattle","india"];
-const JobTitles=["sharepoint practice head",".net development lead","recruting expert","BI developer", "business analyst"];
-const Alphabets=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const departments=["IT", "HR","MD","Sales"];
+const offices=["seattle","india"];
+const jobTitles=["sharepoint practice head",".net development lead","recruting expert","BI developer", "business analyst"];
+const alphabets=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-const DepartmentUL=document.querySelector(".department-ul");
-const OfficesUL = document.querySelector(".offices-ul");
-const JobTitlesUL=document.querySelector(".job-title-ul");
-const SearchBarUL = document.querySelector(".search-alphabets-ul");
+const departmentUL=document.querySelector(".department-ul");
+const officesUL = document.querySelector(".offices-ul");
+const jobTitlesUL=document.querySelector(".job-title-ul");
+const searchBarUL = document.querySelector(".search-alphabets-ul");
 
 function addFilters(data,parent,element,Class){
   for(let i=0;i<data.length;i++){
     const createElement = document.createElement(element);
-    createElement.className = Class;
+    createElement.className =  Class;
     parent.appendChild(createElement);
     const a = document.createElement("a");
     a.className = `${Class}-a text-decoration-none`;
     a.href = "#";
     a.innerText=data[i];
     createElement.appendChild(a);
-    a.addEventListener("click", Filters);
+    a.addEventListener("click", filters);
     const count = document.createElement("span");
+    count.className="filter-count"
     count.innerText = `(${getCount(data[i])})`;
     createElement.appendChild(count);
   }
@@ -35,66 +36,66 @@ function addSearchAlphabets(data,parent)
        a.href = "#";
        a.innerText = data[i];
        createElement.appendChild(a);
-       a.addEventListener("click",SearchEmployeesbyAlphabets);
+       a.addEventListener("click",searchEmployeesbyAlphabets);
      }
 }
-addFilters(Departments,DepartmentUL,"li","filter-li");
-addFilters(Offices,OfficesUL, "li", "filter-li");
-addFilters(JobTitles,JobTitlesUL, "li", "filter-li");
-addSearchAlphabets(Alphabets, SearchBarUL);
+addFilters(departments,departmentUL,"li","filter-li");
+addFilters(offices,officesUL, "li", "filter-li");
+addFilters(jobTitles,jobTitlesUL, "li", "job-titles-li filter-li");
+addSearchAlphabets(alphabets, searchBarUL);
 
 function validateForm(){
-  let firstName=document.forms["addEmployee"]["FirstName"].value;
-  let lastName = document.forms["addEmployee"]["LastName"].value;
-  let Number = document.forms["addEmployee"]["Number"].value;
-  let JobTitle = document.forms["addEmployee"]["JobTitle"].value;
+  let firstName=document.forms["employeeDetails"]["FirstName"].value;
+  let lastName = document.forms["employeeDetails"]["LastName"].value;
+  let Number = document.forms["employeeDetails"]["Number"].value;
+  let JobTitle = document.forms["employeeDetails"]["JobTitle"].value;
   if(firstName.trim()=="" || lastName.trim()=="" || JobTitle.trim()=="" || Number.trim()=="" || Number.length>10 || Number.length<10){
     alert("One or more fields has invalid input, please try again");
     return false;
   }
   return true;
 }
-const form=document.querySelector("#addEmployee");
+const form=document.querySelector("#employeeDetails");
 form.onsubmit = (e) => {
   e.preventDefault();
   let checkValidity=validateForm()
   if(checkValidity){
-    SetEmployee()
+    setEmployee()
   }
 };
-function ShowAllEmployees(){
-  DisplayEmployees(JSON.parse(window.localStorage.getItem("employees")))
+function showAllEmployees(){
+  displayEmployees(JSON.parse(window.localStorage.getItem("employees")))
 }
 
-function Filters(e){
+function filters(e){
   const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
   const filteredEmployees=getEmployees.filter(emp=>{
-    console.log(emp.jobtitle.toLowerCase()==e.target.innerText.toLowerCase())
     return (
       emp.department == e.target.innerText ||
       emp.jobtitle.toLowerCase() == e.target.innerText.toLowerCase() ||
       emp.office == e.target.innerText
     );
   })
-  DisplayEmployees(filteredEmployees)
+  displayEmployees(filteredEmployees)
 }
 
-function SearchEmployeesbyAlphabets(e){
+function searchEmployeesbyAlphabets(e){
   const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
   const filteredEmployees=getEmployees.filter(emp=>{
       return emp.preferredname.startsWith(e.target.innerText)
   })
-  DisplayEmployees(filteredEmployees)
+  displayEmployees(filteredEmployees)
 }
-function Clear(){
+function clear(){
   document.querySelector(".search-input").value="";
-  DisplayEmployees(JSON.parse(window.localStorage.getItem("employees")));
+  displayEmployees(JSON.parse(window.localStorage.getItem("employees")));
 }
-function ShowAlert(check) {
+function showAlert(check) {
   if (check) {
-     $("#addEmployee").modal("hide");
+    $("#employeeDetailsModal").modal("hide");
     alert("Employee added successfully!");
-    DisplayEmployees(JSON.parse(window.localStorage.getItem("employees")));
+    displayEmployees(JSON.parse(window.localStorage.getItem("employees")));
+    updateFilterCount()
   }
 }
 
@@ -106,7 +107,7 @@ function onChange() {
 e.onchange = onChange;
 onChange();
 
-function Search(){
+function search(){
   let input=document.getElementById("myInput").value;
   const re = new RegExp(input);
   const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
@@ -115,16 +116,48 @@ function Search(){
       emp[value].match(re) || emp[value].toLowerCase().match(re) || emp[value].toUpperCase().match(re)
     );
   });
-  DisplayEmployees(filteredEmployees);
+  displayEmployees(filteredEmployees);
 }
 
 function getCount(filter){
   const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
   let res=0;
   getEmployees.forEach(emp=>{
-    if(emp.department==filter || emp.office.toLowerCase()==filter || emp.jobtitle.toLowerCase()==filter){
+    if(emp.department==filter || emp.office.toLowerCase()==filter.toLowerCase() || emp.jobtitle.toLowerCase()==filter.toLowerCase()){
       res++;
     }
   })
   return res;
+}
+function addHTML(){
+    const prefNameField=document.querySelector(".pref-name-field")
+    prefNameField.classList.remove("d-none")
+    const skypeIdField=document.querySelector(".skypeid-field")
+    skypeIdField.classList.remove("d-none")
+}
+function removeHTML(){
+  clearForm()
+  const prefNameField=document.querySelector(".pref-name-field")
+    prefNameField.classList.add("d-none")
+    const skypeIdField=document.querySelector(".skypeid-field")
+    skypeIdField.classList.add("d-none")
+}
+function updateFilterCount(){
+  const li=document.querySelectorAll(".filter-li")
+  for(let i=0;i<li.length;i++){
+    let text=li[i].innerText
+    text=text.replace(/[&\/\\#,+()$~%.'":*?<>{}0-9]/g,"");
+    console.log(text)
+    const span=li[i].children[1]
+    span.innerText=`(${getCount(text)})`
+  }
+}
+// updateFilterCount()
+function clearForm(){
+  document.getElementById("firstName").value="";
+  document.getElementById("lastName").value ="";
+  document.getElementById("number").value="";
+  document.getElementById("jobTitle").value="";
+  document.getElementById("email").value="";
+  document.getElementById("picture").value="";
 }
