@@ -1,6 +1,6 @@
 class Employee {
-  constructor(index,firstname,lastname,jobtitle,department,office,phonenumber,picture) 
-  {this.index=index,this.firstname = firstname;this.lastname = lastname;this.preferredname = `${firstname} ${lastname}`;this.email = `${firstname}${lastname}@gmail.com`.toLowerCase();this.jobtitle = jobtitle;this.office = office;this.department = `${department}`;this.phonenumber = phonenumber;this.skypeid = `live:${firstname}`;this.picture = picture;}
+  constructor(id,firstname,lastname,jobtitle,department,office,phonenumber,picture) 
+  {this.id=id,this.firstname = firstname;this.lastname = lastname;this.preferredname = `${firstname} ${lastname}`;this.email = `${firstname}${lastname}@gmail.com`.toLowerCase();this.jobtitle = jobtitle;this.office = office;this.department = `${department}`;this.phonenumber = phonenumber;this.skypeid = `live:${firstname}`;this.picture = picture;}
 }
 
 let employees = [
@@ -22,12 +22,21 @@ const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
 putEmployee(employees);
 displayEmployees(getEmployees);
 
+function getEmployeeById(id){
+  const Employees=JSON.parse(window.localStorage.getItem("employees"));
+  for(let i=0;i<Employees.length;i++){
+    if(Employees[i].id==id){
+      return Employees[i]
+    }
+  }
+}
+
 function displayEmployees(employees) {
   const generatedHtml = Object.keys(employees).reduce(
     (accum,currKey) =>
       accum +
       `
-      <div class="employee d-flex mb-3" id="employee" data-bs-toggle="modal" data-bs-target="#showEmployee" onclick="viewEmployee(${currKey})">
+      <div class="employee d-flex mb-3" id="employee" data-bs-toggle="modal" data-bs-target="#showEmployee" onclick="viewEmployee(${employees[currKey].id})">
         <div>
             <img src="${employees[currKey].picture}" class="picture p-2">
         </div>
@@ -49,6 +58,16 @@ function displayEmployees(employees) {
   );
   document.querySelector(".employees").innerHTML = generatedHtml;
 }
+function addEmployee(){
+  const form=document.querySelector("#employeeDetails");
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    let checkValidity=validateForm()
+    if(checkValidity){
+      setEmployee()
+    }
+  };
+}
 let check = false;
 function setEmployee() {
   const Employees = JSON.parse(window.localStorage.getItem("employees"));
@@ -62,18 +81,16 @@ function setEmployee() {
     $("input[id=number]").val(),
     $("input[id=picture]").val()
   );
-  const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
-  getEmployees.push(NewEmployee);
-  putEmployee(getEmployees);
+  Employees.push(NewEmployee);
+  putEmployee(Employees);
   check = true;
-  showAlert(check);
+  util(check);
   updateFilterCount()
 }
 
-function viewEmployee(index){
-  const getEmployees=JSON.parse(window.localStorage.getItem("employees"));
-  const Employee=getEmployees[index]
-  document.querySelector(".edit-btn").setAttribute("data-bs-index",index)
+function viewEmployee(id){
+  const Employee=getEmployeeById(id)
+  document.querySelector(".edit-btn").setAttribute("data-bs-id",id)
   document.querySelector(".show-employee-modal-picture").src=Employee.picture;
   document.querySelector(".show-employee-modal-preferredname").innerText=Employee.preferredname;
   document.querySelector(".show-employee-modal-first-name").innerText=Employee.firstname;
@@ -87,9 +104,8 @@ function viewEmployee(index){
 }
 function EditEmployee(){
   addHTML()
-  const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
-  const index=document.querySelector(".edit-btn").getAttribute("data-bs-index");
-  const Employee = getEmployees[index];
+  const id=document.querySelector(".edit-btn").getAttribute("data-bs-id");
+  const Employee=getEmployeeById(id)
   document.getElementById("firstName").value=Employee.firstname;
   document.getElementById("lastName").value = Employee.lastname;
   document.getElementById("number").value = Employee.phonenumber;
@@ -98,13 +114,39 @@ function EditEmployee(){
   document.getElementById("picture").value = Employee.picture;
   document.getElementById("preferredName").value=Employee.preferredname;
   document.getElementById("skypeId").value=Employee.skypeid;
-  // document.querySelector("#SaveChangeBtn").addEventListener('click',Hello)
+} 
+function setEditEmployee(){
+  const form=document.getElementById("employeeDetails")
+  form.onsubmit = (e) => {
+     e.preventDefault();
+  }
+  let formdata=new FormData(form)
+  var Employees = JSON.parse(window.localStorage.getItem("employees"));
+  const id=document.querySelector(".edit-btn").getAttribute("data-bs-id");
+  Employees.forEach(element => {
+	    if(element.id==id){
+	      for([k,v] of formdata){
+          if(element[k]!=v){
+          element[k]=v;
+          }
+        }
+      element['preferredname']=`${element['firstname']} ${element['lastname']}`
+      element['skypeid']=`live:${element['firstname']}`
+	    }
+  });
+  putEmployee(Employees)
+  $("#employeeDetailsModal").modal("hide");
+  var Employees = JSON.parse(window.localStorage.getItem("employees"));
+  displayEmployees(Employees)
+  updateFilterCount()
 }
 
-// function Hello(){
-//   const form=document.getElementById("editEmployeeForm")
-//   form.onsubmit = (e) => {
-//      e.preventDefault();
-//   }
-//   let formdata=new FormData(form)
-// }
+function employeeFn(){
+  const btn=document.querySelector("#employeeBtn")
+  if(!btn.classList.contains("edit-employee")){
+    addEmployee()
+  }
+  else{
+    setEditEmployee()
+  }
+}
