@@ -33,16 +33,16 @@ function getEmployeeById(id){
 
 function displayEmployees(employees) {
   const generatedHtml = Object.keys(employees).reduce(
-    (accum,currKey) =>
-      accum +
+    (target,currKey) =>
+      target +
       `
-      <div class="employee d-flex mb-3" id="employee" data-bs-toggle="modal" data-bs-target="#showEmployee" onclick="viewEmployee(${employees[currKey].id})">
+      <div class="employee d-flex mb-3 col-3" id="employee" data-bs-toggle="modal" data-bs-target="#showEmployee" onclick="viewEmployee(${employees[currKey].id})">
         <div>
             <img src="${employees[currKey].picture}" class="picture p-2">
         </div>
         <div class="p-2 pe-4">
             <h5 class="employee-name text-nowrap m-0"><a href="#" class=" employee-name-a text-decoration-none">${employees[currKey].preferredname}</a></h5>
-            <p class="job-title text-nowrap m-0">${employees[currKey].jobtitle}</p>
+            <p class="job-title text-nowrap m-0 text-capitalize">${employees[currKey].jobtitle}</p>
             <p class="department text-nowrap m-0">${employees[currKey].department} Department</p>
             <span class="d-flex">
                 <a href="#" class="contact-icon me-2"><i class="fa-solid fa-square-phone"></i></a>
@@ -54,7 +54,7 @@ function displayEmployees(employees) {
         </div>
     </div>
         `,
-    ""
+    "",
   );
   document.querySelector(".employees").innerHTML = generatedHtml;
 }
@@ -85,6 +85,7 @@ function setEmployee() {
   putEmployee(Employees);
   check = true;
   util(check);
+  addFilter($("input[id=jobTitle]").val().toLowerCase())
   updateFilterCount()
 }
 
@@ -137,6 +138,7 @@ function setEditEmployee(){
   putEmployee(Employees)
   $("#employeeDetailsModal").modal("hide");
   var Employees = JSON.parse(window.localStorage.getItem("employees"));
+  addFilter(formdata.get('jobtitle'))
   displayEmployees(Employees)
   updateFilterCount()
 }

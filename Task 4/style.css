@@ -20,12 +20,12 @@
 /* Filters */
 .filter-li{
     list-style: none;
-    color:rgba(1,1,1,0.6);
+    color:rgba(1,1,1,0.6) !important;
     text-transform: capitalize;
     font-size:0.9rem;
 }
 .filter-li-a{
-    color:rgba(1,1,1,0.6);
+    color:rgba(1,1,1,0.6) !important;
 }
 /* Search */
 .search-alphabets-li{
@@ -71,10 +71,12 @@
     height:50vh;
 }
 .employee{
-    position:sticky;
-    width:280px;
+    width:17.8em !important;
     background-color:rgba(1,1,1,0.1) !important;
     height: fit-content;
+}
+.employee:not(:nth-child(4n)){
+    margin-right: 1rem;
 }
 .picture{
     height:80px !important;

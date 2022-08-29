@@ -14,7 +14,7 @@ function addFilters(data,parent,element,Class){
     li.className =  Class;
     parent.appendChild(li);
     const a = document.createElement("a");
-    a.className = `${Class}-a text-decoration-none`;
+    a.className = "filter-li-a text-decoration-none";
     a.href = "#";
     a.innerText=data[i];
     li.appendChild(a);
@@ -32,7 +32,7 @@ function addSearchAlphabets(data,parent)
     li.className = "search-alphabets-li list-group-item";
     parent.appendChild(li);
     const a = document.createElement("a");
-    a.className = "search-alphabets-li-a  text-decoration-none text-white";
+    a.className = "search-alphabets-li-a text-decoration-none text-white";
     a.href = "#";
     a.innerText = data[i];
     li.appendChild(a);
@@ -46,7 +46,7 @@ addSearchAlphabets(alphabets, searchBarUL);
 
 function showLi(){
   let jobTitlesLi=document.querySelectorAll(".job-titles-li");
-  for(let i=0;i<10;i++){
+  for(let i=0;i<5;i++){
     jobTitlesLi[i].classList.remove("d-none");
   }
 }
@@ -56,7 +56,7 @@ let flag=true;
 function toggleLi(){
   let jLi=document.querySelectorAll(".job-titles-li");
   let btn=document.querySelector(".view-more")
-  for(let i=11;i<jLi.length;i++){
+  for(let i=5;i<jLi.length;i++){
     jLi[i].classList.toggle("d-none")
   }
   if(flag){
@@ -69,17 +69,34 @@ function toggleLi(){
   }
 }
 
-
 function validateForm(){
+  let flag=true;
   let firstName=document.forms["employeeDetails"]["firstname"].value;
-  let lastName = document.forms["employeeDetails"]["lastname"].value;
-  let Number = document.forms["employeeDetails"]["number"].value;
-  let JobTitle = document.forms["employeeDetails"]["jobtitle"].value;
-  if(firstName.trim()=="" || lastName.trim()=="" || JobTitle.trim()=="" || Number.trim()=="" || Number.length>10 || Number.length<10){
-    alert("One or more fields has invalid input, please try again");
-    return false;
+  const names=document.querySelector(".names")
+  const alphabets=new RegExp(/^[A-Za-z ]+$/)
+  if(firstName.trim()=="" || !alphabets.test(firstName)){
+    const nameError=document.querySelector(".name-error")
+    nameError.classList.remove("d-none")
+    nameError.innerText="invalid first name!"
+    console.log(nameError)
+    flag=false;
   }
-  return true;
+  let Number = document.forms["employeeDetails"]["number"].value;
+  const digits=new RegExp("^[0-9]{10}$")
+  if(!digits.test(Number)){
+    const numberError=document.querySelector(".number-error")
+    numberError.classList.remove("d-none")
+    numberError.innerText="invalid phone number!"
+    flag=false;
+  }
+  let JobTitle = document.forms["employeeDetails"]["jobtitle"].value;
+  if(JobTitle.trim()=="" || !alphabets.test(JobTitle)){
+    const jobTitleError=document.querySelector(".jobtitle-error")
+    jobTitleError.classList.remove("d-none")
+    jobTitleError.innerText="invalid Job Title!"
+    flag=false;
+  }
+  return flag;
 }
 
 function showAllEmployees(){
@@ -158,6 +175,9 @@ function addHTML(){
   sbmtBtn.innerText="Save Changes"
   const title=document.querySelector(".modal-title")
   title.innerText="Edit Employee"
+  document.querySelector(".name-error").classList.add("d-none")
+  document.querySelector(".number-error").classList.add("d-none")
+  document.querySelector(".jobtitle-error").classList.add("d-none")
 }
 function removeHTML(){
   clearForm()
@@ -170,6 +190,9 @@ function removeHTML(){
   sbmtBtn.innerText="Add Employee"
   const title=document.querySelector(".modal-title")
   title.innerText="Add Employee"
+  document.querySelector(".name-error").classList.add("d-none")
+  document.querySelector(".number-error").classList.add("d-none")
+  document.querySelector(".jobtitle-error").classList.add("d-none")
 }
 function updateFilterCount(){
   const li=document.querySelectorAll(".filter-li")
@@ -187,4 +210,25 @@ function clearForm(){
   document.getElementById("jobTitle").value="";
   document.getElementById("email").value="";
   document.getElementById("picture").value="";
+}
+
+function addFilter(filter){
+  console.log(filter)
+  if(!jobTitles.includes(filter)){
+    jobTitles.push(filter)
+    const li = document.createElement("li");
+    li.className ="job-titles-li d-none filter-li";
+    jobTitlesUL.appendChild(li);
+    const a = document.createElement("a");
+    a.className = "filter-li-a text-decoration-none";
+    a.href = "#";
+    a.innerText=filter;
+    li.appendChild(a);
+    a.addEventListener("click", filters);
+    const count = document.createElement("span");
+    count.className="filter-count"
+    count.innerText = `(${getCount(filter)})`;
+    li.appendChild(count);
+    console.log(li.innerText)
+  }
 }

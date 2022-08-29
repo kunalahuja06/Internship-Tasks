@@ -79,15 +79,16 @@
                                             <label for="preferred">Preferred Name</label>
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="names row mb-2">
                                         <div class="form-floating col me-3">
                                             <input type="text" class="form-control" id="firstName" name="firstname" placeholder="First Name" required>
                                             <label for="FirstName">First Name</label>
                                         </div>
                                         <div class="form-floating col">
-                                            <input type="text" class="form-control" id="lastName" name="lastname" placeholder="Last Name" required>
+                                            <input type="text" class="form-control" id="lastName" name="lastname" placeholder="Last Name">
                                             <label for="LastName">Last Name</label>
                                         </div>
+                                        <p class="name-error text-danger d-none"></p>
                                     </div>
                                     <div class="row mb-2">
                                         <div class="form-floating">
@@ -104,6 +105,7 @@
                                             <input type="tel" class="form-control" id="skypeId" name="skypeid" placeholder="live:xyz" disabled>
                                             <label for="SkypeID">SkypeID</label>
                                         </div>
+                                        <p class="number-error text-danger d-none"></p>
                                     </div>
                                     <div class="row">
                                         <div class="form-floating col me-3">
@@ -119,6 +121,7 @@
                                             </select>
                                             <label for="Department">Department</label>
                                         </div>
+                                        <p class="jobtitle-error text-danger d-none"></p>
                                     </div>
                                     <div class="row mb-2">
                                         <div class="form-floating">
@@ -146,7 +149,7 @@
                 </div>
             </div>
             <p class="note"><b>Note:</b> Please use the advanced filter options to refine your results.</p>
-            <div class="employees d-flex flex-wrap justify-content-around align-content-start pt-3 px-3">
+            <div class="employees row flex-row align-content-start pt-3 px-3">
             </div>
             <div class="modal fade" id="showEmployee" tabindex="-1" aria-labelledby="showEmployeeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
