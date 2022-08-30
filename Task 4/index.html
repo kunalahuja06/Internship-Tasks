@@ -44,13 +44,13 @@
         <div class="search-filters col-10">
             <div class="search-alphabets row m-0">
                 <ul class="search-alphabets-ul list-group list-group-horizontal d-flex justify-content-between">
-                    <li class="search-alphabets-li list-group-item"><a href="#" class="search-alphabets-li-a text-white" onclick="showAllEmployees()"><i class="fa-solid fa-user"></i></a></li>
+                    <li class="search-alphabets-li list-group-item"><a href="#" class="search-alphabets-li-a text-white"><i class="fa-solid fa-user"></i></a></li>
                 </ul>
             </div>
             <div class="search-bar d-flex my-auto py-3">
                 <p class="search-para text-capitalize fw-normal my-auto">search</p>
                 <input type="text" id="myInput" name="myInput" class="search-input mx-3 my-auto pe-lg-5" placeholder="Enter any keyword" onkeyup="search()">
-                <a href="#" type="submit" class="clear-button text-capitalize text-decoration-none my-auto px-3 py-1 text-white ms-3 me-5" onclick="clear()">clear</a>
+                <a href="#" type="submit" class="clear-button text-capitalize text-decoration-none my-auto px-3 py-1 text-white ms-3 me-5" onclick="clearSearchInput()">clear</a>
                 <p class="filter-para my-auto mx-2">Filter by</p>
                 <select name="filter" id="filter" class="filter-options ps-2 pe-5 pb-1">
                     <option value="preferredname" class="text-capitalize">preferred name</option>
@@ -63,7 +63,7 @@
                     <option value="phonenumber" class="text-capitalize">phone number</option>
                     <option value="skypeid" class="text-capitalize">skype id</option>
                 </select>
-                <a href="#" class="add-employee text-capitalize ms-auto text-decoration-none text-white my-auto px-2 py-1 fw-bold" data-bs-toggle="modal" data-bs-target="#employeeDetailsModal" onclick="removeHTML()">add employee</a>
+                <a href="#" class="add-employee text-capitalize ms-auto text-decoration-none text-white my-auto px-2 py-1 fw-bold" data-bs-toggle="modal" data-bs-target="#employeeDetailsModal" onclick="addEmployeeBtn()">add employee</a>
                 <div class="modal fade hide" id="employeeDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" >
                         <div class="modal-content">
@@ -73,19 +73,20 @@
                             </div>
                             <div class="modal-body">
                                 <form id="employeeDetails" name="addEmployee" class="px-3">
-                                    <div class="row mb-2 d-none pref-name-field">
+                                    <div class="row mb-2 pref-name-field">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="preferredName" placeholder="John Doe" disabled>
+                                            <input type="text" class="form-control" id="preferredName" name="preferredName" placeholder="John Doe" required>
                                             <label for="preferred">Preferred Name</label>
                                         </div>
+                                        <p class="preferred-name-error text-danger d-none"></p>
                                     </div>
                                     <div class="names row mb-2">
                                         <div class="form-floating col me-3">
-                                            <input type="text" class="form-control" id="firstName" name="firstname" placeholder="First Name" required>
+                                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
                                             <label for="FirstName">First Name</label>
                                         </div>
                                         <div class="form-floating col">
-                                            <input type="text" class="form-control" id="lastName" name="lastname" placeholder="Last Name">
+                                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
                                             <label for="LastName">Last Name</label>
                                         </div>
                                         <p class="name-error text-danger d-none"></p>
@@ -95,21 +96,23 @@
                                             <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
                                             <label for="Email">Email address</label>
                                         </div>
+                                        <p class="email-error text-danger d-none"></p>
                                     </div>
                                     <div class="row mb-2">
                                         <div class="form-floating number col">
-                                            <input type="tel" class="form-control" id="number" name="phonenumber" placeholder="1234567890" required>
+                                            <input type="tel" class="form-control" id="number" name="phoneNumber" placeholder="1234567890" required>
                                             <label for="Number">Phone Number</label>
+                                            <p class="number-error text-danger d-none"></p>
                                         </div>
-                                        <div class="form-floating skypeid-field col ms-3 d-none">
-                                            <input type="tel" class="form-control" id="skypeId" name="skypeid" placeholder="live:xyz" disabled>
+                                        <div class="form-floating skypeId skypeid-field col ms-3">
+                                            <input type="tel" class="form-control" id="skypeId" name="skypeId" placeholder="live:xyz" required>
                                             <label for="SkypeID">SkypeID</label>
+                                            <p class="skypeid-error text-danger d-none"></p>
                                         </div>
-                                        <p class="number-error text-danger d-none"></p>
                                     </div>
                                     <div class="row">
                                         <div class="form-floating col me-3">
-                                            <input type="text" class="form-control" id="jobTitle" name="jobtitle" placeholder="Job Title" required>
+                                            <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Job Title" required>
                                             <label for="JobTitle">Job Title</label>
                                         </div>
                                         <div class="form-floating col mb-2">
@@ -138,7 +141,7 @@
                                              <label for="Image">Profile Picture (Image URL)</label>
                                         </div>
                                     </div>
-                                    <button type="submit" id="employeeBtn" class="btn btn-primary row" onclick="employeeFn()">Add Employee</button>
+                                    <button type="submit" id="employeeBtn" class="btn btn-primary row" onclick="employeeFn()">Submit</button>
                                 </form>
                             </div>
                             <div class="modal-footer px-3 py-2">
@@ -198,7 +201,7 @@
                                 <p class="show-employee-modal-office fw-bold text-primary mb-0"></p>
                             </div>
                         </div>
-                        <button type="button" class="edit-btn btn btn-danger fw-bold m-2" data-bs-toggle="modal" data-bs-target="#employeeDetailsModal" onclick="EditEmployee()">Edit</button>
+                        <button type="button" class="edit-btn btn btn-danger fw-bold m-2" data-bs-toggle="modal" data-bs-target="#employeeDetailsModal" onclick="showEmployeeValues()">Edit</button>
                         <button type="button" class="btn btn-primary fw-bold m-2" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>

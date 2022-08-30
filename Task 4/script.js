@@ -25,9 +25,10 @@ function addFilters(data,parent,element,Class){
     li.appendChild(count);
   }
 }
+
 function addSearchAlphabets(data,parent)
 {
-  for (let i = 0; i < data.length; i++) {
+  for(let i = 0; i < data.length; i++) {
     const li = document.createElement("li");
     li.className = "search-alphabets-li list-group-item";
     parent.appendChild(li);
@@ -43,6 +44,7 @@ addFilters(departments,departmentUL,"li","filter-li");
 addFilters(offices,officesUL, "li", "filter-li");
 addFilters(jobTitles,jobTitlesUL, "li", "job-titles-li d-none filter-li");
 addSearchAlphabets(alphabets, searchBarUL);
+document.querySelectorAll(".search-alphabets-li")[0].addEventListener('click',()=>displayEmployees(JSON.parse(window.localStorage.getItem("employees"))))
 
 function showLi(){
   let jobTitlesLi=document.querySelectorAll(".job-titles-li");
@@ -71,26 +73,50 @@ function toggleLi(){
 
 function validateForm(){
   let flag=true;
-  let firstName=document.forms["employeeDetails"]["firstname"].value;
-  const names=document.querySelector(".names")
-  const alphabets=new RegExp(/^[A-Za-z ]+$/)
-  if(firstName.trim()=="" || !alphabets.test(firstName)){
+  let prefName=document.forms["employeeDetails"]["preferredName"].value;
+  const prefNameregex=/^[A-Za-z0-9 ]+$/
+  if(prefName.trim()=="" || !prefNameregex.test(prefName)){
+    const prefNameError=document.querySelector(".preferred-name-error")
+    prefNameError.classList.remove("d-none")
+    prefNameError.innerText="invalid preferred name!"
+    flag=false;
+  }
+  let firstName=document.forms["employeeDetails"]["firstName"].value;
+  const firstNameRegex=/^[A-Za-z]+$/
+  if(firstName.trim()=="" || !firstNameRegex.test(firstName)){
     const nameError=document.querySelector(".name-error")
     nameError.classList.remove("d-none")
     nameError.innerText="invalid first name!"
     console.log(nameError)
     flag=false;
   }
-  let Number = document.forms["employeeDetails"]["number"].value;
-  const digits=new RegExp("^[0-9]{10}$")
-  if(!digits.test(Number)){
+  let number = document.forms["employeeDetails"]["number"].value;
+  const digits=/^[0-9]{10}$/
+  if(!digits.test(number)){
     const numberError=document.querySelector(".number-error")
     numberError.classList.remove("d-none")
     numberError.innerText="invalid phone number!"
     flag=false;
   }
-  let JobTitle = document.forms["employeeDetails"]["jobtitle"].value;
-  if(JobTitle.trim()=="" || !alphabets.test(JobTitle)){
+  let skypeId = document.forms["employeeDetails"]["skypeId"].value;
+  const skypeIdRegex=/^[l]+[i]+[v]+[e]+[:]+[a-zA-z0-9]/
+  if(!skypeIdRegex.test(skypeId)){
+    const skypeIdError=document.querySelector(".skypeid-error")
+    skypeIdError.classList.remove("d-none")
+    skypeIdError.innerText="invalid skypeid, should start with live:!"
+    flag=false;
+  }
+  let email = document.forms["employeeDetails"]["email"].value;
+  const emailRegerex=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  if(!emailRegerex.test(email)){
+    const emailError=document.querySelector(".email-error")
+    emailError.classList.remove("d-none")
+    emailError.innerText="invalid email!"
+    flag=false;
+  }
+  let JobTitle = document.forms["employeeDetails"]["jobTitle"].value;
+  const jobtitleRegex=/^[A-Za-z ]+$/
+  if(JobTitle.trim()=="" || !jobtitleRegex.test(JobTitle)){
     const jobTitleError=document.querySelector(".jobtitle-error")
     jobTitleError.classList.remove("d-none")
     jobTitleError.innerText="invalid Job Title!"
@@ -99,40 +125,27 @@ function validateForm(){
   return flag;
 }
 
-function showAllEmployees(){
-  displayEmployees(JSON.parse(window.localStorage.getItem("employees")))
+function clearForm(){
+  const fields=document.querySelectorAll(".form-control")
+  fields.forEach(field=>field.value="")
 }
 
 function filters(e){
-  const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
-  const filteredEmployees=getEmployees.filter(emp=>{
+  const employees = JSON.parse(window.localStorage.getItem("employees"));
+  const filteredEmployees=employees.filter(emp=>{
     return (
-      emp.department == e.target.innerText ||
-      emp.jobtitle.toLowerCase() == e.target.innerText.toLowerCase() ||
-      emp.office == e.target.innerText
+      emp.department == e.target.innerText ||emp.jobtitle.toLowerCase() == e.target.innerText.toLowerCase() ||emp.office == e.target.innerText
     );
   })
   displayEmployees(filteredEmployees)
 }
 
 function searchEmployeesbyAlphabets(e){
-  const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
-  const filteredEmployees=getEmployees.filter(emp=>{
+  const employees = JSON.parse(window.localStorage.getItem("employees"));
+  const filteredEmployees=employees.filter(emp=>{
       return emp.preferredname.startsWith(e.target.innerText)
   })
   displayEmployees(filteredEmployees)
-}
-function clear(){
-  document.querySelector(".search-input").value="";
-  displayEmployees(JSON.parse(window.localStorage.getItem("employees")));
-}
-function util(check) {
-  if (check) {
-    $("#employeeDetailsModal").modal("hide");
-    alert("Employee added successfully!");
-    displayEmployees(JSON.parse(window.localStorage.getItem("employees")));
-    updateFilterCount()
-  }
 }
 
 let filterVal = document.getElementById("filter");
@@ -146,8 +159,8 @@ onChange();
 function search(){
   let input=document.getElementById("myInput").value;
   const re = new RegExp(input);
-  const Employees = JSON.parse(window.localStorage.getItem("employees"));
-  const filteredEmployees = Employees.filter((emp) => {
+  const employees = JSON.parse(window.localStorage.getItem("employees"));
+  const filteredEmployees = employees.filter((emp) => {
     return (
       emp[newvalue].match(re) || emp[newvalue].toLowerCase().match(re) || emp[newvalue].toUpperCase().match(re)
     );
@@ -156,44 +169,16 @@ function search(){
 }
 
 function getCount(filter){
-  const getEmployees = JSON.parse(window.localStorage.getItem("employees"));
+  const employees = JSON.parse(window.localStorage.getItem("employees"));
   let res=0;
-  getEmployees.forEach(emp=>{
+  employees.forEach(emp=>{
     if(emp.department==filter || emp.office.toLowerCase()==filter.toLowerCase() || emp.jobtitle.toLowerCase()==filter.toLowerCase()){
       res++;
     }
   })
   return res;
 }
-function addHTML(){
-  const prefNameField=document.querySelector(".pref-name-field")
-  prefNameField.classList.remove("d-none")
-  const skypeIdField=document.querySelector(".skypeid-field")
-  skypeIdField.classList.remove("d-none")
-  const sbmtBtn=document.querySelector("#employeeBtn")
-  sbmtBtn.classList.add("edit-employee")
-  sbmtBtn.innerText="Save Changes"
-  const title=document.querySelector(".modal-title")
-  title.innerText="Edit Employee"
-  document.querySelector(".name-error").classList.add("d-none")
-  document.querySelector(".number-error").classList.add("d-none")
-  document.querySelector(".jobtitle-error").classList.add("d-none")
-}
-function removeHTML(){
-  clearForm()
-  const prefNameField=document.querySelector(".pref-name-field")
-  prefNameField.classList.add("d-none")
-  const skypeIdField=document.querySelector(".skypeid-field")
-  skypeIdField.classList.add("d-none")
-  const sbmtBtn=document.querySelector("#employeeBtn")
-  sbmtBtn.classList.remove("edit-employee")
-  sbmtBtn.innerText="Add Employee"
-  const title=document.querySelector(".modal-title")
-  title.innerText="Add Employee"
-  document.querySelector(".name-error").classList.add("d-none")
-  document.querySelector(".number-error").classList.add("d-none")
-  document.querySelector(".jobtitle-error").classList.add("d-none")
-}
+
 function updateFilterCount(){
   const li=document.querySelectorAll(".filter-li")
   for(let i=0;i<li.length;i++){
@@ -203,17 +188,47 @@ function updateFilterCount(){
     span.innerText=`(${getCount(text)})`
   }
 }
-function clearForm(){
-  document.getElementById("firstName").value="";
-  document.getElementById("lastName").value ="";
-  document.getElementById("number").value="";
-  document.getElementById("jobTitle").value="";
-  document.getElementById("email").value="";
-  document.getElementById("picture").value="";
+
+function addErrorClass()
+{
+  document.querySelector(".name-error").classList.add("d-none")
+  document.querySelector(".number-error").classList.add("d-none")
+  document.querySelector(".jobtitle-error").classList.add("d-none")
+  document.querySelector(".email-error").classList.add("d-none")
+  document.querySelector(".preferred-name-error").classList.add("d-none")
+  document.querySelector(".skypeid-error").classList.add("d-none")
+}
+
+function addEmployeeBtn(){
+  clearForm()
+  const sbmtBtn=document.querySelector("#employeeBtn")
+  sbmtBtn.classList.remove("edit-employee")
+  addErrorClass()
+}
+
+function helper(check,type) {
+  $("#employeeDetailsModal").modal("hide");
+  if(type=='add'){
+    if (check) {
+    alert("Employee added successfully!");
+    addFilter($("input[id=jobTitle]").val().toLowerCase())
+    }
+  }
+  if(type=='edit'){
+    if(check){
+      alert("Employee modified successfully!");
+      displayEmployees(JSON.parse(window.localStorage.getItem("employees")))
+    }
+  }
+  displayEmployees(JSON.parse(window.localStorage.getItem("employees")));
+  updateFilterCount()
+}
+function clearSearchInput(){
+  document.querySelector(".search-input").value="";
+  displayEmployees(JSON.parse(window.localStorage.getItem("employees")));
 }
 
 function addFilter(filter){
-  console.log(filter)
   if(!jobTitles.includes(filter)){
     jobTitles.push(filter)
     const li = document.createElement("li");
@@ -229,6 +244,6 @@ function addFilter(filter){
     count.className="filter-count"
     count.innerText = `(${getCount(filter)})`;
     li.appendChild(count);
-    console.log(li.innerText)
   }
 }
+
