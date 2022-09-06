@@ -1,6 +1,6 @@
 const departments=["IT", "HR","MD","Sales"];
 const offices=["seattle","india"];
-const jobTitles=["sharepoint practice head",".net development lead","recruting expert","BI developer", "business analyst","a","b","c","d","e"];
+const jobTitles=["sharepoint practice head",".net development lead","recruiting expert","BI developer", "business analyst","a","b","c","d","e"];
 const alphabets=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 const departmentUL=document.querySelector(".department-ul");
@@ -114,14 +114,6 @@ function validateForm(){
     emailError.innerText="invalid email!"
     flag=false;
   }
-  let JobTitle = document.forms["employeeDetails"]["jobTitle"].value;
-  const jobtitleRegex=/^[A-Za-z ]+$/
-  if(JobTitle.trim()=="" || !jobtitleRegex.test(JobTitle)){
-    const jobTitleError=document.querySelector(".jobtitle-error")
-    jobTitleError.classList.remove("d-none")
-    jobTitleError.innerText="invalid Job Title!"
-    flag=false;
-  }
   return flag;
 }
 
@@ -183,7 +175,7 @@ function updateFilterCount(){
   const li=document.querySelectorAll(".filter-li")
   for(let i=0;i<li.length;i++){
     let text=li[i].innerText
-    text=text.replace(/[&\/\\#,+()$~%.'":*?<>{}0-9]/g,"");
+    text=text.replace(/[&\/\\#,+()$~%'":*?<>{}0-9]/g,"");
     const span=li[i].children[1]
     span.innerText=`(${getCount(text)})`
   }
@@ -201,8 +193,8 @@ function addErrorClass()
 
 function addEmployeeBtn(){
   clearForm()
-  const sbmtBtn=document.querySelector("#employeeBtn")
-  sbmtBtn.classList.remove("edit-employee")
+  document.querySelector(".modal-title").innerText="add employee"
+  document.querySelector("#employeeBtn").setAttribute("data-id","")
   addErrorClass()
 }
 
@@ -210,40 +202,19 @@ function helper(check,type) {
   $("#employeeDetailsModal").modal("hide");
   if(type=='add'){
     if (check) {
-    alert("Employee added successfully!");
-    addFilter($("input[id=jobTitle]").val().toLowerCase())
+      alert("Employee added successfully!");
     }
   }
   if(type=='edit'){
     if(check){
       alert("Employee modified successfully!");
-      displayEmployees(JSON.parse(window.localStorage.getItem("employees")))
     }
   }
   displayEmployees(JSON.parse(window.localStorage.getItem("employees")));
   updateFilterCount()
 }
+
 function clearSearchInput(){
   document.querySelector(".search-input").value="";
   displayEmployees(JSON.parse(window.localStorage.getItem("employees")));
 }
-
-function addFilter(filter){
-  if(!jobTitles.includes(filter)){
-    jobTitles.push(filter)
-    const li = document.createElement("li");
-    li.className ="job-titles-li d-none filter-li";
-    jobTitlesUL.appendChild(li);
-    const a = document.createElement("a");
-    a.className = "filter-li-a text-decoration-none";
-    a.href = "#";
-    a.innerText=filter;
-    li.appendChild(a);
-    a.addEventListener("click", filters);
-    const count = document.createElement("span");
-    count.className="filter-count"
-    count.innerText = `(${getCount(filter)})`;
-    li.appendChild(count);
-  }
-}
-

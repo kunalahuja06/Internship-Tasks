@@ -4,14 +4,14 @@ class Employee {
 }
 
 let employees = [
-  new Employee(1,"Anthony","Moris","Anthony Moris","SharePoint Practice Head","IT","Seattle","12345","live:Anthony","https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=90"),
-  new Employee(2,"Helen","Zimmermane","Helen Zimmermane","Operations Manager","IT","Seattle","33333","live:Helen","https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
-  new Employee(3,"Jonathon","Smith","Jonathan Smith","Product Manager","IT","Seattle","77686","live:Jonathan","https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
-  new Employee(4,"Tami","Hopkins","Tami Hopkins","Lead Engineer- Dot Net","IT","India","96965","live:Tami","https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
-  new Employee(5,"Frankilin","Humark","Frankilin Humark","Network Engineer","IT","India","54631","live:Frankilin","https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"),
-  new Employee(6,"Angela","Bailey","Angela Bailey","Talent Magnet Jr.","HR","Seattle","09812","live:Angela","https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"),
-  new Employee(7,"Robert","Mitchell","Robert Mitchell","Software Engineer","IT","India","65487","live:Robert","https://images.unsplash.com/photo-1496360166961-10a51d5f367a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
-  new Employee(8,"Olivia","Watson","Olivia Watson","UI Designer","UX","Seattle","64216","live:Watson","https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=396&q=80"),
+  new Employee(1,"Anthony","Moris","Anthony Moris","SharePoint Practice Head","IT","Seattle","1234567890","live:Anthony","https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=90"),
+  new Employee(2,"Helen","Zimmermane","Helen Zimmermane","Operations Manager","IT","Seattle","3333333333","live:Helen","https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
+  new Employee(3,"Jonathon","Smith","Jonathan Smith","Product Manager","IT","Seattle","7768677686","live:Jonathan","https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
+  new Employee(4,"Tami","Hopkins","Tami Hopkins","Lead Engineer- Dot Net","IT","India","9696598987","live:Tami","https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
+  new Employee(5,"Frankilin","Humark","Frankilin Humark","Network Engineer","IT","India","5463112345","live:Frankilin","https://images.unsplash.com/photo-1530268729831-4b0b9e170218?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"),
+  new Employee(6,"Angela","Bailey","Angela Bailey","Talent Magnet Jr.","HR","Seattle","0981298651","live:Angela","https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"),
+  new Employee(7,"Robert","Mitchell","Robert Mitchell","Software Engineer","IT","India","6548724680","live:Robert","https://images.unsplash.com/photo-1496360166961-10a51d5f367a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
+  new Employee(8,"Olivia","Watson","Olivia Watson","UI Designer","UX","Seattle","6421612985","live:Watson","https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=396&q=80"),
 ];
 
 function pushEmployee(employees) {
@@ -59,30 +59,32 @@ function displayEmployees(employees) {
   document.querySelector(".employees").innerHTML = generatedHtml;
 }
 
-function addEmployee(){
-  const form=document.querySelector("#employeeDetails");
-  form.onsubmit = (e) => {
-    e.preventDefault();
-    let checkValidity=validateForm()
-    if(checkValidity){
-      const Employees = JSON.parse(window.localStorage.getItem("employees"));
-      const NewEmployee = new Employee(
-      Employees.length+1,
-      $("input[id=firstName]").val(),$("input[id=lastName]").val(),$("input[id=preferredName").val(),$("input[id=jobTitle]").val(),$("select[id=department]").val(),$("select[id=office]").val(),$("input[id=number]").val(),$("input[id=skypeId]").val(),$("input[id=picture]").val());
-      saveNewEmployee(Employees,NewEmployee)
-    }
-  };
+const PrefName = document.getElementById("preferredName");
+const firstName = document.getElementById("firstName");
+const lastName = document.getElementById("lastName");
+function setPreferredName(){
+  PrefName.value=firstName.value+" "+lastName.value
 }
 
-function saveNewEmployee(Employees,NewEmployee) {
-  Employees.push(NewEmployee);
-  pushEmployee(Employees);
-  helper(true,'add');
-}
+
+function addEmployee(formdata){
+  let checkValidity=validateForm()
+  if(checkValidity){
+    const Employees = JSON.parse(window.localStorage.getItem("employees"));
+    const NewEmployee = new Employee(
+    Employees.length+1,
+    formdata.get("firstName"),formdata.get("lastName"),formdata.get("preferredName"),formdata.get("jobTitle"),formdata.get("department"),formdata.get("office"),formdata.get("phoneNumber"),formdata.get("skypeId"),formdata.get("picture"));
+    Employees.push(NewEmployee);
+    pushEmployee(Employees);
+    helper(true,'add');
+  }
+};
+
 
 function displayEmployee(id){
   const Employee=getEmployeeById(id)
-  document.querySelector(".edit-btn").setAttribute("data-bs-id",id)
+  document.querySelector(".edit-btn").setAttribute("data-id",id)
+  document.querySelector("#employeeBtn").setAttribute("data-id",id)
   document.querySelector(".show-employee-modal-picture").src=Employee.picture;
   document.querySelector(".show-employee-modal-preferredname").innerText=Employee.preferredname;
   document.querySelector(".show-employee-modal-first-name").innerText=Employee.firstname;
@@ -95,56 +97,50 @@ function displayEmployee(id){
   document.querySelector(".show-employee-modal-office").innerText=Employee.office;
 }
 
-function showEmployeeValues(){
-  const sbmtBtn=document.querySelector("#employeeBtn")
-  sbmtBtn.classList.add("edit-employee")
+function showEmployeeValues(e){
+  document.querySelector(".modal-title").innerText="edit employee"
   addErrorClass()
-  const id=document.querySelector(".edit-btn").getAttribute("data-bs-id");
+  const id=document.querySelector(".edit-btn").getAttribute("data-id");
   const Employee=getEmployeeById(id)
   document.getElementById("firstName").value=Employee.firstname;
   document.getElementById("lastName").value = Employee.lastname;
   document.getElementById("number").value = Employee.phonenumber;
-  document.getElementById("jobTitle").value = Employee.jobtitle;
   document.getElementById("email").value = Employee.email;
   document.getElementById("picture").value = Employee.picture;
   document.getElementById("preferredName").value=Employee.preferredname;
   document.getElementById("skypeId").value=Employee.skypeid;
 } 
 
-function setEmployee(){
-  const form=document.getElementById("employeeDetails")
-  form.onsubmit = (e) => {
-     e.preventDefault();
-  }
+function setEmployee(formdata,id){
   let validity=validateForm()
   if(validity){
-  let formdata=new FormData(form)
   let Employees = JSON.parse(window.localStorage.getItem("employees"));
-  const id=document.querySelector(".edit-btn").getAttribute("data-bs-id");
   Employees.forEach(employee => {
 	    if(employee.id==id){
-	      for([k,v] of formdata){
+	      for(const [k,v] of formdata){
           if(employee[k.toLowerCase()]!=v){
-          employee[k]=v;
+            employee[k.toLowerCase()]=v;
           }
         }
 	    }
   });
-  saveEditEmployee(Employees,formdata)
-  }
-}
-function saveEditEmployee(Employees,formdata){
   pushEmployee(Employees)
-  addFilter(formdata.get('jobtitle'))
   helper(true,'edit')
+  }
 }
 
-function employeeFn(){
+function saveEmployee(){
+  const form=document.getElementById("employeeDetails")
+  form.onsubmit = (e) => {
+     e.preventDefault();
+  }
+  const formdata=new FormData(form)
   const btn=document.querySelector("#employeeBtn")
-  if(!btn.classList.contains("edit-employee")){
-    addEmployee()
+  if(btn.getAttribute("data-id")){
+    setEmployee(formdata,btn.getAttribute("data-id"))
   }
   else{
-    setEmployee()
+    addEmployee(formdata)
   }
 }
+

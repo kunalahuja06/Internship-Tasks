@@ -67,38 +67,38 @@
                 <div class="modal fade hide" id="employeeDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" >
                         <div class="modal-content">
-                            <div class="modal-header px-4 py-2">
-                                <h5 class="modal-title">Add Employee</h5>
+                            <div class="modal-header px-4">
+                                <h5 class="modal-title text-capitalize"></h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form id="employeeDetails" name="addEmployee" class="px-3">
-                                    <div class="row mb-2 pref-name-field">
+                                    <div class="row mb-3 pref-name-field">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="preferredName" name="preferredName" placeholder="John Doe" required>
                                             <label for="preferred">Preferred Name</label>
                                         </div>
                                         <p class="preferred-name-error text-danger d-none"></p>
                                     </div>
-                                    <div class="names row mb-2">
+                                    <div class="names row mb-3">
                                         <div class="form-floating col me-3">
-                                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" onchange="setPreferredName()" required>
                                             <label for="FirstName">First Name</label>
                                         </div>
                                         <div class="form-floating col">
-                                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+                                            <input type="text" class="form-control" id="lastName" name="lastName"  onchange="setPreferredName()" placeholder="Last Name">
                                             <label for="LastName">Last Name</label>
                                         </div>
                                         <p class="name-error text-danger d-none"></p>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="row mb-3">
                                         <div class="form-floating">
                                             <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
                                             <label for="Email">Email address</label>
                                         </div>
                                         <p class="email-error text-danger d-none"></p>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="row mb-3">
                                         <div class="form-floating number col">
                                             <input type="tel" class="form-control" id="number" name="phoneNumber" placeholder="1234567890" required>
                                             <label for="Number">Phone Number</label>
@@ -111,11 +111,17 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-floating col me-3">
-                                            <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Job Title" required>
+                                        <div class="form-floating col me-3 mb-3">
+                                            <select name="jobTitle" id="jobTitle" class="add-jobtitle-options form-select text-capitalize" required>
+                                                <option value="Sharepoint Practice Head" class="text-capitalize">sharepoint practice head</option>
+                                                <option value=".Net Development Lead" class="text-capitalize">.net nevelopment lead</option>
+                                                <option value="Recruiting Expert" class="text-capitalize">recruiting expert</option>
+                                                <option value="BI Developer" class="text-capitalize">bI developer</option>
+                                                <option value="Business Analyst" class="text-capitalize">business analyst</option>
+                                            </select>
                                             <label for="JobTitle">Job Title</label>
                                         </div>
-                                        <div class="form-floating col mb-2">
+                                        <div class="form-floating col mb-3">
                                             <select name="department" id="department" class="add-department-options form-select text-capitalize" required>
                                                 <option value="IT" class="text-capitalize">IT</option>
                                                 <option value="HR" class="text-capitalize">human resources</option>
@@ -126,7 +132,7 @@
                                         </div>
                                         <p class="jobtitle-error text-danger d-none"></p>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="row mb-3">
                                         <div class="form-floating">
                                             <select name="office" id="office" class="add-office-options form-select text-capitalize" required>
                                                 <option value="Seattle" class="text-capitalize">seattle</option>
@@ -135,17 +141,16 @@
                                             <label for="Office">Office</label>
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="row mb-3">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="picture" name="picture" placeholder="Image URL here" required>
                                              <label for="Image">Profile Picture (Image URL)</label>
                                         </div>
                                     </div>
-                                    <button type="submit" id="employeeBtn" class="btn btn-primary row" onclick="employeeFn()">Submit</button>
+                                    <div class="row">
+                                        <button type="submit" id="employeeBtn" data-id="" class="btn btn-primary fw-bold py-2" onclick="saveEmployee()">Submit</button>
+                                    </div>
                                 </form>
-                            </div>
-                            <div class="modal-footer px-3 py-2">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
@@ -173,7 +178,7 @@
                                 </div>
                             </div>
                             <div class="employee-details row py-1 br">
-                                <label for="email" class="show-employee-modal-label ">Email</label>
+                                <label for="email" class="show-employee-modal-label">Email</label>
                                 <p class="show-employee-modal-email fw-bold text-primary mb-0"></p>
                             </div>
                             <div class="employee-details row py-1 br">
