@@ -1,7 +1,6 @@
 const departments=["IT", "HR","MD","Sales"];
 const offices=["seattle","india"];
 const jobTitles=["sharepoint practice head",".net development lead","recruiting expert","BI developer", "business analyst","a","b","c","d","e"];
-const alphabets=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 const departmentUL=document.querySelector(".department-ul");
 const officesUL = document.querySelector(".offices-ul");
@@ -28,14 +27,14 @@ function addFilters(data,parent,element,Class){
 
 function addSearchAlphabets(data,parent)
 {
-  for(let i = 0; i < data.length; i++) {
+  for(let i =97; i <=122; i++) {
     const li = document.createElement("li");
     li.className = "search-alphabets-li list-group-item";
     parent.appendChild(li);
     const a = document.createElement("a");
     a.className = "search-alphabets-li-a text-decoration-none text-white";
     a.href = "#";
-    a.innerText = data[i];
+    a.innerText =String.fromCodePoint(i)
     li.appendChild(a);
     a.addEventListener("click",searchEmployeesbyAlphabets);
   }
@@ -43,7 +42,7 @@ function addSearchAlphabets(data,parent)
 addFilters(departments,departmentUL,"li","filter-li");
 addFilters(offices,officesUL, "li", "filter-li");
 addFilters(jobTitles,jobTitlesUL, "li", "job-titles-li d-none filter-li");
-addSearchAlphabets(alphabets, searchBarUL);
+addSearchAlphabets('', searchBarUL);
 document.querySelectorAll(".search-alphabets-li")[0].addEventListener('click',()=>displayEmployees(JSON.parse(window.localStorage.getItem("employees"))))
 
 function showLi(){
