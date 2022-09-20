@@ -6,10 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./filters.component.css']
 })
 export class FiltersComponent implements OnInit {
-  constructor() { }
+  constructor() {
+  }
 
   @Input() filter:any
-  @Input() title:string=''
+  @Input() title:any
   ngOnInit(): void {  }
-
 }

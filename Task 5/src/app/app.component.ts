@@ -1,5 +1,7 @@
-import { Component,OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { filters } from 'src/assets/static files/data';
+
+
 
 @Component({
   selector: 'app-root',
@@ -10,9 +12,5 @@ export class AppComponent {
   title = 'Task 5';
   constructor(){
   }
-  department=filters.departments
-  office=filters.offices
-  jobTtile=filters['job titles']
-  filterTitles=Object.keys(filters)
-
+  fil=filters
 }
