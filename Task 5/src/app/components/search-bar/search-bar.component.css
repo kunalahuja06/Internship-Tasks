@@ -34,3 +34,6 @@
 .add-employee{
     background-color: rgba(0,176,253,255);
 }
+.note{
+    font-size: 0.8rem !important;
+}
