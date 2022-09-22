@@ -6,9 +6,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/header/header.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import { EmployeesComponent } from './components/employees/employees.component';
-import { EmployeeComponent } from './components/employee/employee.component'
+import { EmployeeComponent } from './components/employee/employee.component';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component'
+import { EmployeeServiceService } from './services/employee-service/employee-service.service';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,15 @@ import { EmployeeComponent } from './components/employee/employee.component'
     SearchBarComponent,
     EmployeesComponent,
     EmployeeComponent,
+    EmployeeDetailsComponent,
     
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    FormsModule
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [EmployeeServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

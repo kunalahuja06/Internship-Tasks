@@ -1,5 +1,5 @@
-import { Component, OnInit,ViewEncapsulation } from '@angular/core';
- import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit,ViewEncapsulation,Input } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-employee',
@@ -8,9 +8,11 @@ import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 })
 export class EmployeeComponent{
   
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal) {
+  }
 
    openVerticallyCentered(content: any) {
     this.modalService.open(content, { centered: true });
   }
+  @Input() employee:any
 }

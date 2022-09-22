@@ -1,11 +1,11 @@
 <div class="employee d-flex col-3" id="employee" (click)="openVerticallyCentered(content)">
   <div>
-      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=90" class="picture p-2">
+      <img src={{employee.picture}} class="picture p-2">
   </div>
   <div class="p-2 pe-4">
-      <h5 class="employee-name text-nowrap m-0"><a href="#" class=" employee-name-a text-decoration-none">Kunal Ahuja</a></h5>
-      <p class="job-title text-nowrap m-0 text-capitalize">Full Stack Developer</p>
-      <p class="department text-nowrap m-0">Product Engineering</p>
+      <h5 class="employee-name text-nowrap m-0"><a href="#" class=" employee-name-a text-decoration-none">{{employee.preferredName}}</a></h5>
+      <p class="job-title text-nowrap m-0 text-capitalize">{{employee.jobTitle}}</p>
+      <p class="department text-nowrap m-0">{{employee.department}} Department</p>
       <span class="d-flex">
           <a href="#" class="contact-icon me-2"><i class="fa-solid fa-square-phone"></i></a>
           <a href="#" class="contact-icon me-2"><i class="fa-solid fa-envelope"></i></a>
@@ -15,6 +15,7 @@
       </span>
   </div>
 </div>
+
 
 <ng-template #content let-modal>
   <div class="modal-header">

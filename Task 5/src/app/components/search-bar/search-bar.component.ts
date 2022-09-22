@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) {}
+
+   openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
+  }
 
   ngOnInit(): void {
     this.createArray();

@@ -1,6 +1,17 @@
 class Employee {
   constructor(id,firstname,lastname,preferredname,jobtitle,department,office,phonenumber,skypeid,picture) 
-  {this.id=id,this.firstname = firstname;this.lastname = lastname;this.preferredname = preferredname;this.email = `${firstname}${lastname}@gmail.com`.toLowerCase();this.jobtitle = jobtitle;this.office = office;this.department = `${department}`;this.phonenumber = phonenumber;this.skypeid = skypeid;this.picture = picture;}
+  {
+    (this.id = id), (this.firstname = firstname);
+    this.lastname = lastname;
+    this.preferredname = preferredname;
+    this.email = `${firstname}${lastname}@gmail.com`.toLowerCase();
+    this.jobtitle = jobtitle;
+    this.office = office;
+    this.department = `${department}`;
+    this.phonenumber = phonenumber;
+    this.skypeid = skypeid;
+    this.picture = picture;
+  }
 }
 
 let employees = [

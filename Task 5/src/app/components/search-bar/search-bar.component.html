@@ -10,6 +10,10 @@
     <select name="filter" id="filter" class="filter-options ps-2 pe-5 pb-1">
         <option  *ngFor="let filter of searchFilter" value={{filter}} class="text-capitalize">{{filter}}</option>
     </select>
-    <a href="#" class="add-employee text-capitalize ms-auto text-decoration-none text-white my-auto px-2 py-1 fw-bold">add employee</a>
+    <a href="#" class="add-employee text-capitalize ms-auto text-decoration-none text-white my-auto px-2 py-1 fw-bold" (click)="openVerticallyCentered(content)">add employee</a>
 </div>
 <p class="note"><b>Note:</b> Please use the advanced filter options to refine your results.</p>
+
+<ng-template #content>
+    <app-employee-details></app-employee-details>
+</ng-template>
