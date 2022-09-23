@@ -18,14 +18,50 @@
 
 
 <ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  <div class="modal-body mx-auto">
+    <img src={{employee.picture}} alt="user" class="show-employee-modal-picture d-flex mx-auto">
+    <div class="employee-details row pt-1 pb-3 px-5">
+        <p class="text-primary fw-bold mb-0">{{employee.preferredName}}</p>
+    </div>
+    <div class="row py-1 br">
+        <div class="col">
+            <label for="firstname" class="show-employee-modal-label">First Name</label>
+            <p class="fw-bold text-primary mb-0">{{employee.firstName}}</p>
+        </div>
+        <div class="col">
+            <label for="lastname" class="show-employee-modal-label" >Last Name</label>
+            <p class="fw-bold text-primary mb-0">{{employee.lastName}}</p>
+        </div>
+    </div>
+    <div class="row py-1 br">
+        <label for="email" class="show-employee-modal-label">Email</label>
+        <p class="fw-bold text-primary mb-0">{{employee.email}}</p>
+    </div>
+    <div class="row py-1 br">
+        <div class="col">
+          <label for="number" class="show-employee-modal-label">Phone-Number</label>
+            <p class="col text-primary fw-bold mb-0">{{employee.phoneNumber}}</p>
+        </div>
+        <div class="col">
+            <label for="skypeid" class="show-employee-modal-label ">Skype ID</label>
+            <p class="col fw-bold text-primary mb-0">{{employee.skypeId}}</p>
+        </div>
+    </div>
+    <div class="row py-1 br">
+        <div class="col">
+            <label for="jobtitle" class="show-employee-modal-label ">Job Title</label>
+            <p class="fw-bold text-primary mb-0">{{employee.jobTitle}}</p>
+        </div>
+        <div class="col">
+            <label for="department" class="show-employee-modal-label ">Department</label>
+            <p class="fw-bold text-primary mb-0">{{employee.department}}</p>
+        </div>
+    </div>
+    <div class="row py-1">
+        <label for="office" class="show-employee-modal-label ">Office</label>
+        <p class="fw-bold text-primary mb-0">{{employee.office}}</p>
+    </div>
   </div>
-  <div class="modal-body">
-    <p>One fine body&hellip;</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-  </div>
+  <button type="button" class="edit-btn btn btn-danger fw-bold m-2" >Edit</button>
+  <button type="button" class="btn btn-primary fw-bold m-2" (click)="modal.close('Close click')">Close</button>
 </ng-template>

@@ -1,4 +1,5 @@
 import { Injectable,OnInit} from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,20 @@ export class EmployeeServiceService {
     employees.push(employee);
     this.pushEmployeeToLocalStorage(employees);
   }
+
+  filteredEmployees=new Subject()
+
+  sendFilteredEmployees(employees:any){
+    this.filteredEmployees.next(employees);
+  }
+  displayEmployees():any{return this.employees}
+
+  showAllEmployees=new Subject();
+  sendAllEmployees(employees:any){
+    this.showAllEmployees.next(employees);
+  }
+    
+  
 }
 class Employee{
   id:number;
@@ -44,7 +59,7 @@ class Employee{
   picture:string;
 
   constructor(id:number,firstname:string,lastname:string,preferredname:string,jobtitle:string,department:string,office:string,phonenumber:string,skypeid:string,picture:string) {
-    this.id=id
+    this.id=id|| JSON.parse(window.localStorage.getItem("employees") || "[]").length+1;
     this.preferredName = preferredname;
     this.firstName = firstname;
     this.lastName = lastname;

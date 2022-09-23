@@ -45,3 +45,19 @@
 .light-blue-backdrop {
     background-color: #5cb3fd;
 }
+
+.show-employee-modal-picture{
+    height:10rem;
+    width:10rem;
+    border-radius: 10px;
+}
+.show-employee-modal-label{
+    color:black;
+    font-size: small;
+}
+.row>*{
+    padding:0 !important;
+}
+.br{
+    border-bottom: 1px solid;
+}

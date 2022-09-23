@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators} from '@angular/forms';
 import { EmployeeServiceService } from './../../services/employee-service/employee-service.service';
 
+
+
 @Component({
   selector: 'app-employee-details',
   templateUrl: './employee-details.component.html',
@@ -13,7 +15,6 @@ export class EmployeeDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
   employeeForm:any = new FormGroup({
-    id:new FormControl(this.employee.employees.length+1),
     preferredName: new FormControl('',[Validators.required]),
     firstName: new FormControl('',[Validators.required,Validators.pattern('^[A-Za-z0-9 ]+$')]),
     lastName: new FormControl(''),
@@ -26,10 +27,10 @@ export class EmployeeDetailsComponent implements OnInit {
     picture: new FormControl('')
   })
 
-  hello():void{
+  saveEmployee():void{
     this.employee.addEmployee(this.employeeForm.value);
-    console.log(this.employeeForm.value);
-    console.table(this.employee.getEmployeeFromLocalStorage());
+    // alert("Employee Added Successfully");
+
   }
   get preferredName(){
     return this.employeeForm.get('preferredName');

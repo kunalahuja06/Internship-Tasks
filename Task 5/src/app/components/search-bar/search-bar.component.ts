@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EmployeeServiceService } from 'src/app/services/employee-service/employee-service.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -8,7 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal,private employee:EmployeeServiceService) {}
 
    openVerticallyCentered(content: any) {
     this.modalService.open(content, { centered: true });
@@ -25,4 +26,10 @@ export class SearchBarComponent implements OnInit {
       this.alphabets.push(String.fromCodePoint(i))
     }
   }
+  showAllEmployees():void{
+    this.employee.sendAllEmployees(this.employee.employees)
+  }
+  searchInput:string;
+  searchFilterInput:string;
 }
+
