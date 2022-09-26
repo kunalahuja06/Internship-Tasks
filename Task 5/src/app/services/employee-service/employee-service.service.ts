@@ -29,20 +29,29 @@ export class EmployeeServiceService {
     let employee=new Employee(e.id,e.firstName,e.lastName,e.preferredName,e.jobTitle,e.department,e.office,e.phoneNumber,e.skypeId,e.picture);
     employees.push(employee);
     this.pushEmployeeToLocalStorage(employees);
+    this.sendAllEmployees(employees);
   }
 
   filteredEmployees=new Subject()
-
   sendFilteredEmployees(employees:any){
     this.filteredEmployees.next(employees);
   }
-  displayEmployees():any{return this.employees}
+
 
   showAllEmployees=new Subject();
   sendAllEmployees(employees:any){
     this.showAllEmployees.next(employees);
   }
+
+  searchEmployees=new Subject();
+  sendSearchEmployees(employees:any){ 
+    this.searchEmployees.next(employees);
+  }
     
+  AlphabetEmployees=new Subject();
+  sendAlphabetEmployees(employees:any){
+    this.AlphabetEmployees.next(employees);
+  }
   
 }
 class Employee{

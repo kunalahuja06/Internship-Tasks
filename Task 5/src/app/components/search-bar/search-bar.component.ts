@@ -19,7 +19,6 @@ export class SearchBarComponent implements OnInit {
     this.createArray();
   }
 
-  searchFilter:string[]=['preferred name','first name','last name','email','job title','office','deaprtment','phone number','skype id']
   alphabets:string[]=[]
   public createArray():void{
     for(let i=97;i<=122;i++){
@@ -29,7 +28,19 @@ export class SearchBarComponent implements OnInit {
   showAllEmployees():void{
     this.employee.sendAllEmployees(this.employee.employees)
   }
+  searchByAlphabets(alphabet:any):void{
+    let employees=this.employee.getEmployeeFromLocalStorage()
+    let filteredEmployees=employees.filter((employee:any)=>employee.preferredName.toLowerCase().startsWith(alphabet))
+    this.employee.sendAlphabetEmployees(filteredEmployees)
+  }
   searchInput:string;
   searchFilterInput:string;
+
+  search():void{
+    let employees=this.employee.getEmployeeFromLocalStorage()
+    const re = new RegExp(this.searchInput, 'gi');
+    let searchedEmployees = employees.filter((emp: any) => emp[this.searchFilterInput].match(re));
+    this.employee.sendSearchEmployees(searchedEmployees)
+  }
 }
 

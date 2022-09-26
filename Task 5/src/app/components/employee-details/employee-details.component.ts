@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators} from '@angular/forms';
 import { EmployeeServiceService } from './../../services/employee-service/employee-service.service';
-
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-employee-details',
@@ -10,8 +9,11 @@ import { EmployeeServiceService } from './../../services/employee-service/employ
   styleUrls: ['./employee-details.component.css']
 })
 export class EmployeeDetailsComponent implements OnInit {
-  constructor(private employee:EmployeeServiceService) {
+  constructor(private employee:EmployeeServiceService,private modalService: NgbModal) {
    }
+   closeModal():void{
+    this.modalService.dismissAll();
+  }
   ngOnInit(): void {
   }
   employeeForm:any = new FormGroup({
@@ -20,7 +22,7 @@ export class EmployeeDetailsComponent implements OnInit {
     lastName: new FormControl(''),
     email: new FormControl('',[Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),
     phoneNumber: new FormControl('',[Validators.required,Validators.pattern('^[0-9]{10}$')]),
-    skypeId: new FormControl('',[Validators.required,Validators.pattern('^[l]+[i]+[v]+[e]+[:]+[A-Za-z0-9 ]+$')]),
+    skypeId: new FormControl('',[Validators.required,Validators.pattern('^[l]+[i]+[v]+[e]+[:]+[A-Za-z0-9]+$')]),
     jobTitle: new FormControl(''),
     department: new FormControl(''),
     office: new FormControl(''),
@@ -29,7 +31,8 @@ export class EmployeeDetailsComponent implements OnInit {
 
   saveEmployee():void{
     this.employee.addEmployee(this.employeeForm.value);
-    // alert("Employee Added Successfully");
+    alert("Employee Added Successfully");
+    this.modalService.dismissAll();
 
   }
   get preferredName(){

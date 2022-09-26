@@ -16,7 +16,6 @@
   </div>
 </div>
 
-
 <ng-template #content let-modal>
   <div class="modal-body mx-auto">
     <img src={{employee.picture}} alt="user" class="show-employee-modal-picture d-flex mx-auto">
@@ -62,6 +61,6 @@
         <p class="fw-bold text-primary mb-0">{{employee.office}}</p>
     </div>
   </div>
-  <button type="button" class="edit-btn btn btn-danger fw-bold m-2" >Edit</button>
+  <button type="button" class="edit-btn btn btn-danger fw-bold m-2">Edit</button>
   <button type="button" class="btn btn-primary fw-bold m-2" (click)="modal.close('Close click')">Close</button>
 </ng-template>

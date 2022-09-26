@@ -15,4 +15,5 @@ export class EmployeeComponent{
     this.modalService.open(content, { centered: true });
   }
   @Input() employee:any
+
 }
