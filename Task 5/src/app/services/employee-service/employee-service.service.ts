@@ -8,7 +8,7 @@ export class EmployeeServiceService {
 
   constructor() {this.pushEmployeeToLocalStorage(this.employees); }
   public employees = [
-  new Employee(1,"Anthony","Moris","Anthony Moris","SharePoint Practice Head","IT","Seattle","1234567890","live:Anthony","https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=90"),
+  new Employee(1,"Anthony","Moris","Anthony Moris","Sharepoint Practice Head","IT","Seattle","1234567890","live:Anthony","https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=90"),
   new Employee(2,"Helen","Zimmermane","Helen Zimmermane","Operations Manager","IT","Seattle","3333333333","live:Helen","https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
   new Employee(3,"Jonathon","Smith","Jonathan Smith","Product Manager","IT","Seattle","7768677686","live:Jonathan","https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
   new Employee(4,"Tami","Hopkins","Tami Hopkins","Lead Engineer- Dot Net","IT","India","9696598987","live:Tami","https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
@@ -52,6 +52,24 @@ export class EmployeeServiceService {
   sendAlphabetEmployees(employees:any){
     this.AlphabetEmployees.next(employees);
   }
+
+  editData=new Subject();
+  sendEditData(employee:any){
+    this.editData.next(employee);
+  }  
+  
+  setEmployee(employee:any){
+    let Employees=this.getEmployeeFromLocalStorage();
+    let index=Employees.findIndex((e:any)=>e.id==employee.id);
+    Employees[index]=employee;
+    this.pushEmployeeToLocalStorage(Employees);
+    this.sendAllEmployees(Employees);
+  }
+  employeeFormTitle=''
+  // employeeFormTitle=new Subject();
+  // sendEmployeeFormTitle(title:string){
+  //   this.employeeFormTitle.next(title);
+  // }
   
 }
 class Employee{

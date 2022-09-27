@@ -12,6 +12,7 @@ export class SearchBarComponent implements OnInit {
   constructor(private modalService: NgbModal,private employee:EmployeeServiceService) {}
 
    openVerticallyCentered(content: any) {
+    this.employee.employeeFormTitle="Add Employee"
     this.modalService.open(content, { centered: true });
   }
 

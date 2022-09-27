@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h5 class="modal-title text-capitalize">add employee</h5>
+  <h5 class="modal-title text-capitalize">{{employeeFormTitle}}</h5>
   <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
 </div>
 <div class="modal-body">
@@ -7,7 +7,7 @@
     <!-- Perferred Name -->
     <div class="row mb-3">
       <div class="form-floating">
-          <input type="text" class="form-control" id="hhh" placeholder="Preferred Name" name="preferredName" formControlName="preferredName" required>
+          <input type="text" class="form-control"  placeholder="Preferred Name" name="preferredName" formControlName="preferredName" required>
           <label for="PreferredName">Preferred Name</label>
       </div>
     </div>
@@ -47,7 +47,7 @@
     <!-- Job title and department -->
     <div class="row mb-3">
       <div class="form-floating col">
-          <select class="form-select text-capitalize" name="jobTitle" formControlName="jobTitle" required>
+          <select class="form-select text-capitalize" formControlName="jobTitle" required>
               <option value="Sharepoint Practice Head" class="text-capitalize">sharepoint practice head</option>
               <option value=".Net Development Lead" class="text-capitalize">.net nevelopment lead</option>
               <option value="Recruiting Expert" class="text-capitalize">recruiting expert</option>

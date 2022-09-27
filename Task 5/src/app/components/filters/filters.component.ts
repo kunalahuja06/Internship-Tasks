@@ -12,7 +12,8 @@ export class FiltersComponent implements OnInit {
   @Input() filter:any
   @Input() title:any
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {
+  }
 
   getFilteredEmployees(e:any):void{
     let filter=e.target.innerText
@@ -20,10 +21,9 @@ export class FiltersComponent implements OnInit {
     this.employee.employees.forEach(employeee => {
       if(employeee.department.toLowerCase()==filter.toLowerCase() || employeee.office.toLowerCase()==filter.toLowerCase() || employeee.jobTitle.toLowerCase()==filter.toLowerCase()){
         employees.push(employeee)
-
       }
     });
     this.employee.sendFilteredEmployees(employees)
   }
-
 }
+
