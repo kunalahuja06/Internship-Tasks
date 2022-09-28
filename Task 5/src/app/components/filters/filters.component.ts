@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,AfterViewInit } from '@angular/core';
 import { EmployeeServiceService } from './../../services/employee-service/employee-service.service';
 
 @Component({
@@ -14,6 +14,18 @@ export class FiltersComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  ngAfterViewInit(): void {
+    let jtUl=document.querySelectorAll('.filter-ul')[2]
+    jtUl.classList.add('mb-0')
+    for(let i=5;i<jtUl.children.length;i++){
+      jtUl.children[i].classList.add('d-none')
+    }
+
+    let filters=document.querySelectorAll('.filter-li')
+    filters.forEach((filter:any)=>{
+      filter.children[1].textContent=`(${this.employee.getCount(filter.children[0].textContent)})`
+    })
+  }
 
   getFilteredEmployees(e:any):void{
     let filter=e.target.innerText
@@ -25,5 +37,22 @@ export class FiltersComponent implements OnInit {
     });
     this.employee.sendFilteredEmployees(employees)
   }
+  
+  viewMoreBtn='view more'
+  viewMoreCheck=false;
+  viewMoreToggler():void{
+    let jtUl=document.querySelectorAll('.filter-ul')[2]
+    jtUl.classList.add('mb-0')
+    for(let i=5;i<jtUl.children.length;i++){
+      jtUl.children[i].classList.toggle('d-none')
+    }
+    this.viewMoreCheck=!this.viewMoreCheck
+    if(this.viewMoreCheck){
+      this.viewMoreBtn='view less'
+    }else{
+      this.viewMoreBtn='view more'
+    }
+  }
+
 }
 

@@ -2,9 +2,6 @@
 <main class="row py-4 px-0">
     <div class="filters col-2">
          <app-filters *ngFor="let f of fil" [filter]="f[1]" [title]="f[0]"></app-filters>
-        <!-- <ng-template *ngFor="let f of fil">
-            <app-filters [filter]="f[1][2]" [title]="f[0]"></app-filters>
-        </ng-template> -->
     </div>
     <div class="col-10">
         <app-search-bar></app-search-bar>

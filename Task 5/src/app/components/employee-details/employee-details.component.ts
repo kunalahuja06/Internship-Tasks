@@ -21,6 +21,12 @@ export class EmployeeDetailsComponent implements OnInit {
       this.show(this.a)
     })
   }
+  updateFilterCount():void{
+    let filters=document.querySelectorAll('.filter-li')
+    filters.forEach((filter:any)=>{
+      filter.children[1].textContent=`(${this.employee.getCount(filter.children[0].textContent)})`
+    })
+  }
   show(a:any):void{
     this.employeeForm = new FormGroup({
       id:new FormControl(a.id),
@@ -61,7 +67,7 @@ export class EmployeeDetailsComponent implements OnInit {
       alert("Employee Modified Successfully");
       this.modalService.dismissAll();
     }
-
+    this.updateFilterCount()
   }
   get id(){
     return this.employeeForm.get('id')

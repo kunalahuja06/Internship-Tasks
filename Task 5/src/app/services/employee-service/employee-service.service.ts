@@ -66,10 +66,17 @@ export class EmployeeServiceService {
     this.sendAllEmployees(Employees);
   }
   employeeFormTitle=''
-  // employeeFormTitle=new Subject();
-  // sendEmployeeFormTitle(title:string){
-  //   this.employeeFormTitle.next(title);
-  // }
+  
+  getCount(filter:any):number{
+    let employees:any = this.getEmployeeFromLocalStorage()
+    let res=0;
+    employees.forEach((emp:any)=>{
+      if(emp.department==filter || emp.office.toLowerCase()==filter.toLowerCase() || emp['jobTitle'].toLowerCase()==filter.toLowerCase()){
+        res++;
+      }
+    })
+    return res;
+  }
   
 }
 class Employee{

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import {EmployeeServiceService} from './../../services/employee-service/employee-service.service';
 
 @Component({
@@ -8,7 +8,7 @@ import {EmployeeServiceService} from './../../services/employee-service/employee
 })
 export class EmployeesComponent implements OnInit {
   constructor(private employee:EmployeeServiceService) {
-   }
+  }
   ngOnInit(): void {
     this.Employees = JSON.parse(window.localStorage.getItem("employees") || "[]");
     this.employee.filteredEmployees.subscribe((employees:any)=>{
