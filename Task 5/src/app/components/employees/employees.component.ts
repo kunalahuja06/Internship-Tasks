@@ -1,5 +1,5 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
-import {EmployeeServiceService} from './../../services/employee-service/employee-service.service';
+import { Component, OnInit } from '@angular/core';
+import {EmployeeService} from '../../services/shared/employee-service.service';
 
 @Component({
   selector: 'app-employees',
@@ -7,22 +7,26 @@ import {EmployeeServiceService} from './../../services/employee-service/employee
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-  constructor(private employee:EmployeeServiceService) {
+  constructor(private employeeService:EmployeeService) {
   }
   ngOnInit(): void {
-    this.Employees = JSON.parse(window.localStorage.getItem("employees") || "[]");
-    this.employee.filteredEmployees.subscribe((employees:any)=>{
-      this.Employees=employees
+    this.employees = JSON.parse(window.localStorage.getItem("employees") || "[]");
+
+    this.employeeService.filteredEmployees.subscribe((employees:any)=>{
+      this.employees=employees
     })
-    this.employee.showAllEmployees.subscribe((employees:any)=>{
-      this.Employees=employees
+
+    this.employeeService.showAllEmployees.subscribe((employees:any)=>{
+      this.employees=employees
     })
-    this.employee.AlphabetEmployees.subscribe((employees:any)=>{
-      this.Employees=employees
+
+    this.employeeService.AlphabetEmployees.subscribe((employees:any)=>{
+      this.employees=employees
     })
-    this.employee.searchEmployees.subscribe((employees:any)=>{
-      this.Employees=employees
+
+    this.employeeService.searchEmployees.subscribe((employees:any)=>{
+      this.employees=employees
     })
   }
-  Employees:any = [];
+  employees:any = [];
 }

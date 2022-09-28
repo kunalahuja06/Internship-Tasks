@@ -1,12 +1,13 @@
-import { Injectable,OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EmployeeServiceService {
 
-  constructor() {this.pushEmployeeToLocalStorage(this.employees); }
+export class EmployeeService {
+
+  constructor() {this.pushEmployees(this.employees); }
   public employees = [
   new Employee(1,"Anthony","Moris","Anthony Moris","Sharepoint Practice Head","IT","Seattle","1234567890","live:Anthony","https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=90"),
   new Employee(2,"Helen","Zimmermane","Helen Zimmermane","Operations Manager","IT","Seattle","3333333333","live:Helen","https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"),
@@ -18,17 +19,19 @@ export class EmployeeServiceService {
   new Employee(8,"Olivia","Watson","Olivia Watson","UI Designer","UX","Seattle","6421612985","live:Watson","https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=396&q=80"),
   ];
 
-  pushEmployeeToLocalStorage(employees:object):void { 
+  pushEmployees(employees:object):void { 
     window.localStorage.setItem("employees", JSON.stringify(employees));
   }
-  getEmployeeFromLocalStorage():any {
+
+  getEmployees():any {
     return JSON.parse(window.localStorage.getItem("employees") || "[]");
   }
+  
   addEmployee(e:any):void {
-    let employees=this.getEmployeeFromLocalStorage();
+    let employees=this.getEmployees();
     let employee=new Employee(e.id,e.firstName,e.lastName,e.preferredName,e.jobTitle,e.department,e.office,e.phoneNumber,e.skypeId,e.picture);
     employees.push(employee);
-    this.pushEmployeeToLocalStorage(employees);
+    this.pushEmployees(employees);
     this.sendAllEmployees(employees);
   }
 
@@ -36,7 +39,6 @@ export class EmployeeServiceService {
   sendFilteredEmployees(employees:any){
     this.filteredEmployees.next(employees);
   }
-
 
   showAllEmployees=new Subject();
   sendAllEmployees(employees:any){
@@ -59,16 +61,17 @@ export class EmployeeServiceService {
   }  
   
   setEmployee(employee:any){
-    let Employees=this.getEmployeeFromLocalStorage();
-    let index=Employees.findIndex((e:any)=>e.id==employee.id);
-    Employees[index]=employee;
-    this.pushEmployeeToLocalStorage(Employees);
-    this.sendAllEmployees(Employees);
+    let employees=this.getEmployees();
+    let index=employees.findIndex((e:any)=>e.id==employee.id);
+    employees[index]=employee;
+    this.pushEmployees(employees);
+    this.sendAllEmployees(employees);
   }
+
   employeeFormTitle=''
   
   getCount(filter:any):number{
-    let employees:any = this.getEmployeeFromLocalStorage()
+    let employees:any = this.getEmployees()
     let res=0;
     employees.forEach((emp:any)=>{
       if(emp.department==filter || emp.office.toLowerCase()==filter.toLowerCase() || emp['jobTitle'].toLowerCase()==filter.toLowerCase()){
@@ -77,7 +80,6 @@ export class EmployeeServiceService {
     })
     return res;
   }
-  
 }
 class Employee{
   id:number;

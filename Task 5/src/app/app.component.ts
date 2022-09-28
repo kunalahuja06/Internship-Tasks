@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { filters } from 'src/assets/static files/data';
+import * as Filters from 'src/assets/static files/data';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +10,5 @@ export class AppComponent {
   title = 'Task 5';
   constructor(){
   }
-  fil=filters
+  filters=Filters.filters;
 }

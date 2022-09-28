@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EmployeeServiceService } from 'src/app/services/employee-service/employee-service.service';
+import { EmployeeService } from 'src/app/services/shared/employee-service.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -9,39 +9,41 @@ import { EmployeeServiceService } from 'src/app/services/employee-service/employ
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor(private modalService: NgbModal,private employee:EmployeeServiceService) {}
-
-   openVerticallyCentered(content: any) {
-    this.employee.employeeFormTitle="Add Employee"
-    this.modalService.open(content, { centered: true });
-  }
+  constructor(private modalService: NgbModal,private employeeService:EmployeeService) {}
 
   ngOnInit(): void {
-    this.createArray();
+    this.createAlphabetArray();
+  }
+
+  openVerticallyCentered(content: any){
+    this.employeeService.employeeFormTitle="Add Employee"
+    this.modalService.open(content, { centered: true });  
   }
 
   alphabets:string[]=[]
-  public createArray():void{
+  public createAlphabetArray():void{
     for(let i=97;i<=122;i++){
       this.alphabets.push(String.fromCodePoint(i))
     }
   }
-  showAllEmployees():void{
-    this.employee.sendAllEmployees(this.employee.employees)
+
+  showEmployees():void{
+    this.employeeService.sendAllEmployees(this.employeeService.employees)
   }
   searchByAlphabets(alphabet:any):void{
-    let employees=this.employee.getEmployeeFromLocalStorage()
-    let filteredEmployees=employees.filter((employee:any)=>employee.preferredName.toLowerCase().startsWith(alphabet))
-    this.employee.sendAlphabetEmployees(filteredEmployees)
+    let employees=this.employeeService.getEmployees()
+    let searchedEmployees=employees.filter((employee:any)=>employee.preferredName.toLowerCase().startsWith(alphabet))
+    this.employeeService.sendAlphabetEmployees(searchedEmployees)
   }
+
   searchInput:string;
   searchFilterInput:string;
 
   search():void{
-    let employees=this.employee.getEmployeeFromLocalStorage()
+    let employees=this.employeeService.getEmployees()
     const re = new RegExp(this.searchInput, 'gi');
     let searchedEmployees = employees.filter((emp: any) => emp[this.searchFilterInput].match(re));
-    this.employee.sendSearchEmployees(searchedEmployees)
+    this.employeeService.sendSearchEmployees(searchedEmployees)
   }
 }
 

@@ -10,7 +10,7 @@ import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component'
-import { EmployeeServiceService } from './services/employee-service/employee-service.service';
+import { EmployeeService } from './services/shared/employee-service.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { EmployeeServiceService } from './services/employee-service/employee-ser
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [EmployeeServiceService],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

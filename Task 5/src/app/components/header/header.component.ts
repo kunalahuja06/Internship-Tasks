@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +8,10 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   constructor() { }
+
   ngOnInit(): void {
   }
+
   public name="andrew philips"
 
 }

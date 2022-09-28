@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators} from '@angular/forms';
-import { EmployeeServiceService } from './../../services/employee-service/employee-service.service';
+import { EmployeeService } from '../../services/shared/employee-service.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -9,40 +9,47 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./employee-details.component.css']
 })
 export class EmployeeDetailsComponent implements OnInit {
-  constructor(private employee:EmployeeServiceService,private modalService: NgbModal) {
-   }
-   employeeFormTitle:any=this.employee.employeeFormTitle
-   closeModal():void{
-    this.modalService.dismissAll();
-  }
+  constructor(private employeeService:EmployeeService,private modalService: NgbModal) {}
+
   ngOnInit(): void {
-    this.employee.editData.subscribe((employee:any)=>{
-      this.a=employee;
-      this.show(this.a)
+    this.employeeService.editData.subscribe((employee:any)=>{
+      this.getEmployeeData=employee;
+      this.employeeData(this.getEmployeeData)
     })
   }
+
+  getEmployeeData:any={}
+  officeList:any[]=["seattle","india"]
+  jobTitlesList:any[]=["sharepoint practice head",".net development lead","recruiting expert","BI developer", "business analyst"]
+
+  employeeFormTitle:any=this.employeeService.employeeFormTitle
+
+  closeModal():void{
+    this.modalService.dismissAll();
+  }
+
   updateFilterCount():void{
     let filters=document.querySelectorAll('.filter-li')
     filters.forEach((filter:any)=>{
-      filter.children[1].textContent=`(${this.employee.getCount(filter.children[0].textContent)})`
+      filter.children[1].textContent=`(${this.employeeService.getCount(filter.children[0].textContent)})`
     })
   }
-  show(a:any):void{
+
+  employeeData(employee:any):void{
     this.employeeForm = new FormGroup({
-      id:new FormControl(a.id),
-      preferredName: new FormControl(a.preferredName,[Validators.required]),
-      firstName: new FormControl(a.firstName,[Validators.required]),
-      lastName: new FormControl(a.lastName,[Validators.required]),
-      email: new FormControl(a.email,[Validators.required,Validators.email]),
-      phoneNumber: new FormControl(a.phoneNumber,[Validators.required]),
-      skypeId: new FormControl(a.skypeId,[Validators.required]),
-      jobTitle: new FormControl(this.a.jobTitle,[Validators.required]),
-      department: new FormControl(a.department,[Validators.required]),
-      office: new FormControl(a.office,[Validators.required]),
-      picture: new FormControl(a.picture,[Validators.required])
+      id:new FormControl(employee.id),
+      preferredName: new FormControl(employee.preferredName,[Validators.required]),
+      firstName: new FormControl(employee.firstName,[Validators.required]),
+      lastName: new FormControl(employee.lastName,[Validators.required]),
+      email: new FormControl(employee.email,[Validators.required,Validators.email]),
+      phoneNumber: new FormControl(employee.phoneNumber,[Validators.required]),
+      skypeId: new FormControl(employee.skypeId,[Validators.required]),
+      jobTitle: new FormControl(employee.jobTitle,[Validators.required]),
+      department: new FormControl(employee.department,[Validators.required]),
+      office: new FormControl(employee.office,[Validators.required]),
+      picture: new FormControl(employee.picture,[Validators.required])
     })
   }
-  a:any={}
 
   employeeForm:any = new FormGroup({
     id: new FormControl(''),
@@ -53,22 +60,26 @@ export class EmployeeDetailsComponent implements OnInit {
     phoneNumber: new FormControl('',[Validators.required,Validators.pattern('^[0-9]{10}$')]),
     skypeId: new FormControl('',[Validators.required,Validators.pattern('^[l]+[i]+[v]+[e]+[:]+[A-Za-z0-9]+$')]),
     jobTitle: new FormControl([Validators.required]),
-    department: new FormControl('',[Validators.required]),
-    office: new FormControl('',[Validators.required]),
+    department: new FormControl([Validators.required]),
+    office: new FormControl([Validators.required]),
     picture: new FormControl('')
   })
+
   saveEmployee():void{
+    let message=''
     if(!this.employeeForm.get('id').value){
-      this.employee.addEmployee(this.employeeForm.value);
-      alert("Employee Added Successfully");
+      this.employeeService.addEmployee(this.employeeForm.value);
+      message="Employee Added Successfully"
       this.modalService.dismissAll();
     }else{
-      this.employee.setEmployee(this.employeeForm.value);
-      alert("Employee Modified Successfully");
+      this.employeeService.setEmployee(this.employeeForm.value);
+      message="Employee Modified Successfully"
       this.modalService.dismissAll();
     }
+    alert(message)
     this.updateFilterCount()
   }
+
   get id(){
     return this.employeeForm.get('id')
   }
@@ -102,5 +113,8 @@ export class EmployeeDetailsComponent implements OnInit {
   get office(){
     return this.employeeForm.get('office');
   }
-  
+
+  setPrefName(firstName:any,lastName:any):void{
+    this.employeeForm.get('preferredName').setValue(firstName+" "+lastName)
+  }
 }

@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main class="row py-4 px-0">
     <div class="filters col-2">
-         <app-filters *ngFor="let f of fil" [filter]="f[1]" [title]="f[0]"></app-filters>
+         <app-filters *ngFor="let f of filters" [filter]="f[1]" [title]="f[0]"></app-filters>
     </div>
     <div class="col-10">
         <app-search-bar></app-search-bar>

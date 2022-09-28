@@ -61,11 +61,11 @@
         <p class="fw-bold text-primary mb-0">{{employee.office}}</p>
     </div>
   </div>
-  <button type="button" class="edit-btn btn btn-danger fw-bold m-2" (click)="openVerticallyCentered(edit)" (click)="triggerEdit()">Edit</button>
+  <button type="button" class="edit-btn btn btn-danger fw-bold m-2" (click)="openVerticallyCentered(editForm)" (click)="triggerEdit()">Edit</button>
   <button type="button" class="btn btn-primary fw-bold m-2" (click)="modal.close('Close click')">Close</button>
 </ng-template>
 
 
-<ng-template #edit let-modal>
+<ng-template #editForm let-modal>
     <app-employee-details></app-employee-details>
 </ng-template>

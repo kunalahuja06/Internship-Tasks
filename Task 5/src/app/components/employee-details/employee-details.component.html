@@ -7,19 +7,19 @@
     <!-- Perferred Name -->
     <div class="row mb-3">
       <div class="form-floating">
-          <input type="text" class="form-control"  placeholder="Preferred Name" name="preferredName" formControlName="preferredName" required>
+          <input type="text" class="form-control" placeholder="Preferred Name" name="preferredName" formControlName="preferredName" required>
           <label for="PreferredName">Preferred Name</label>
       </div>
     </div>
     <!-- Names -->
     <div class="row mb-3">
       <div class="form-floating col">
-          <input type="text" class="form-control" placeholder="First Name" name="firstName" formControlName="firstName" required>
+          <input type="text" class="form-control" placeholder="First Name" name="firstName" formControlName="firstName" required #first (input)="setPrefName(first.value,last.value)">
           <label for="FirstName">First Name</label>
           <span *ngIf="firstName && firstName.invalid && firstName.touched" class="text-capitalize text-danger">invalid name</span>
       </div>
       <div class="form-floating col ms-3">
-          <input type="text" class="form-control" placeholder="Last Name" name="lastName" formControlName="lastName">
+          <input type="text" class="form-control" placeholder="Last Name" name="lastName" formControlName="lastName" #last (input)="setPrefName(first.value,last.value)">
           <label for="LastName">Last Name</label>
       </div>
     </div>
@@ -48,11 +48,7 @@
     <div class="row mb-3">
       <div class="form-floating col">
           <select class="form-select text-capitalize" formControlName="jobTitle" required>
-              <option value="Sharepoint Practice Head" class="text-capitalize">sharepoint practice head</option>
-              <option value=".Net Development Lead" class="text-capitalize">.net nevelopment lead</option>
-              <option value="Recruiting Expert" class="text-capitalize">recruiting expert</option>
-              <option value="BI Developer" class="text-capitalize">bI developer</option>
-              <option value="Business Analyst" class="text-capitalize">business analyst</option>
+              <option *ngFor="let jobTitle of jobTitlesList" [ngValue]="jobTitle" class="text-capitalize">{{jobTitle}}</option>
           </select>
           <label for="JobTitle">Job Title</label>
       </div>
@@ -70,8 +66,7 @@
     <div class="row mb-3">
       <div class="form-floating">
           <select class="form-select text-capitalize" name="office" formControlName="office" required>
-              <option value="Seattle" class="text-capitalize">seattle</option>
-              <option value="India" class="text-capitalize">india</option>
+            <option *ngFor="let office of officeList" [ngValue]="office">{{ office }}</option>
           </select>
           <label for="Office">Office</label>
       </div>
