@@ -26,7 +26,8 @@ export class FiltersComponent implements OnInit {
   getFilteredEmployees(e:any):void{
     let filter=e.target.innerText
     let filteredEmployees:any=[]
-    this.employeeService.employees.forEach(employee => {
+    let employees=this.employeeService.getEmployees()
+    employees.forEach((employee:any) => {
       if(employee.department.toLowerCase()==filter.toLowerCase() || employee.office.toLowerCase()==filter.toLowerCase() || employee.jobTitle.toLowerCase()==filter.toLowerCase()){
         filteredEmployees.push(employee)
       }

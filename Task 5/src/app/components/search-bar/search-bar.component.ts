@@ -30,6 +30,7 @@ export class SearchBarComponent implements OnInit {
   showEmployees():void{
     this.employeeService.sendAllEmployees(this.employeeService.employees)
   }
+
   searchByAlphabets(alphabet:any):void{
     let employees=this.employeeService.getEmployees()
     let searchedEmployees=employees.filter((employee:any)=>employee.preferredName.toLowerCase().startsWith(alphabet))
@@ -37,7 +38,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   searchInput:string;
-  searchFilterInput:string;
+  searchFilterInput:string="preferredName";
 
   search():void{
     let employees=this.employeeService.getEmployees()
