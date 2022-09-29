@@ -16,15 +16,16 @@ export class EmployeeDetailsComponent implements OnInit {
       this.getEmployeeData=employee;
       this.employeeData(this.getEmployeeData)
     })
-    this.employeeForm.get('department').setValue('IT')
-    this.employeeForm.get('jobTitle').setValue(this.jobTitlesList[0])
+    this.departmentValue=this.employeeForm.get('department').setValue('IT')
+    this.jobTitleValue=this.employeeForm.get('jobTitle').setValue(this.jobTitlesList[0])
     this.employeeForm.get('office').setValue(this.officeList[0])
   }
 
+  departmentValue:any;
+  jobTitleValue:any;
   getEmployeeData:any={}
   officeList:any[]=["Seattle","India"]
   jobTitlesList:any[]=["Sharepoint Practice Head",".net development lead","recruiting expert","BI developer", "business analyst"]
-
   employeeFormTitle:any=this.employeeService.employeeFormTitle
 
   closeModal():void{
@@ -47,7 +48,7 @@ export class EmployeeDetailsComponent implements OnInit {
       email: new FormControl(employee.email,[Validators.required,Validators.email]),
       phoneNumber: new FormControl(employee.phoneNumber,[Validators.required]),
       skypeId: new FormControl(employee.skypeId,[Validators.required]),
-      jobTitle: new FormControl(employee.jobTitle|| this.jobTitlesList[0],[Validators.required]),
+      jobTitle: new FormControl(employee.jobTitle|| this.jobTitleValue,[Validators.required]),
       department: new FormControl(employee.department,[Validators.required]),
       office: new FormControl(employee.office,[Validators.required]),
       picture: new FormControl(employee.picture,[Validators.required])
