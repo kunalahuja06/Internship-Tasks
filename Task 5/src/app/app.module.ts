@@ -11,6 +11,7 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component'
 import { EmployeeService } from './services/shared/employee-service.service';
+import { FiltersPipe } from './pipes/filters.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { EmployeeService } from './services/shared/employee-service.service';
     EmployeesComponent,
     EmployeeComponent,
     EmployeeDetailsComponent,
+    FiltersPipe,
     
   ],
   imports: [
