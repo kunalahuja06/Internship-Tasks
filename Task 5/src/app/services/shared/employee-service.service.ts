@@ -69,6 +69,11 @@ export class EmployeeService {
   }
 
   employeeFormTitle=''
+
+  searchFilter=new Subject();
+  sendSearchFilter(filter:any){
+    this.searchFilter.next(filter);
+  }
   
   getCount(filter:any):number{
     let employees:any = this.getEmployees()

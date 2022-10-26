@@ -1,5 +1,8 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit, Input } from '@angular/core';
 import { EmployeeService } from '../../services/shared/employee-service.service';
+import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-filters',
@@ -7,9 +10,22 @@ import { EmployeeService } from '../../services/shared/employee-service.service'
   styleUrls: ['./filters.component.css']
 })
 export class FiltersComponent implements OnInit {
-  constructor(private employeeService: EmployeeService) { }
+  mobileView: boolean=false;
+  constructor(private employeeService: EmployeeService,private observer:BreakpointObserver,private offcanvas:NgbOffcanvas) { }
 
-  ngOnInit(): void {}
+  ngOnInit(){
+    this.observer.observe([
+      Breakpoints.Small,
+      Breakpoints.HandsetPortrait
+    ]).subscribe(result => {
+      if(result.matches){
+        this.mobileView = true;
+      }
+      else{
+        this.mobileView = false;
+      }
+    });
+  }
 
   ngAfterViewInit(): void {
     this.toggleJobTitles(document.querySelectorAll('.filter-ul')[2])
@@ -24,6 +40,7 @@ export class FiltersComponent implements OnInit {
   @Input() title:any
 
   getFilteredEmployees(e:any):void{
+    this.offcanvas.dismiss()
     let filter=e.target.innerText
     let filteredEmployees:any=[]
     let employees=this.employeeService.getEmployees()
@@ -54,6 +71,8 @@ export class FiltersComponent implements OnInit {
       jobTitlesUl.children[i].classList.toggle('d-none')
     }
   }
+
+
 
 }
 

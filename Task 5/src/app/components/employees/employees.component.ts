@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from '../../services/shared/employee-service.service';
 
@@ -7,7 +8,8 @@ import {EmployeeService} from '../../services/shared/employee-service.service';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-  constructor(private employeeService:EmployeeService) {
+  mobileView: boolean=false;
+  constructor(private employeeService:EmployeeService, private observer:BreakpointObserver) {
   }
   ngOnInit(): void {
     this.employees = JSON.parse(window.localStorage.getItem("employees") || "[]");
@@ -27,6 +29,18 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.searchEmployees.subscribe((employees:any)=>{
       this.employees=employees
     })
+
+    this.observer.observe([
+      Breakpoints.Small,
+      Breakpoints.HandsetPortrait
+    ]).subscribe(result => {
+      if(result.matches){
+        this.mobileView = true;
+      }
+      else{
+        this.mobileView = false;
+      }
+    });
   }
   employees:any = [];
 }

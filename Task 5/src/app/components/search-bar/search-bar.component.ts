@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeService } from 'src/app/services/shared/employee-service.service';
@@ -8,11 +9,22 @@ import { EmployeeService } from 'src/app/services/shared/employee-service.servic
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
+  mobileView:boolean =false;
 
-  constructor(private modalService: NgbModal,private employeeService:EmployeeService) {}
-
+  constructor(private modalService: NgbModal,private employeeService:EmployeeService,private observer:BreakpointObserver) { }
   ngOnInit(): void {
     this.createAlphabetArray();
+    this.observer.observe([
+      Breakpoints.Small,
+      Breakpoints.HandsetPortrait
+    ]).subscribe(result => {
+      if(result.matches){
+        this.mobileView = true;
+      }
+      else{
+        this.mobileView = false;
+      }
+    });
   }
 
   openVerticallyCentered(content: any){
@@ -39,6 +51,9 @@ export class SearchBarComponent implements OnInit {
 
   searchInput:string;
   searchFilterInput:string="preferredName";
+  filterChange(){
+    this.employeeService.sendSearchFilter(this.searchFilterInput)
+  }
 
   search():void{
     let employees=this.employeeService.getEmployees()

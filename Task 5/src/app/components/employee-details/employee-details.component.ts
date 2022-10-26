@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators} from '@angular/forms';
 import { EmployeeService } from '../../services/shared/employee-service.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal,NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-employee-details',
@@ -9,7 +10,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./employee-details.component.css']
 })
 export class EmployeeDetailsComponent implements OnInit {
-  constructor(private employeeService:EmployeeService,private modalService: NgbModal) {}
+  mobileView: boolean=false;
+  constructor(private employeeService:EmployeeService,private modalService: NgbModal,private observer:BreakpointObserver,private offcanvas:NgbOffcanvas) {}
 
   ngOnInit(): void {
     this.employeeService.editData.subscribe((employee:any)=>{
@@ -19,6 +21,18 @@ export class EmployeeDetailsComponent implements OnInit {
     this.departmentValue=this.employeeForm.get('department').setValue('IT')
     this.jobTitleValue=this.employeeForm.get('jobTitle').setValue(this.jobTitlesList[0])
     this.employeeForm.get('office').setValue(this.officeList[0])
+
+    this.observer.observe([
+      Breakpoints.Small,
+      Breakpoints.HandsetPortrait
+    ]).subscribe(result => {
+      if(result.matches){
+        this.mobileView = true;
+      }
+      else{
+        this.mobileView = false;
+      }
+    });
   }
 
   departmentValue:any;
@@ -67,6 +81,7 @@ export class EmployeeDetailsComponent implements OnInit {
     department: new FormControl([Validators.required]),
     office: new FormControl([Validators.required]),
     picture: new FormControl('')
+
   })
 
   saveEmployee():void{
@@ -75,10 +90,12 @@ export class EmployeeDetailsComponent implements OnInit {
       this.employeeService.addEmployee(this.employeeForm.value);
       message="Employee Added Successfully"
       this.modalService.dismissAll();
+      this.offcanvas.dismiss();
     }else{
       this.employeeService.setEmployee(this.employeeForm.value);
       message="Employee Modified Successfully"
       this.modalService.dismissAll();
+      this.offcanvas.dismiss();
     }
     alert(message)
     this.updateFilterCount()
@@ -120,5 +137,8 @@ export class EmployeeDetailsComponent implements OnInit {
 
   setPrefName(firstName:any,lastName:any):void{
     this.employeeForm.get('preferredName').setValue(firstName+" "+lastName)
+  }
+  closeCanvas():void{
+    this.offcanvas.dismiss();
   }
 }
