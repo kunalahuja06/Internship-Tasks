@@ -1,67 +1,69 @@
-﻿using Address_Book.Data;
-using Address_Book.Models;
+﻿using EmpService.Contracts;
+using EmpService.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Services;
+
 
 namespace Address_Book.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly EmployeeDbContext _employeeContext;
-        public EmployeeController(EmployeeDbContext employeeContext)
+        private readonly IEmployeeService _employeeService;
+        public EmployeeController(IEmployeeService employeeService)
         {
-            _employeeContext = employeeContext;
+            _employeeService = employeeService;
         }
         [HttpPost("add_employee")]
-        public IActionResult AddEmployee([FromBody] employeeModel employee)
+        public IActionResult AddEmployee([FromBody] Employee employee)
         {
-            if (employee == null)
+            if(employee==null)
             {
                 return BadRequest();
             }
             else
             {
-                _employeeContext.Employees.Add(employee);
-                _employeeContext.SaveChanges();
-                return Ok(new
-                {
-                    StatusCode = 200,
-                    Message = "Employee added successfully"
+                _employeeService.AddEmployee(employee);
+                return Ok(new{
+                    statusCode = 200,
+                    message = "Employee Added Successfully"
                 });
             }
         }
 
         [HttpPut("update_employee")]
-        public IActionResult UpdateEmployee([FromBody] employeeModel employee)
+        public IActionResult UpdateEmployee([FromBody] Employee employee)
         {
             if (employee == null)
             {
                 return BadRequest();
             }
-            var user = _employeeContext.Employees.AsNoTracking().FirstOrDefault(x => x.ID == employee.ID);
-            if (user==null)
-            {
-                return NotFound(new
-                {
-                    StatusCode = 404,
-                    Message = "User Not Found!"
-                });
-            }
             else
             {
-                _employeeContext.Entry(employee).State = EntityState.Modified;
-                _employeeContext.SaveChanges();
+                _employeeService.UpdateEmployee(employee);
                 return Ok(new
                 {
                     StatusCode = 200,
-                    Message = "Employee updated successfully"
+                    Message = "Employee Updated Successfully"
                 });
             }
+        }
+        [HttpDelete("delete_employee/{id}")]
+        public IActionResult DeleteEmployee(int id)
+        {
+            
+            _employeeService.DeleteEmployee(id);
+            return Ok(new
+            {
+                StatusCode = 200,
+                Message = "Employee Deleted Successfully"
+            });
         }
         [HttpGet("employees")]
         public IActionResult GetEmployees()
         {
-            var employees = _employeeContext.Employees.AsQueryable();
+            var employees = _employeeService.GetEmployees();
             return Ok(new
             {
                 StatusCode = 200,
@@ -69,20 +71,16 @@ namespace Address_Book.Controllers
             });
         }
 
-        [HttpGet("employee/id")]
+        [HttpGet("employee/{id}")]
         public IActionResult GetEmployee(int id)
         {
-            var employee = _employeeContext.Employees.Find(id);
-            if (employee == null)
+            if (id == 0)
             {
-                return NotFound(new
-                {
-                    StatusCode=200,
-                    Message="Employee Not Found!"
-                });
+                return BadRequest();
             }
             else
             {
+                var employee = _employeeService.GetEmployeeById(id);
                 return Ok(new
                 {
                     StatusCode = 200,

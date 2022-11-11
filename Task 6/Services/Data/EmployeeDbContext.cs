@@ -1,7 +1,8 @@
-﻿using Address_Book.Models;
+﻿using EmpService.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Address_Book.Data
+
+namespace EmpService.Data
 {
     public class EmployeeDbContext : DbContext
     {
@@ -9,11 +10,11 @@ namespace Address_Book.Data
         {
 
         }
-        public DbSet<employeeModel> Employees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<employeeModel>().ToTable("employee");
+            modelBuilder.Entity<Employee>().ToTable("employee");
         }
     }
 }

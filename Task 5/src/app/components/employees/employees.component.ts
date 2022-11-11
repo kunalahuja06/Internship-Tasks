@@ -12,8 +12,10 @@ export class EmployeesComponent implements OnInit {
   constructor(private employeeService:EmployeeService, private observer:BreakpointObserver) {
   }
   ngOnInit(): void {
-    this.employees = JSON.parse(window.localStorage.getItem("employees") || "[]");
-
+    this.employeeService.empHome.subscribe((data:any)=>{
+      this.employees=data
+    })
+  
     this.employeeService.filteredEmployees.subscribe((employees:any)=>{
       this.employees=employees
     })
@@ -22,11 +24,7 @@ export class EmployeesComponent implements OnInit {
       this.employees=employees
     })
 
-    this.employeeService.AlphabetEmployees.subscribe((employees:any)=>{
-      this.employees=employees
-    })
-
-    this.employeeService.searchEmployees.subscribe((employees:any)=>{
+    this.employeeService.searchedEmployees.subscribe((employees:any)=>{
       this.employees=employees
     })
 
@@ -42,5 +40,5 @@ export class EmployeesComponent implements OnInit {
       }
     });
   }
-  employees:any = [];
+  employees:any =[];
 }

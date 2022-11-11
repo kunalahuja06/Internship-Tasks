@@ -35,7 +35,7 @@ export class EmployeeComponent implements OnInit{
   this.employeeService.employeeFormTitle="edit employee"
   this.modalService.open(content, { centered: true });
   }
-  // canvas
+
   openBottom(mobileContent: TemplateRef<any>) {
     this.employeeService.employeeFormTitle="edit employee"
 		this.offcanvasService.open(mobileContent, { position: 'bottom' });
@@ -43,9 +43,19 @@ export class EmployeeComponent implements OnInit{
   openEnd(mobileContent: TemplateRef<any>) {
 		this.offcanvasService.open(mobileContent, { position: 'end' });
 	  }
-  // 
 
   triggerEdit():void{
     this.employeeService.sendEditData(this.employee)           
+  }
+  deleteEmployee():void{
+    this.employeeService.deleteEmployee(this.employee.id).subscribe((data:any)=>data.statusCode=200?this.utils(data.message):'');
+  }
+  utils(message:any){
+    alert(message);
+    this.modalService.dismissAll();
+    this.employeeService.emp();
+    setTimeout(() => {
+      this.employeeService.updateFilterCount();
+    },1000);
   }
 }

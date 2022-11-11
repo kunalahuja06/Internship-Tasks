@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,13 +15,6 @@ import { EmployeeService } from './services/shared/employee-service.service';
 import { FiltersPipe } from './pipes/filters.pipe';
 import {LayoutModule} from '@angular/cdk/layout';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
-import { AlphabeticalScrollBarModule } from 'alphabetical-scroll-bar';
 
 @NgModule({
   declarations: [
@@ -33,6 +27,7 @@ import { AlphabeticalScrollBarModule } from 'alphabetical-scroll-bar';
     EmployeeDetailsComponent,
     FiltersPipe,
     
+    
   ],
   imports: [
     BrowserModule,
@@ -41,13 +36,7 @@ import { AlphabeticalScrollBarModule } from 'alphabetical-scroll-bar';
     FormsModule,
     LayoutModule,
     NoopAnimationsModule,
-    MatIconModule,
-    MatDividerModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatListModule,
-    AlphabeticalScrollBarModule
+    HttpClientModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

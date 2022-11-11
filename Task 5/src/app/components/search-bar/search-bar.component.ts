@@ -44,22 +44,25 @@ export class SearchBarComponent implements OnInit {
   }
 
   searchByAlphabets(alphabet:any):void{
-    let employees=this.employeeService.getEmployees()
-    let searchedEmployees=employees.filter((employee:any)=>employee.preferredName.toLowerCase().startsWith(alphabet))
-    this.employeeService.sendAlphabetEmployees(searchedEmployees)
+    this.employeeService.searchAlphebetically(alphabet)
   }
 
   searchInput:string;
+  clear(){
+    this.searchInput="";
+    this.searchFilterInput="preferredName";
+    this.showEmployees();
+  }
+
   searchFilterInput:string="preferredName";
   filterChange(){
     this.employeeService.sendSearchFilter(this.searchFilterInput)
+    this.search()
   }
 
   search():void{
-    let employees=this.employeeService.getEmployees()
     const re = new RegExp(this.searchInput, 'gi');
-    let searchedEmployees = employees.filter((emp: any) => emp[this.searchFilterInput].match(re));
-    this.employeeService.sendSearchEmployees(searchedEmployees)
-  }
+    let searchedEmployees = this.employeeService.employees.filter((emp: any) => emp[this.searchFilterInput].match(re));
+    this.employeeService.sendSearchedEmployees(searchedEmployees)  }
 }
 

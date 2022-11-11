@@ -1,4 +1,4 @@
-<div [ngClass]="{'employee col-3':!mobileView,'employee-mobile mb-3 mx-auto':mobileView}" class=" d-flex" id="employee" (click)="mobileView?openBottom(mobileContent):openVerticallyCentered(content)">
+<div [ngClass]="{'employee col-3':!mobileView,'employee-mobile mb-3 mx-auto':mobileView}" class="d-flex" id="employee" (click)="mobileView?openBottom(mobileContent):openVerticallyCentered(content)">
   <div>
       <img src={{employee.picture}} class="picture p-2" [class.picture-mobile]="mobileView">
   </div>
@@ -39,7 +39,7 @@
         <div class="d-flex">
             <div class="col-10 d-flex flex-column mb-3">
                 <label for="skypeId" class="fs-2 text-darker">skype</label>
-                <p class="mobile-text mb-0">{{employee.skypeId}}</p>
+                <p class="mobile-text mb-0">{{employee.skypeID}}</p>
             </div>
             <div class="col-2 d-flex align-items-center justify-content-end">
                 <p class="fs-2 text-primary"><i class="fa-brands fa-skype"></i></p>
@@ -55,8 +55,9 @@
             </div>
         </div>
         <!--  -->
-        <div class="text-center mt-4">
-            <span class="fs-2 mx-auto" (click)="openEnd(editFormMobile)" (click)="triggerEdit()"><i class="fa-solid fa-pencil text-secondary"></i></span>
+        <div class="d-flex justify-content-around mt-4">
+            <span class="fs-2" (click)="openVerticallyCentered(confirmDelete)"><i class="fa-solid fa-trash text-primary"></i></span>
+            <span class="fs-2" (click)="openEnd(editFormMobile)" (click)="triggerEdit()"><i class="fa-solid fa-pencil text-secondary"></i></span>
         </div>
     </div>
 </ng-template>
@@ -91,7 +92,7 @@
             </div>
             <div class="col">
                 <label for="skypeid" class="show-employee-modal-label ">Skype ID</label>
-                <p class="col fw-bold text-primary mb-0">{{employee.skypeId}}</p>
+                <p class="col fw-bold text-primary mb-0">{{employee.skypeID}}</p>
             </div>
         </div>
         <div class="row py-1 br">
@@ -109,8 +110,11 @@
             <p class="fw-bold text-primary mb-0">{{employee.office}}</p>
         </div>
     </div>
-    <button type="button" class="edit-btn btn btn-danger fw-bold m-2" (click)="openVerticallyCentered(editForm)"
-        (click)="triggerEdit()">Edit</button>
+    <div class="d-flex justify-content-between mx-2">
+        <button type="button" class="edit-btn btn btn-warning fw-bold col text-white me-1" (click)="openVerticallyCentered(editForm)"
+            (click)="triggerEdit()">Edit</button>
+        <button type="button" class="dlt-btn btn btn-danger fw-bold col text-white ms-1" (click)="openVerticallyCentered(confirmDelete)">Delete</button>
+    </div>
     <button type="button" class="btn btn-primary fw-bold m-2" (click)="modal.close('Close click')">Close</button>
 </ng-template>
 
@@ -121,6 +125,20 @@
     </div>
     <div class="offcanvas-body">
         <app-employee-details></app-employee-details>
+    </div>
+</ng-template>
+
+<ng-template #confirmDelete let-modal>
+    <div class="modal-header">
+        <h5>Delete Employee</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p class="m-2">Are you sure you want to delete <span class="fw-bold text-primary">{{employee.preferredName}}</span>?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="deleteEmployee()">Yes</button>
+        <button type="button" class="btn btn-dark" (click)="modal.close('Save click')">No</button>
     </div>
 </ng-template>
 

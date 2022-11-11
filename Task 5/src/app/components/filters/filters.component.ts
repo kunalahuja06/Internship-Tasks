@@ -29,7 +29,6 @@ export class FiltersComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.toggleJobTitles(document.querySelectorAll('.filter-ul')[2])
-
     let filters=document.querySelectorAll('.filter-li')
     filters.forEach((filter:any)=>{
       filter.children[1].textContent=`(${this.employeeService.getCount(filter.children[0].textContent)})`
@@ -42,14 +41,7 @@ export class FiltersComponent implements OnInit {
   getFilteredEmployees(e:any):void{
     this.offcanvas.dismiss()
     let filter=e.target.innerText
-    let filteredEmployees:any=[]
-    let employees=this.employeeService.getEmployees()
-    employees.forEach((employee:any) => {
-      if(employee.department.toLowerCase()==filter.toLowerCase() || employee.office.toLowerCase()==filter.toLowerCase() || employee.jobTitle.toLowerCase()==filter.toLowerCase()){
-        filteredEmployees.push(employee)
-      }
-    });
-    this.employeeService.sendFilteredEmployees(filteredEmployees)
+    this.employeeService.Filter(filter)
   }
   
   viewMoreBtn='view more'
@@ -71,8 +63,5 @@ export class FiltersComponent implements OnInit {
       jobTitlesUl.children[i].classList.toggle('d-none')
     }
   }
-
-
-
 }
 

@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   constructor(private modalService: NgbModal,private employeeService:EmployeeService,private observer: BreakpointObserver, private offcanvasService: NgbOffcanvas) { }
 
   ngOnInit(){
+    this.employees=this.employeeService.employees;
     this.createAlphabetArray();
     this.employeeService.searchFilter.subscribe((filter:any)=>{this.searchFilterInput=filter})
     this.observer.observe([
@@ -42,19 +43,19 @@ export class AppComponent implements OnInit {
       this.alphabets.push(String.fromCodePoint(i))
     }
   }
+
   showEmployees():void{
-    this.employeeService.sendAllEmployees(this.employeeService.employees)
+    this.employeeService.sendAllEmployees(this.employees)
   }
+
   searchByAlphabets(alphabet:any):void{
-    let employees=this.employeeService.getEmployees()
-    let searchedEmployees=employees.filter((employee:any)=>employee.preferredName.toLowerCase().startsWith(alphabet))
-    this.employeeService.sendAlphabetEmployees(searchedEmployees)
+    this.employeeService.searchAlphebetically(alphabet)
   }
+
   search():void{
-    let employees=this.employeeService.getEmployees()
     const re = new RegExp(this.searchInput, 'gi');
-    let searchedEmployees = employees.filter((emp: any) => emp[this.searchFilterInput].match(re));
-    this.employeeService.sendSearchEmployees(searchedEmployees) 
+    let searchedEmployees = this.employees.filter((emp: any) => emp[this.searchFilterInput].match(re));
+    this.employeeService.sendSearchedEmployees(searchedEmployees) 
   }
   // 
     open(content:any) {
@@ -70,5 +71,7 @@ export class AppComponent implements OnInit {
     this.modalService.open(content, { centered: true });  
     }
   //
+
+  employees:any;
    
 }
