@@ -9,10 +9,10 @@ namespace EmpService.Contracts
 {
     public interface IEmployeeService
     {
-        void AddEmployee(Employee employee);
-        void UpdateEmployee(Employee employee);
-        List<Employee> GetEmployees();
-        void DeleteEmployee(int id);
+        Task AddEmployee(Employee employee);
+        Task UpdateEmployee(Employee employee);
+        Task<List<Employee>> GetEmployees();
+        Task DeleteEmployee(int id);
         Task<Employee> GetEmployeeById(int id);
     }
 }

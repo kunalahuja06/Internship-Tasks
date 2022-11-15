@@ -33,3 +33,8 @@ E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\refint\AddressBook.dll
 E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\AddressBook.pdb
 E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\AddressBook.genruntimeconfig.cache
 E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\ref\AddressBook.dll
+E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\staticwebassets\msbuild.AddressBook.Microsoft.AspNetCore.StaticWebAssets.props
+E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\staticwebassets\msbuild.build.AddressBook.props
+E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.AddressBook.props
+E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.AddressBook.props
+E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\staticwebassets.pack.json

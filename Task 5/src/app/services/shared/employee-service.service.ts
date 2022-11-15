@@ -19,19 +19,21 @@ export class EmployeeService {
   }
 
   employees:any={};
-  getEmployees(){
+   getEmployees(){
     return this.client.get<any>(`${this.url}employees`)
-    .pipe(
-      retry(2),
-      catchError(this.handleError),
-      map((data: any) => {
-    return data;
-    }));
+      .pipe(
+        retry(2),
+        catchError(this.handleError),
+        map((data: any) => {
+          return data;
+        })
+      );
   }
   emp(){
     this.getEmployees().subscribe((data:any)=>{
-      this.employees=data.employees;
-      this.empHome.next(data.employees);
+      console.log(data)
+      this.employees=data.employees.result;
+      this.empHome.next(data.employees.result);
     })
   }
   handleError(error:any):any {

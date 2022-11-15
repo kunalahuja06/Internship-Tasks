@@ -1,6 +1,7 @@
 ﻿using EmpService.Contracts;
 using EmpService.Data;
 using EmpService.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services
 {
@@ -11,40 +12,80 @@ namespace Services
         {
             _employeeContext = employeeContext;
         }
-        public void AddEmployee(Employee employee)
+        public async Task AddEmployee(Employee employee)
         {
-            _employeeContext.Employees.Add(employee);
-            _employeeContext.SaveChanges();
-        }
-
-        public List<Employee> GetEmployees()
-        {
-            return _employeeContext.Employees.ToList();
-        }
-
-        public  Task<Employee> GetEmployeeById(int id)
-        {
-            var employee = _employeeContext.Employees.Find(id);
-            return Task.FromResult(employee);
-        }
-
-        public void UpdateEmployee(Employee employee)
-        {
-            var user = _employeeContext.Employees.Find(employee.Id);
-            if (user != null)
+            try
             {
-                _employeeContext.Entry(user).CurrentValues.SetValues(employee);
-                _employeeContext.SaveChanges();
+                await Task.Run(() =>{
+                    _employeeContext.Employees.Add(employee);
+                    _employeeContext.SaveChanges();
+                });
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        
+        public async Task<List<Employee>> GetEmployees()
+        {
+            try
+            {
+                    var employees = await _employeeContext.Employees.ToListAsync();
+                    return employees;
+             }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        
+        public async Task<Employee> GetEmployeeById(int id)
+        {
+            try
+            {
+                var employee = await _employeeContext.Employees.FindAsync(id);
+                return employee;
+            }
+            catch(Exception ex)
+            {
+                throw;
             }
         }
 
-        public void DeleteEmployee(int id)
+        public async Task UpdateEmployee(Employee employee)
         {
-            var user=_employeeContext.Employees.Find(id);
-            if(user!=null)
+            try
             {
-                _employeeContext.Remove(user);
-                _employeeContext.SaveChanges();
+                var user = await _employeeContext.Employees.FindAsync(employee.Id);
+                if (user != null)
+                {
+                    _employeeContext.Entry(user).CurrentValues.SetValues(employee);
+                    _employeeContext.SaveChanges();
+                }
+                return;
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public async Task DeleteEmployee(int id)
+        {
+            try
+            {
+                var user = await _employeeContext.Employees.FindAsync(id);
+                if (user != null)
+                {
+                    _employeeContext.Remove(user);
+                    _employeeContext.SaveChanges();
+                }
+                return;
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
         }
     }

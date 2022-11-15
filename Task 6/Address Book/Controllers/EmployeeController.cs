@@ -63,7 +63,7 @@ namespace Address_Book.Controllers
         [HttpGet("employees")]
         public IActionResult GetEmployees()
         {
-            var employees = _employeeService.GetEmployees();
+            var employees =_employeeService.GetEmployees();
             return Ok(new
             {
                 StatusCode = 200,
