@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AddressBook_PetaPoco.props" />
+</Project>

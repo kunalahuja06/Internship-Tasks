@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBook_PetaPoco", "AddressBook_PetaPoco.csproj", "{C7690BF0-ED21-4EBC-9EA1-4ABDDC95EC62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "..\Services\Services.csproj", "{93C820B5-A3B2-4001-8A9B-5CC766C5E08A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D5A7C8FE-39C7-4168-8117-31272652518A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7690BF0-ED21-4EBC-9EA1-4ABDDC95EC62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7690BF0-ED21-4EBC-9EA1-4ABDDC95EC62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7690BF0-ED21-4EBC-9EA1-4ABDDC95EC62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7690BF0-ED21-4EBC-9EA1-4ABDDC95EC62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C820B5-A3B2-4001-8A9B-5CC766C5E08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C820B5-A3B2-4001-8A9B-5CC766C5E08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C820B5-A3B2-4001-8A9B-5CC766C5E08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C820B5-A3B2-4001-8A9B-5CC766C5E08A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF3BEFB9-691B-453C-AD36-02497D6FDA79}
+	EndGlobalSection
+EndGlobal
