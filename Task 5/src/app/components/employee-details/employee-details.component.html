@@ -23,8 +23,8 @@
             name</span>
         </div>
         <div class="form-floating col ms-3">
-          <input type="text" class="form-control" placeholder="Last Name" name="lastName" formControlName="lastName" #last
-            (input)="setPrefName(first.value,last.value)">
+          <input type="text" class="form-control" placeholder="Last Name" name="lastName" formControlName="lastName"
+            #last (input)="setPrefName(first.value,last.value)">
           <label for="LastName">Last Name</label>
         </div>
       </div>
@@ -40,16 +40,18 @@
       <!-- Number and skype -->
       <div class="row mb-3">
         <div class="form-floating number col">
-          <input type="tel" class="form-control" placeholder="1234567890" name="phoneNumber" formControlName="phoneNumber"
-            required>
+          <input type="tel" class="form-control" placeholder="1234567890" name="phoneNumber"
+            formControlName="phoneNumber" required>
           <label for="Number">Phone Number</label>
           <span *ngIf="phoneNumber && phoneNumber.invalid && phoneNumber.touched"
             class="text-capitalize text-danger">invalid phone number</span>
         </div>
         <div class="form-floating col ms-3">
-          <input type="tel" class="form-control" placeholder="live:xyz" name="skypeId" formControlName="skypeId" required>
+          <input type="tel" class="form-control" placeholder="live:xyz" name="skypeId" formControlName="skypeId"
+            required>
           <label for="SkypeID">SkypeID</label>
-          <span *ngIf="skypeId && skypeId.invalid && skypeId.touched" class="text-capitalize text-danger">invalid skypeid!
+          <span *ngIf="skypeId && skypeId.invalid && skypeId.touched" class="text-capitalize text-danger">invalid
+            skypeid!
             should start with live:</span>
         </div>
       </div>
@@ -201,8 +203,10 @@
           [disabled]="employeeForm.invalid">Submit</button>
       </div>
       <div class="row m-0 pt-2" *ngIf="mobileView">
-        <button type="button" class="col bg-white mobile-btn" (click)="closeCanvas()"><i class="fa-solid fa-x text-danger"></i></button>
-        <button type="submit" class="col bg-white mobile-btn" [disabled]="employeeForm.invalid"><i class="fa-solid fa-check text-success"></i></button>
+        <button type="button" class="col bg-white mobile-btn" (click)="closeCanvas()"><i
+            class="fa-solid fa-x text-danger"></i></button>
+        <button type="submit" class="col bg-white mobile-btn" [disabled]="employeeForm.invalid"><i
+            class="fa-solid fa-check text-success"></i></button>
       </div>
     </form>
   </div>

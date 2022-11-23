@@ -77,14 +77,10 @@ export class EmployeeDetailsComponent implements OnInit {
   })
 
   saveEmployee(): void {
-    let statusCode: any;
-    let message = ''
     if (!this.employeeForm.get('id').value) {
       this.employeeService.addEmployee(this.employeeForm.value).subscribe((res: any)=> res.statusCode==200?this.utils(res.message):'')
-      message = "Employee Added Successfully"
     } else {
       this.employeeService.setEmployee(this.employeeForm.value).subscribe((res: any) =>res.statusCode==200?this.utils(res.message):'')
-      message="Employee Modified Successfully"
     }
   }
   utils(message:any) {

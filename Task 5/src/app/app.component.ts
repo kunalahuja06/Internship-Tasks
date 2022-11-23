@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   title = 'Task 5';
   mobileView = false;
   collapsed = true;
+  isLoggedIn:boolean=false;
   
   
   constructor(private modalService: NgbModal,private employeeService:EmployeeService,private observer: BreakpointObserver, private offcanvasService: NgbOffcanvas) { }

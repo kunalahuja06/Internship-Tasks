@@ -15,6 +15,9 @@ import { EmployeeService } from './services/shared/employee-service.service';
 import { FiltersPipe } from './pipes/filters.pipe';
 import {LayoutModule} from '@angular/cdk/layout';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthComponent } from './components/auth/auth.component';
+import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     EmployeeComponent,
     EmployeeDetailsComponent,
     FiltersPipe,
+    AuthComponent,
     
     
   ],
@@ -36,7 +40,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     LayoutModule,
     NoopAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
