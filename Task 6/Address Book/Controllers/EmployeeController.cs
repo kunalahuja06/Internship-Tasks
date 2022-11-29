@@ -1,9 +1,7 @@
 ﻿using EmpService.Contracts;
 using EmpService.Models;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Services;
 
 
 namespace Address_Book.Controllers
@@ -61,6 +59,7 @@ namespace Address_Book.Controllers
             });
         }
         [HttpGet("employees")]
+        [Authorize]
         public IActionResult GetEmployees()
         {
             var employees =_employeeService.GetEmployees();

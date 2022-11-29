@@ -3,7 +3,7 @@ using EmpService.Data;
 using EmpService.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Services
+namespace EmpService
 {
     public class EmployeeService : IEmployeeService
     {
@@ -16,7 +16,8 @@ namespace Services
         {
             try
             {
-                await Task.Run(() =>{
+                await Task.Run(() =>
+                {
                     _employeeContext.Employees.Add(employee);
                     _employeeContext.SaveChanges();
                 });
@@ -26,20 +27,20 @@ namespace Services
                 throw;
             }
         }
-        
+
         public async Task<List<Employee>> GetEmployees()
         {
             try
             {
-                    var employees = await _employeeContext.Employees.ToListAsync();
-                    return employees;
-             }
+                var employees = await _employeeContext.Employees.ToListAsync();
+                return employees;
+            }
             catch (Exception ex)
             {
                 throw;
             }
         }
-        
+
         public async Task<Employee> GetEmployeeById(int id)
         {
             try
@@ -47,7 +48,7 @@ namespace Services
                 var employee = await _employeeContext.Employees.FindAsync(id);
                 return employee;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -65,7 +66,7 @@ namespace Services
                 }
                 return;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw;
             }
