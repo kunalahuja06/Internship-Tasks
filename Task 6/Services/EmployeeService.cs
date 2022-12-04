@@ -16,13 +16,10 @@ namespace EmpService
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    _employeeContext.Employees.Add(employee);
-                    _employeeContext.SaveChanges();
-                });
+                await _employeeContext.Employees.AddAsync(employee);
+                await _employeeContext.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 throw;
             }
@@ -56,38 +53,10 @@ namespace EmpService
 
         public async Task UpdateEmployee(Employee employee)
         {
-            try
-            {
-                var user = await _employeeContext.Employees.FindAsync(employee.Id);
-                if (user != null)
-                {
-                    _employeeContext.Entry(user).CurrentValues.SetValues(employee);
-                    _employeeContext.SaveChanges();
-                }
-                return;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
         }
 
         public async Task DeleteEmployee(int id)
         {
-            try
-            {
-                var user = await _employeeContext.Employees.FindAsync(id);
-                if (user != null)
-                {
-                    _employeeContext.Remove(user);
-                    _employeeContext.SaveChanges();
-                }
-                return;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
         }
     }
 }

@@ -1,11 +1,6 @@
 using EmpService.Data;
 using Microsoft.EntityFrameworkCore;
-using EmpService.Models;
 using EmpService.Contracts;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using EmpService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,15 +17,6 @@ builder.Services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
     .AllowAnyMethod()
     .AllowAnyHeader();
 }));
-
-builder.Services.AddAuthentication("Bearer")
-    .AddIdentityServerAuthentication("Bearer", opt =>
-    {
-        opt.Authority = "https://localhost:5001";
-        opt.ApiName = "employeesAPI";
-        
-    });
-
 var connectionString = builder.Configuration["Data:ConnectionStrings:DefaultConnectionString"];
 builder.Services.AddDbContext<EmployeeDbContext>(opt => opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();

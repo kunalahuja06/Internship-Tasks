@@ -59,7 +59,6 @@ namespace Address_Book.Controllers
             });
         }
         [HttpGet("employees")]
-        [Authorize]
         public IActionResult GetEmployees()
         {
             var employees =_employeeService.GetEmployees();
