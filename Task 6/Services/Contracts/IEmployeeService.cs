@@ -10,7 +10,7 @@ namespace EmpService.Contracts
     public interface IEmployeeService
     {
         Task AddEmployee(Employee employee);
-        Task UpdateEmployee(Employee employee);
+        void UpdateEmployee(Employee employee);
         Task<List<Employee>> GetEmployees();
         Task DeleteEmployee(int id);
         Task<Employee> GetEmployeeById(int id);

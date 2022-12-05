@@ -51,12 +51,31 @@ namespace EmpService
             }
         }
 
-        public async Task UpdateEmployee(Employee employee)
+        public async void UpdateEmployee(Employee employee)
         {
+            var employeeToBeUpdated=_employeeContext.Employees.FirstOrDefault(x=> x.Id == employee.Id);
+            if (employeeToBeUpdated != null)
+            {
+                _employeeContext.Entry(employeeToBeUpdated).CurrentValues.SetValues(employee);
+                _employeeContext.SaveChanges();
+            }
         }
 
         public async Task DeleteEmployee(int id)
         {
+            try
+            {
+                var employeeToBeDeleted = _employeeContext.Employees.Find(id);
+                if (employeeToBeDeleted != null)
+                {
+                    _employeeContext.Employees.Remove(employeeToBeDeleted);
+                }
+                _employeeContext.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
     }
 }
