@@ -53,11 +53,18 @@ namespace EmpService
 
         public async void UpdateEmployee(Employee employee)
         {
-            var employeeToBeUpdated=_employeeContext.Employees.FirstOrDefault(x=> x.Id == employee.Id);
-            if (employeeToBeUpdated != null)
+            try
             {
-                _employeeContext.Entry(employeeToBeUpdated).CurrentValues.SetValues(employee);
-                _employeeContext.SaveChanges();
+                var employeeToBeUpdated = _employeeContext.Employees.FirstOrDefault(x => x.Id == employee.Id);
+                if (employeeToBeUpdated != null)
+                {
+                    _employeeContext.Entry(employeeToBeUpdated).CurrentValues.SetValues(employee);
+                    _employeeContext.SaveChanges();
+                }
+            }
+            catch(Exception ex)
+            {
+                throw;
             }
         }
 
