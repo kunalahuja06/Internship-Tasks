@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/shared/user-service.service';
+import * as bcrypt from "bcryptjs";
 
 @Component({
   selector: 'app-auth',
@@ -8,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +20,7 @@ export class AuthComponent implements OnInit {
     password:new FormControl('',[Validators.required, Validators.minLength(8)]),
     confirmPassword:new FormControl('',[Validators.required, Validators.minLength(8)]),
   })
-  RegisterUser(){
+  loginUser(){
     console.log(this.RegisterForm.value);
   }
 
@@ -26,8 +28,19 @@ export class AuthComponent implements OnInit {
     email:new FormControl('',[Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),
     password:new FormControl('',[Validators.required, Validators.minLength(8)]),
   })
-  LoginUser(){
-    console.log(this.LoginForm.value);
+  registerUser(){
+    var user=this.createUser(this.RegisterForm.value);
+    this.userService.registerUser(user).subscribe((res:any)=>{
+      console.log(res);
+    })
+  }
+
+  createUser(registerForm:any){
+    var user={
+      email:registerForm.email,
+      password:bcrypt.hashSync(registerForm.password, 10)
+    }
+    return user;
   }
 
   get email(){

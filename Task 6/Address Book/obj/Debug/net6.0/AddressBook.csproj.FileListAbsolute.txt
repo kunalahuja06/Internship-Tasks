@@ -59,4 +59,3 @@ E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\refint\AddressBook.dll
 E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\AddressBook.pdb
 E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\AddressBook.genruntimeconfig.cache
 E:\Internship_Tasks\Task 6\Address Book\obj\Debug\net6.0\ref\AddressBook.dll
-E:\Internship_Tasks\Task 6\Address Book\bin\Debug\net6.0\Authentication\Properties\launchSettings.json

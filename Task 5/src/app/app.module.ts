@@ -17,7 +17,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthComponent } from './components/auth/auth.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { UserService } from './services/shared/user-service.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
 
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

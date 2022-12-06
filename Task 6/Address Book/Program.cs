@@ -2,6 +2,9 @@ using EmpService.Data;
 using Microsoft.EntityFrameworkCore;
 using EmpService.Contracts;
 using EmpService;
+using EmpService.Authentication_Service.Contracts;
+using EmpService.Authentication_Service.Data;
+using EmpService.Authentication_Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +24,8 @@ var connectionString = builder.Configuration["Data:ConnectionStrings:DefaultConn
 builder.Services.AddDbContext<EmployeeDbContext>(opt => opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
+builder.Services.AddDbContext<UserDbContext>(opt => opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddScoped<IUserService, UserService>();
 
 
 var app = builder.Build();
