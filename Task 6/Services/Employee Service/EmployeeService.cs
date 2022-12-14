@@ -12,17 +12,10 @@ namespace EmpService
         {
             _employeeContext = employeeContext;
         }
-        public async Task AddEmployee(Employee employee)
+        public async void AddEmployee(Employee employee)
         {
-            try
-            {
-                await _employeeContext.Employees.AddAsync(employee);
-                await _employeeContext.SaveChangesAsync();
-            }
-            catch(Exception ex)
-            {
-                throw;
-            }
+            await _employeeContext.Employees.AddAsync(employee);
+            await _employeeContext.SaveChangesAsync();
         }
 
         public async Task<List<Employee>> GetEmployees()

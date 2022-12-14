@@ -2,15 +2,23 @@ using EmpService.Data;
 using Microsoft.EntityFrameworkCore;
 using EmpService.Contracts;
 using EmpService;
-using EmpService.Authentication_Service.Contracts;
-using EmpService.Authentication_Service.Data;
-using EmpService.Authentication_Service;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+
+builder.Services.AddAuthentication("Bearer")
+    .AddIdentityServerAuthentication("Bearer", opt =>
+    {
+        opt.Authority = "https://localhost:5001";
+        opt.ApiName = "EmployeeAPI";
+
+    });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -21,13 +29,9 @@ builder.Services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
     .AllowAnyHeader();
 }));
 var connectionString = builder.Configuration["Data:ConnectionStrings:DefaultConnectionString"];
-builder.Services.AddDbContext<EmployeeDbContext>(opt => opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddDbContext<EmployeeDbContext>(opt => opt.UseSqlServer(connectionString));
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-
-builder.Services.AddDbContext<UserDbContext>(opt => opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-builder.Services.AddScoped<IUserService, UserService>();
-
-
+    
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

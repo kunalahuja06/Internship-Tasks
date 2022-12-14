@@ -18,6 +18,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthComponent } from './components/auth/auth.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UserService } from './services/shared/user-service.service';
+import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,19 @@ import { UserService } from './services/shared/user-service.service';
     NoopAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    AuthModule.forRoot({
+      config: {
+        authority: '<your authority address here>',
+        redirectUrl: window.location.origin,
+        postLogoutRedirectUri: window.location.origin,
+        clientId: '<your clientId>',
+        scope: 'openid profile email offline_access',
+        responseType: 'code',
+        silentRenew: true,
+        useRefreshToken: true,
+        logLevel: LogLevel.Debug,
+      },
+    }),
 
   ],
   providers: [EmployeeService,UserService],

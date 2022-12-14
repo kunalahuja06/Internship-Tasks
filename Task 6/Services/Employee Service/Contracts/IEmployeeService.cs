@@ -9,7 +9,7 @@ namespace EmpService.Contracts
 {
     public interface IEmployeeService
     {
-        Task AddEmployee(Employee employee);
+        void AddEmployee(Employee employee);
         void UpdateEmployee(Employee employee);
         Task<List<Employee>> GetEmployees();
         Task DeleteEmployee(int id);

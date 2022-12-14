@@ -10,7 +10,7 @@ import {HttpClient} from '@angular/common/http';
 export class EmployeeService {
 
   constructor(private client:HttpClient) {this.getEmployees();this.emp();}
-  private url='https://localhost:44380/'
+  private url='https://localhost:6001/'
 
 
   empHome=new Subject();
