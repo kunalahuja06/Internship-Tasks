@@ -31,7 +31,6 @@ export class EmployeeService {
   }
   emp(){
     this.getEmployees().subscribe((data:any)=>{
-      console.log(data)
       this.employees=data.employees.result;
       this.empHome.next(data.employees.result);
     })

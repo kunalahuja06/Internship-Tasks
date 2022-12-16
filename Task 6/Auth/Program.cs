@@ -25,7 +25,8 @@ builder.Services.AddDbContext<AspNetIdentityDbContext>(opt =>
 });
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<AspNetIdentityDbContext>();
+    .AddEntityFrameworkStores<AspNetIdentityDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddIdentityServer()
     .AddAspNetIdentity<IdentityUser>()
